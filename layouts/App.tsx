@@ -3,6 +3,9 @@ import { Redirect, Route, Switch } from "react-router";
 import loadable from "@loadable/component";
 
 const Main = loadable(() => import(`@layouts/Main`));
+const SignUp = loadable(() => import("@pages/SignUp"));
+const LogIn = loadable(() => import("@pages/LogIn"));
+const MyPage = loadable(() => import("@pages/Mypage"));
 
 const App = () => {
   return (
@@ -11,6 +14,9 @@ const App = () => {
         <Redirect to="main" />
       </Route>
       <Route path="/main" component={Main} />
+      <Route path="/signup" component={SignUp} />
+      <Route path="/login" component={LogIn} />
+      <Route path="/mypage" component={MyPage} />
     </Switch>
   );
 };
