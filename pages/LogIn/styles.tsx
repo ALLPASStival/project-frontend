@@ -40,6 +40,7 @@ export const Lable = styled.div`
   }
 `;
 export const Input = styled.input`
+  background-color: #d9d9d9;
   position: relative;
   box-sizing: border-box;
   border: 1px solid #ebebeb;
