@@ -27,7 +27,7 @@ const Login = () => {
             id,
             password,
           },
-          {}
+          { withCredentials: true }
         )
 
         .then((response) => {
