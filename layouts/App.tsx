@@ -6,7 +6,7 @@ const Main = loadable(() => import(`@layouts/Main`));
 const SignUp = loadable(() => import("@pages/SignUp"));
 const LogIn = loadable(() => import("@pages/LogIn"));
 const Mypage = loadable(() => import("@pages/MyPage"));
-
+const Join = loadable(() => import("@pages/Join"));
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={LogIn} />
       <Route path="/mypage" component={Mypage} />
-
+      <Route path="/Join" component={Join} />
     </Switch>
   );
 };
