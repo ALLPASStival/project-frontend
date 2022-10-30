@@ -78,6 +78,9 @@ export const SearchBox = styled.div`
 `;
 
 export const LoginBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   vertical-align: middle;
   text-align: center;
   width: 9rem;
