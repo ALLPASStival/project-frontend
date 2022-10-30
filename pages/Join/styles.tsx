@@ -13,13 +13,13 @@ export const Header = styled.div`
   font-weight: bolder;
   font-size: 3em;
   letter-spacing: -0.75px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
 `;
 export const SubHeader = styled.div`
   font-weight: bolder;
   font-size: 1.2rem;
   letter-spacing: -0.75px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
 `;
 export const Form = styled.div`
   display: flex;
