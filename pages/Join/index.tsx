@@ -103,7 +103,7 @@ const Join = () => {
             value={id}
             onChange={onChangeId}
           />
-          <CheckBtn onClick={onCheckNick}>중복확인</CheckBtn>
+          <CheckBtn onClick={onCheckId}>중복확인</CheckBtn>
         </Lable>
 
         <Lable>
