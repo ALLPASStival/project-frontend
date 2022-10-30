@@ -33,7 +33,7 @@ export const Input = styled.input`
   padding: 10px 0 12px;
   margin-top: 0.6rem;
   :focus {
-    border-bottom: 2px solid black;
+    border: 1px solid #e89735;
   }
   ::placeholder {
     padding: 1rem 1rem;
