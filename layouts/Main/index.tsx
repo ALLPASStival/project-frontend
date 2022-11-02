@@ -1,11 +1,12 @@
 import React from "react";
 import HeaderBar from "@components/HeaderBar";
+import SliderImage from "@components/SlideImage";
 
 const Main = () => {
   return (
     <div>
       <HeaderBar />
-      <div>메인 페이지</div>
+      <SliderImage />
     </div>
   );
 };
