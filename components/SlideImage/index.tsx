@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { slideList } from "@utils/slideList";
+import { slideList } from "@utils/SlideList";
 import { SliderItem, Wrapper } from "@components/SlideImage/styles";
 
 const SliderImage = () => {
