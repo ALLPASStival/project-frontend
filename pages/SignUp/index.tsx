@@ -9,6 +9,7 @@ const SingUp = () => {
   const [id, onChangeId, setId] = useInput("");
   const [nickname, onChangeNickname, setNickname] = useInput("");
   const [password, onChangePassword, setPassword] = useInput("");
+  const [age, onChangeAge, setAge] = useInput("");
   const [passwordcheck, onChangePasswordCheck, setPasswordCheck] = useInput("");
 
   const onSubmit = useCallback(
@@ -68,6 +69,17 @@ const SingUp = () => {
               <CheckBtn onClick={onSubmit}>닉네임 중복 확인</CheckBtn>
             </Label>
           </Div>
+          <Label>
+            <div>나이</div>
+            <Input
+              type="text"
+              id="age"
+              name="age"
+              value={age}
+              onChange={onChangeAge}
+              placeholder="나이"
+            />
+          </Label>
           <Label>
             <div>비밀번호</div>
             <Input

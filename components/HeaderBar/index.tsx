@@ -7,38 +7,76 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { Bar, SubBar, SubMenu } from "@components/HeaderBar/styles";
+import {
+  Bar,
+  LeftMenu,
+  MainBar,
+  Profile,
+  RightMenu,
+  SubBar,
+  TopMenu,
+} from "@components/HeaderBar/styles";
 
 const HeaderBar = () => {
   return (
     <Bar>
+      <MainBar>
+        <TopMenu>
+          <LeftMenu>ALLPASSTIVAL</LeftMenu>
+          <RightMenu>
+            <span>
+              <Link to="login">
+                <span>
+                  <FontAwesomeIcon icon={faArrowRightToBracket} />
+                  로그인
+                </span>
+              </Link>
+            </span>
+            <span>
+              <Link to="signup">
+                <span>
+                  <FontAwesomeIcon icon={faCheckToSlot} />
+                  회원가입
+                </span>
+              </Link>
+            </span>
+            <span>
+              <Link to="mypage">
+                <span>
+                  <FontAwesomeIcon icon={faUser} />
+                  MY PAGE
+                </span>
+              </Link>
+            </span>
+            <span>
+              <Link to="login">
+                <span>
+                  <FontAwesomeIcon icon={faPhone} />
+                  고객 센터
+                </span>
+              </Link>
+            </span>
+          </RightMenu>
+          <Profile>
+            <img src="SlideImage/img1.jpg" alt="프로필 사진" />
+          </Profile>
+        </TopMenu>
+      </MainBar>
       <SubBar>
-        <SubMenu>
+        <div>
           <span>
-            <Link to="login">
-              <FontAwesomeIcon icon={faArrowRightToBracket} />
-              로그인
-            </Link>
+            <Link to="/home">축제 찾기</Link>
           </span>
           <span>
-            <Link to="signup">
-              <FontAwesomeIcon icon={faCheckToSlot} />
-              회원가입
-            </Link>
+            <Link to="/home">지도로 찾기</Link>
           </span>
           <span>
-            <Link to="mypage">
-              <FontAwesomeIcon icon={faUser} />
-              MY PAGE
-            </Link>
+            <Link to="/home">일정</Link>
           </span>
           <span>
-            <Link to="login">
-              <FontAwesomeIcon icon={faPhone} />
-              고객 센터
-            </Link>
+            <Link to="/home">커뮤니티</Link>
           </span>
-        </SubMenu>
+        </div>
       </SubBar>
     </Bar>
   );
