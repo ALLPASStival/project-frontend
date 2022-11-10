@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.section`
-  margin-top: 5rem;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
 
   .slide {
     margin: 0 auto;
