@@ -17,7 +17,7 @@ export const Label = styled.label`
     cursor: pointer;
     font-weight: 700;
 
-    width: 7rem;
+    width: 10rem;
   }
 `;
 
@@ -26,10 +26,10 @@ export const Input = styled.input`
   position: relative;
   box-sizing: border-box;
   border: 1px solid #ebebeb;
-  width: 25rem;
-  height: 3rem;
+  width: 35rem;
+  height: 4rem;
   outline: none;
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding: 10px 0 12px;
   margin-top: 0.6rem;
   :focus {
@@ -37,7 +37,7 @@ export const Input = styled.input`
   }
   ::placeholder {
     padding: 1rem 1rem;
-    font-size: 0.8rem;
+    font-size: 1.5rem;
     font-weight: bolder;
   }
 `;
@@ -48,8 +48,8 @@ export const SignUpBtn = styled.div`
   align-items: center;
   vertical-align: middle;
   text-align: center;
-  width: 9rem;
-  height: 2.7rem;
+  width: 12rem;
+  height: 3.2rem;
   background-color: #fe9010;
   color: black;
   border-radius: 25px;
@@ -70,8 +70,8 @@ export const CheckBtn = styled.div`
   justify-content: center;
   vertical-align: middle;
 
-  width: 6.5rem;
-  height: 1.7rem;
+  width: 10rem;
+  height: 2rem;
 
   background-color: #fe9010;
   color: black;
@@ -80,7 +80,7 @@ export const CheckBtn = styled.div`
   font-size: 0.5rem;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 1rem;
+  margin-top: 1.8rem;
 
   position: absolute;
   top: 1.2rem;

@@ -3,7 +3,6 @@ import { Header, SubHeader, Wrapper, Form } from "@pages/LogIn/styles";
 import axios from "axios";
 import useInput from "@hooks/useInput";
 import { SignUpBtn, CheckBtn, Div, Label, Input } from "@pages/SignUp/styles";
-import HeaderBar from "@components/HeaderBar";
 
 const SingUp = () => {
   const [id, onChangeId, setId] = useInput("");
