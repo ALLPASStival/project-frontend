@@ -16,9 +16,9 @@ const FestivalRank = () => {
         <TopRight>전체 보기</TopRight>
       </TopHeader>
       <Rank>
-        <RankBox>박스</RankBox>
-        <RankBox>박스</RankBox>
-        <RankBox>박스</RankBox>
+        <RankBox>1</RankBox>
+        <RankBox>2</RankBox>
+        <RankBox>3</RankBox>
       </Rank>
     </Wrapper>
   );

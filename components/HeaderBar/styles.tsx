@@ -34,7 +34,7 @@ export const TopMenu = styled.div`
 
 export const LeftMenu = styled.div`
   margin-left: 1rem;
-  font-size: 1.6rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #fe9010;
 `;
@@ -46,6 +46,7 @@ export const RightMenu = styled.div`
   & span {
     color: #fe9010;
     font-weight: bold;
+    font-size: 1.3rem;
 
     & span {
       display: flex;
@@ -57,8 +58,8 @@ export const Profile = styled.div`
   display: flex;
   justify-content: flex-end;
   & img {
-    width: 3rem;
-    height: 3rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
   }
 `;
@@ -67,7 +68,6 @@ export const SubBar = styled.div`
 
   display: flex;
   justify-content: space-between;
-
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
@@ -77,7 +77,7 @@ export const SubBar = styled.div`
   }
 
   & span {
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: #fe9010;
     margin-left: 2rem;
