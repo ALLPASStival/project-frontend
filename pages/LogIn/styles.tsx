@@ -11,15 +11,15 @@ export const Wrapper = styled.div`
 `;
 export const Header = styled.div`
   font-weight: bolder;
-  font-size: 3em;
+  font-size: 5em;
   letter-spacing: -0.75px;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.8rem;
 `;
 export const SubHeader = styled.div`
   font-weight: bolder;
-  font-size: 1.2rem;
+  font-size: 2rem;
   letter-spacing: -0.75px;
-  margin-bottom: 0.3rem;
+  margin-bottom: 1.3rem;
 `;
 export const Form = styled.div`
   display: flex;
@@ -44,18 +44,18 @@ export const Input = styled.input`
   position: relative;
   box-sizing: border-box;
   border: 1px solid #ebebeb;
-  width: 20rem;
-  height: 3rem;
+  width: 30rem;
+  height: 5rem;
   outline: none;
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding: 10px 0 12px;
-  margin-top: 0.6rem;
+  margin-top: 1.5rem;
   :focus {
     border-bottom: 2px solid black;
   }
   ::placeholder {
     padding: 1rem 1rem;
-    font-size: 0.8rem;
+    font-size: 1.5rem;
     font-weight: bolder;
   }
 `;
@@ -63,8 +63,8 @@ export const Input = styled.input`
 export const SearchBox = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 20rem;
-  font-size: 0.6rem;
+  width: 30rem;
+  font-size: 1rem;
   font-weight: bold;
   margin-bottom: 0.8rem;
   & span {
