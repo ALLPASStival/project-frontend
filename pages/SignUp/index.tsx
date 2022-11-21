@@ -1,16 +1,59 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Header, SubHeader, Wrapper, Form } from "@pages/LogIn/styles";
 import axios from "axios";
 import useInput from "@hooks/useInput";
-import { SignUpBtn, CheckBtn, Div, Label, Input } from "@pages/SignUp/styles";
+import {
+  SignUpBtn,
+  CheckBtn,
+  Div,
+  Label,
+  Input,
+  Correct,
+  Error,
+} from "@pages/SignUp/styles";
 
 const SingUp = () => {
   const [id, onChangeId, setId] = useInput("");
   const [nickname, onChangeNickname, setNickname] = useInput("");
-  const [password, onChangePassword, setPassword] = useInput("");
+  const [password, , setPassword] = useInput("");
+  const [passwordCheck, , setPasswordCheck] = useInput("");
   const [age, onChangeAge, setAge] = useInput("");
-  const [passwordcheck, onChangePasswordCheck, setPasswordCheck] = useInput("");
 
+  //비밀번호 맞나 틀리나 검사
+  const [mismatchError, setMismatchError] = useState(false);
+  const [mismatchCondition, setMismatchCondition] = useState(false);
+
+  //비밀번호 유효성 검사: 8~ 15자 사이, 영어 소문자 대문자 상관 x, 특수기호, 숫자 반드시 필요
+  useEffect(() => {
+    const regexp =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$/;
+    if (password.match(regexp)) setMismatchCondition(true);
+    else setMismatchCondition(false);
+  }, [password, setPassword]);
+
+  //비밀번호 입력
+  const onChangePassword = useCallback(
+    (e: any) => {
+      setPassword(e.target.value);
+      setMismatchError(e.target.value === passwordCheck);
+    },
+    [passwordCheck, setPassword]
+  );
+
+  //비밀번호 입력과 일치 불일치 검사
+  const onChangePasswordCheck = useCallback(
+    (e: any) => {
+      setPasswordCheck(e.target.value);
+      setMismatchError(e.target.value === password);
+    },
+    [password, setPasswordCheck]
+  );
+
+  const headers = {
+    "X-Requested-With": "XMLHttpRequest",
+  };
+
+  //회원가입 전송
   const onSubmit = useCallback(
     (e: any) => {
       e.preventDefault();
@@ -20,8 +63,10 @@ const SingUp = () => {
           {
             id,
             password,
+            nickname,
+            age,
           },
-          {}
+          { withCredentials: true, headers }
         )
 
         .then((response) => {
@@ -31,7 +76,53 @@ const SingUp = () => {
           alert("에러");
         });
     },
-    [id, password]
+    [id, password, nickname, age]
+  );
+
+  //아이디 중복 확인 전송
+  const onCheckId = useCallback(
+    (e: any) => {
+      e.preventDefault();
+      axios
+        .post(
+          "",
+          {
+            id,
+          },
+          { withCredentials: true }
+        )
+
+        .then((response) => {
+          alert("사용가능한 아이디입니다.");
+        })
+        .catch((error) => {
+          alert("에러");
+        });
+    },
+    [id]
+  );
+
+  //닉네임 중복 확인 전송
+  const onCheckNickname = useCallback(
+    (e: any) => {
+      e.preventDefault();
+      axios
+        .post(
+          "",
+          {
+            nickname,
+          },
+          { withCredentials: true }
+        )
+
+        .then((response) => {
+          alert("사용가능한 닉네임입니다.");
+        })
+        .catch((error) => {
+          alert("에러");
+        });
+    },
+    [nickname]
   );
 
   return (
@@ -51,7 +142,7 @@ const SingUp = () => {
                 onChange={onChangeId}
                 placeholder="아이디"
               />
-              <CheckBtn onClick={onSubmit}>아이디 중복 확인</CheckBtn>
+              <CheckBtn onClick={onCheckId}>아이디 중복 확인</CheckBtn>
             </Label>
           </Div>
           <Div>
@@ -65,7 +156,7 @@ const SingUp = () => {
                 onChange={onChangeNickname}
                 placeholder="닉네임"
               />
-              <CheckBtn onClick={onSubmit}>닉네임 중복 확인</CheckBtn>
+              <CheckBtn onClick={onCheckNickname}>닉네임 중복 확인</CheckBtn>
             </Label>
           </Div>
           <Label>
@@ -90,17 +181,27 @@ const SingUp = () => {
               placeholder="비밀번호"
             />
           </Label>
+          {!mismatchCondition && password.length > 0 && (
+            <Error>비밀번호 조건에 일치하지 않습니다!</Error>
+          )}
+          {mismatchCondition && <Correct>비밀번호 조건에 일치합니다!</Correct>}
           <Label>
             <div>비밀번호 확인</div>
             <Input
               type="text"
               id="password"
               name="password"
-              value={passwordcheck}
+              value={passwordCheck}
               onChange={onChangePasswordCheck}
               placeholder="비밀번호 확인"
             />
           </Label>
+          {!mismatchError && passwordCheck.length > 0 && (
+            <Error> 비밀번호가 일치하지 않습니다!</Error>
+          )}
+          {mismatchError && passwordCheck.length > 7 && (
+            <Correct> 비밀번호가 일치합니다!</Correct>
+          )}
           <SignUpBtn onClick={onSubmit}>회원가입</SignUpBtn>
         </Form>
       </Wrapper>

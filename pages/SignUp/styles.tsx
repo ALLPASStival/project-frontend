@@ -64,6 +64,18 @@ export const SignUpBtn = styled.div`
   }
 `;
 
+export const Error = styled.div`
+  color: red;
+  margin: 8px 0 16px;
+  font-weight: bold;
+`;
+
+export const Correct = styled.div`
+  color: green;
+  margin: 10px 0 10px;
+  font-weight: bold;
+`;
+
 export const CheckBtn = styled.div`
   display: flex;
   align-items: center;
