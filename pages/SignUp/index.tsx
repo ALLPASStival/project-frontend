@@ -19,15 +19,20 @@ const SingUp = () => {
   const [passwordCheck, , setPasswordCheck] = useInput("");
   const [age, onChangeAge, setAge] = useInput("");
 
+  //중복 확인
+
+  const [checkID, setCheckID] = useState(false);
+  const [checkNickName, setCheckNickName] = useState(false);
+
   //비밀번호 맞나 틀리나 검사
   const [mismatchError, setMismatchError] = useState(false);
   const [mismatchCondition, setMismatchCondition] = useState(false);
 
   //비밀번호 유효성 검사: 8~ 15자 사이, 영어 소문자 대문자 상관 x, 특수기호, 숫자 반드시 필요
   useEffect(() => {
-    const regexp =
+    const PasswordRegexp =
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$/;
-    if (password.match(regexp)) setMismatchCondition(true);
+    if (password.match(PasswordRegexp)) setMismatchCondition(true);
     else setMismatchCondition(false);
   }, [password, setPassword]);
 

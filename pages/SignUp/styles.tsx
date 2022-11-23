@@ -66,14 +66,18 @@ export const SignUpBtn = styled.div`
 
 export const Error = styled.div`
   color: red;
-  margin: 8px 0 16px;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
   font-weight: bold;
+  font-size: 1.2rem;
 `;
 
 export const Correct = styled.div`
   color: green;
-  margin: 10px 0 10px;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
   font-weight: bold;
+  font-size: 1.2rem;
 `;
 
 export const CheckBtn = styled.div`
