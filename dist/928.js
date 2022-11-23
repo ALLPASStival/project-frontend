@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkALLPasstival=self.webpackChunkALLPasstival||[]).push([[928],{91928:(e,s,a)=>{a.r(s),a.d(s,{default:()=>t});var l=a(67294);const t=()=>l.createElement("div",null,"마이 페이지")}}]);

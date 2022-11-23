@@ -1,0 +1,1 @@
+{"version":3,"file":"928.js","mappings":"yJAEA,MAIA,EAJe,IACN,oC","sources":["webpack://ALLPasstival/./pages/MyPage/index.tsx"],"sourcesContent":["import React from \"react\";\n\nconst Mypage = () => {\n  return <div>마이 페이지</div>;\n};\n\nexport default Mypage;\n"],"names":[],"sourceRoot":""}
