@@ -22,7 +22,9 @@ const HeaderBar = () => {
     <Bar>
       <MainBar>
         <TopMenu>
-          <LeftMenu>ALLPASSTIVAL</LeftMenu>
+          <Link to="main">
+            <LeftMenu>ALLPASSTIVAL</LeftMenu>
+          </Link>
           <RightMenu>
             <span>
               <Link to="login">
