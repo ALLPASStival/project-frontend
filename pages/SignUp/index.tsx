@@ -19,8 +19,7 @@ const SingUp = () => {
   const [passwordCheck, , setPasswordCheck] = useInput("");
   const [age, onChangeAge, setAge] = useInput("");
 
-  //중복 확인
-
+  //중복 확인 검사
   const [checkID, setCheckID] = useState(false);
   const [checkNickName, setCheckNickName] = useState(false);
 
@@ -76,12 +75,17 @@ const SingUp = () => {
 
         .then((response) => {
           alert("성공");
+          setId("");
+          setNickname("");
+          setPassword("");
+          setPasswordCheck("");
+          setAge("");
         })
         .catch((error) => {
           alert("에러");
         });
     },
-    [id, password, nickname, age]
+    [id, password, passwordCheck, nickname, age]
   );
 
   //아이디 중복 확인 전송
@@ -99,9 +103,15 @@ const SingUp = () => {
 
         .then((response) => {
           alert("사용가능한 아이디입니다.");
+          setCheckID(true);
+
+          if (id.length < 5) {
+            setCheckID(false);
+          }
         })
         .catch((error) => {
           alert("에러");
+          setCheckID(false);
         });
     },
     [id]
@@ -122,9 +132,15 @@ const SingUp = () => {
 
         .then((response) => {
           alert("사용가능한 닉네임입니다.");
+          setCheckNickName(true);
+
+          if (nickname.length < 1) {
+            setCheckNickName(false);
+          }
         })
         .catch((error) => {
           alert("에러");
+          setCheckNickName(false);
         });
     },
     [nickname]
@@ -149,6 +165,10 @@ const SingUp = () => {
               />
               <CheckBtn onClick={onCheckId}>아이디 중복 확인</CheckBtn>
             </Label>
+            {checkID && id.length > 0 && (
+              <Error>사용 불가능한 아이디입니다.</Error>
+            )}
+            {checkID && <Correct>사용 가능한 아이디입니다.</Correct>}
           </Div>
           <Div>
             <Label>
@@ -163,6 +183,10 @@ const SingUp = () => {
               />
               <CheckBtn onClick={onCheckNickname}>닉네임 중복 확인</CheckBtn>
             </Label>
+            {checkNickName && nickname.length > 0 && (
+              <Error>사용 불가능한 닉네임입니다.</Error>
+            )}
+            {checkNickName && <Correct>사용 가능한 닉네임입니다.</Correct>}
           </Div>
           <Label>
             <div>나이</div>
