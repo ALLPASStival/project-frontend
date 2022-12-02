@@ -51,7 +51,7 @@ const HeaderBar = () => {
               </Link>
             </span>
             <span>
-              <Link to="login">
+              <Link to="callcenter">
                 <span>
                   <FontAwesomeIcon icon={faPhone} />
                   고객 센터
