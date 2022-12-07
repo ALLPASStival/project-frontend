@@ -8,6 +8,7 @@ const LogIn = loadable(() => import("@pages/LogIn"));
 const Mypage = loadable(() => import("@pages/MyPage"));
 const Schedule = loadable(() => import("@pages/Schedule"));
 const CallCenter = loadable(() => import("@pages/CallCenter"));
+const Search = loadable(() => import("@pages/Search"));
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       <Route path="/mypage" component={Mypage} />
       <Route path="/schedule" component={Schedule} />
       <Route path="/callcenter" component={CallCenter} />
+      <Route path="/search" component={Search} />
     </Switch>
   );
 };
