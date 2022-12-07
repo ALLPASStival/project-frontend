@@ -67,7 +67,7 @@ const HeaderBar = () => {
       <SubBar>
         <div>
           <span>
-            <Link to="/home">축제 찾기</Link>
+            <Link to="/search">축제 찾기</Link>
           </span>
           <span>
             <Link to="/home">지도로 찾기</Link>
