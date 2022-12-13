@@ -21,7 +21,6 @@ export const getUserInfo = createAsyncThunk <InfoAtt, any>("users/getUserInfo", 
     }
 })
 
-
   export const userSlice = createSlice({
     name: "user",
     initialState: {
