@@ -34,9 +34,11 @@ height: 5.36rem;
 width: 100%;
 justify-content: space-around;
 
-& span {
+& button {
     font-size: 2.5rem;
     font-weight: bold;
+    border-style: none;
+    background-color: white;
 }
 `
 

@@ -1,9 +1,13 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import testSlice from "../reducers/TestSlice";
+import userReducer from "../pages/MyPage/userSlice"
+import writingSlice from "@pages/MyPage/writingSlice";
 
-export const store = configureStore({
+export  const store = configureStore({
   reducer: {
     counter: testSlice,
+    user: userReducer,
+    wrting: writingSlice
   },
 });
 
