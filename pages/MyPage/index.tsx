@@ -1,14 +1,26 @@
 import HeaderBar from "@components/HeaderBar";
 import { faFaceLaugh, faPencil, faPerson, faThumbsUp, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Wrapper } from "../../Style/Wrapper";
 import { StyledDivCenter, StyledDivColumn, StyledDivRow } from "../../Style/FlexBox"
 import { OrangeBox } from "../../Style/OrangeBox";
 import { CatBar, FirstRow, OneFes, OrangeSpan, ProfileBg, SecondRow, UserIcon } from "./styles";
+import { getUserInfo } from "./slice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 const Mypage = () => {
 const [festivals, setFestival] = useState([{cat: "[ 지역 ]", title: "딸기 축제", like: "11", comment: "11", place: "서울", time: "10:00AM ~ 20:00PM", size: "중간"}])
+
+const dispatch = useAppDispatch();
+const state = useAppSelector((state) => state);
+
+console.log("State", state);
+
+useEffect(() => {
+  dispatch(getUserInfo(1))
+  setFestival(state.user.data)
+}, [])
 
   return <>
         <HeaderBar />
