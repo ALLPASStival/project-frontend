@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Header, SubHeader, Wrapper, Form } from "@pages/LogIn/styles";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import axios from "axios";
 import useInput from "@hooks/useInput";
 import {
@@ -13,6 +14,8 @@ import {
 } from "@pages/SignUp/styles";
 
 const SingUp = () => {
+  const dispatch = useAppDispatch();
+
   const [id, onChangeId, setId] = useInput("");
   const [nickname, onChangeNickname, setNickname] = useInput("");
   const [password, , setPassword] = useInput("");

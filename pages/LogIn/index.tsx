@@ -1,4 +1,4 @@
-import React, { FormEvent, useCallback } from "react";
+import React, { FormEvent, useCallback, useState } from "react";
 import {
   Wrapper,
   Header,
@@ -13,10 +13,24 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import useInput from "@hooks/useInput";
 import HeaderBar from "@components/HeaderBar";
+import { User } from "../../reducers/user";
 
 const Login = () => {
   const [id, onChangeId, setId] = useInput("");
   const [password, onChangePassword, setPassword] = useInput("");
+  const [user, setUser] = useState<User>({
+    id: "",
+    password: "",
+    isLoading: false,
+    isSuccess: false,
+    isError: false,
+    errorMessage: "",
+  });
+
+  const handleChangeUser = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
 
   const onSubmit = useCallback(
     (e: any) => {
