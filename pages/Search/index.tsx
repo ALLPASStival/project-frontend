@@ -121,7 +121,11 @@ const Search = () => {
                   11
                 </ListTopGood>
               </ListTop>
-              <ListBottom>아래</ListBottom>
+              <ListBottom>
+                <div>장소</div>
+                <div>일시</div>
+                <div>월</div>
+              </ListBottom>
             </FestivalList>
             <FestivalList>
               <ListTop>
@@ -133,7 +137,11 @@ const Search = () => {
                   11
                 </ListTopGood>
               </ListTop>
-              <ListBottom>아래</ListBottom>
+              <ListBottom>
+                <div>장소</div>
+                <div>일시</div>
+                <div>월</div>
+              </ListBottom>
             </FestivalList>
             <FestivalList>
               <ListTop>
@@ -145,7 +153,11 @@ const Search = () => {
                   11
                 </ListTopGood>
               </ListTop>
-              <ListBottom>아래</ListBottom>
+              <ListBottom>
+                <div>장소</div>
+                <div>일시</div>
+                <div>월</div>
+              </ListBottom>
             </FestivalList>
           </BottomSide>
         </SearchMain>
