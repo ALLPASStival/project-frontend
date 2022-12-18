@@ -66,7 +66,7 @@ const SingUp = () => {
       e.preventDefault();
       axios
         .post(
-          "",
+          "http://3.36.112.187:8080/api/v1/auth/register",
           {
             id,
             password,
