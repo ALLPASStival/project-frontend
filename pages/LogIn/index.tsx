@@ -13,25 +13,41 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import useInput from "@hooks/useInput";
 import HeaderBar from "@components/HeaderBar";
-import { User } from "../../reducers/user";
+
+import { User, userSlice } from "../../reducers/user";
+// import { logIn } from "../../actions/UserAPI";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useSelector } from "react-redux";
 
 const Login = () => {
+  const user = useAppSelector((state) => state.user);
   const [id, onChangeId, setId] = useInput("");
   const [password, onChangePassword, setPassword] = useInput("");
-  const [user, setUser] = useState<User>({
-    id: "",
-    password: "",
-    isLoading: false,
-    isSuccess: false,
-    isError: false,
-    errorMessage: "",
-  });
 
-  const handleChangeUser = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
-  };
+  // const [user, setUser] = useState<User>({
+  //   isLoggingIn: false,
+  //   data: null,
+  //   id: "",
+  //   password: "",
+  //   error: "",
+  // });
 
+  // const onLogout = useCallback(() => {
+  //   useAppDispatch(userSlice.actions.logOut());
+  // }, []);
+
+  // const onSubmit = useCallback(
+  //   (e: any) => {
+  //     e.preventDefault();
+  //     useAppDispatch(
+  //       logIn({
+  //         id,
+  //         password,
+  //       })
+  //     );
+  //   },
+  //   [useAppDispatch, id, password]
+  // );
   const onSubmit = useCallback(
     (e: any) => {
       e.preventDefault();
@@ -54,6 +70,15 @@ const Login = () => {
     },
     [id, password]
   );
+
+  // const onClick = useCallback(() => {
+  //   useAppDispatch(
+  //     logIn({
+  //       id: "seongjun",
+  //       password: "password",
+  //     })
+  //   );
+  // }, [useAppDispatch, id, password]);
 
   return (
     <Wrapper>
@@ -86,8 +111,9 @@ const Login = () => {
           </span>
           <span>아이디/비밀번호 찾기</span>
         </SearchBox>
-        <LoginBtn onClick={onSubmit}>로그인</LoginBtn>
+        <LoginBtn type="submit">로그인</LoginBtn>
       </Form>
+      {/*<button onClick={onClick}>로그인</button>*/}
     </Wrapper>
   );
 };
