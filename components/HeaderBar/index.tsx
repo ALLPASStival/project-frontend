@@ -22,7 +22,7 @@ const HeaderBar = () => {
     <Bar>
       <MainBar>
         <TopMenu>
-          <Link to="main">
+          <Link to="main" style={{ textDecoration: "none" }} >
             <LeftMenu>ALLPASSTIVAL</LeftMenu>
           </Link>
           <RightMenu>
