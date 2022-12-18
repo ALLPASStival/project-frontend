@@ -33,8 +33,8 @@ export const RankBox = styled.div`
   font-size: 3rem;
   background-color: #d9d9d9;
   color: #fe9010;
-  width: 41rem;
-  height: 51rem;
+  width: 20rem;
+  height: 25rem;
 
   margin: 1rem;
 `;
