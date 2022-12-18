@@ -21,7 +21,7 @@ export const SubHeader = styled.div`
   letter-spacing: -0.75px;
   margin-bottom: 1.3rem;
 `;
-export const Form = styled.div`
+export const Form = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,7 +77,7 @@ export const SearchBox = styled.div`
   }
 `;
 
-export const LoginBtn = styled.div`
+export const LoginBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
