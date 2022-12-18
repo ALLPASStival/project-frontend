@@ -14,12 +14,6 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 const FestivalReviews = () => {
   return (
     <Wrapper>
-      <TopHeader>
-        <TopLeft>축제 찾기</TopLeft>
-        <TopSearch>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </TopSearch>
-      </TopHeader>
       <MiddleBox>Lots of reviews</MiddleBox>
       <Rank>
         <RankBox></RankBox>
