@@ -4,11 +4,12 @@ import { StyledDivCenter, StyledDivColumn, StyledDivRow } from "../../Style/Flex
 
 export const ProfileBg = styled(StyledDivCenter)`
 background-color:#D9D9D9;
-width: 40.7rem;
-height: 40.7rem;
+width: 29.2rem;
+height: 30rem;
 border-radius: 50%;
 flex-direction: column;
-margin-bottom: 4.7rem;
+margin-bottom: 2.6rem;
+
 
 & span {
     font-size: 2rem;
@@ -19,8 +20,8 @@ margin-bottom: 4.7rem;
 
 export const UserIcon = styled(FontAwesomeIcon)`
 color: black;
-width: 20rem;
-height: 20rem;
+width: 15rem;
+height: 15rem;
 `
 
 export const OrangeSpan = styled.span`
@@ -47,7 +48,7 @@ height: 7.5rem;
 width: 73.4rem;
 background-color: #D9D9D9;
 padding: 3rem;
-margin-top: 4.2rem;
+margin-top: 3.1rem;
 
 & span {
     font-size: 2.5rem;
@@ -73,4 +74,17 @@ justify-content: space-between;
     
 }
 
+`
+
+export const FesWrapper = styled(StyledDivRow)`
+width: 137.4rem;
+height: 26.2rem;
+background-color: #FFD29C;
+flex-wrap: wrap;
+
+& span {
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding-left: 3rem;
+}
 `

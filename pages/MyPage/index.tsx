@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Wrapper } from "../../Style/Wrapper";
 import { StyledDivCenter, StyledDivColumn, StyledDivRow } from "../../Style/FlexBox"
 import { OrangeBox } from "../../Style/OrangeBox";
-import { CatBar, FirstRow, OneFes, OrangeSpan, ProfileBg, SecondRow, UserIcon } from "./styles";
+import { CatBar, FesWrapper, FirstRow, OneFes, OrangeSpan, ProfileBg, SecondRow, UserIcon } from "./styles";
 import { getUserInfo } from "./userSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
@@ -14,6 +14,7 @@ const [cat, setCat] = useState("")
 
 const [festivals, setFestival] = useState([{cat: "[ 지역 ]", title: "딸기 축제", like: "11", comment: "11", place: "서울", time: "10:00AM ~ 20:00PM", size: "중간"}])
 const [writings, setWriting] = useState([])
+const [rFestivals, setRFestival] = useState([])
 
 const dispatch = useAppDispatch();
 const state = useAppSelector((state) => state);
@@ -80,21 +81,26 @@ const writing =
     </OneFes>
   })
 
+  // const recentFest = rFestivals.map((r) => {
+  //   return <img src={r.url} style={{width: "17.7rem", height: "18.5rem"}}/>
+  // })
+
+
   return <>
         <HeaderBar />
-        <Wrapper style={{height: "100%",width: "90%",paddingLeft: "5rem", paddingRight: "5rem"}}>
+        <Wrapper style={{height: "100%",width: "90%",marginTop: 0,paddingTop: "7%", paddingLeft: "5rem", paddingRight: "5rem", alignItems: "center"}}>
         <StyledDivRow style={{justifyContent: "space-between"}}>
-        <StyledDivColumn style={{height: "100%"}}>
+        <StyledDivColumn style={{height: "46.8rem", alignItems: "center"}}>
           <ProfileBg >
         <UserIcon icon={faUser} />
         <span style={{opacity: "0.5"}}>프로필 수정</span>
         </ProfileBg>
-        <OrangeBox>
+        <OrangeBox style={{width: "39.9rem"}}>
           <OrangeSpan>닉네임</OrangeSpan>
           <span>축제가 좋아요</span>
           <FontAwesomeIcon icon={faPencil} style={{fontSize: "2.5rem"}}/>
         </OrangeBox>
-        <OrangeBox>
+        <OrangeBox style={{width: "39.9rem"}}>
           <OrangeSpan>아이디</OrangeSpan>
           <span>happyday</span>
           <FontAwesomeIcon icon={faPencil} style={{fontSize: "2.5rem"}}/>
@@ -110,6 +116,12 @@ const writing =
         {cat == "dip" ? dipFes : writing}
         </StyledDivColumn>
         </StyledDivRow>
+        <div style={{width: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <FesWrapper>
+          <span>최근 본 축제</span>
+        {/* {recentFest} */}
+        </FesWrapper>
+        </div>
         </Wrapper>
 </>;
 };
