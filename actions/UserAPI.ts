@@ -18,14 +18,14 @@ export const logIn = createAsyncThunk("user/logIn", async (data, thunkAPI) => {
   });
 });
 
-// export const addUserAsync = createAsyncThunk("ADD_USER", async (user: User) => {
-//     const response = await axios.post(
-//         "http://3.36.112.187:8080/api/v1/auth/register",
-//         user
-//     );
-//     alert("회원가입에 성공하였습니다.");
-//     return response.data;
-// });s
+export const addUserAsync = createAsyncThunk("ADD_USER", async (user: User) => {
+  const response = await axios.post(
+    "http://3.36.112.187:8080/api/v1/auth/register",
+    user
+  );
+  alert("회원가입에 성공하였습니다.");
+  return response.data;
+});
 
 //로그인
 // export const setUserAsync = createAsyncThunk(
