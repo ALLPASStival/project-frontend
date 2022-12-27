@@ -18,23 +18,38 @@ export const logIn = createAsyncThunk("user/logIn", async (data, thunkAPI) => {
   });
 });
 
-export const addUserAsync = createAsyncThunk("ADD_USER", async (user: User) => {
-  const response = await axios.post(
-    "http://3.36.112.187:8080/api/v1/auth/register",
-    user
-  );
-  alert("회원가입에 성공하였습니다.");
-  return response.data;
-});
+//회원가입
+export const addUserAsync = createAsyncThunk<User, any>(
+  "ADD_USER",
+  async (user: User) => {
+    try {
+      const response = await axios.post(
+        "http://3.36.112.187:8080/api/v1/auth/register",
+        user
+      );
+      alert("회원가입에 성공하였습니다.");
+      console.log(response.data);
+      return response.data;
+    } catch (e: any) {
+      alert("회원가입에 실패하였습니다.");
+      console.log(e);
+    }
+  }
+);
 
-//로그인
-// export const setUserAsync = createAsyncThunk(
-//     "SET_USER",
-//     async (user: User): Promise<User> => {
-//         const response = await axios.post(
-//             "http://localhost:3090/api/auth/login/${user.id}"
-//         );
-//         alert("로그인에 성공하였습니다.");
-//         return response.data;
-//     }
-// );
+// 로그인
+export const setUserAsync = createAsyncThunk<User, any>(
+  "SET_USER",
+  async (user: User) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3090/api/auth/login/${user.id}"
+      );
+      alert("로그인에 성공하였습니다.");
+      return response.data;
+    } catch (e) {
+      alert("로그인에 실패하였습니다.");
+      console.log(e);
+    }
+  }
+);

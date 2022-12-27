@@ -13,7 +13,7 @@ export interface User {
 
 const initialState: User = {
   isLoggingIn: false,
-  data: null,
+  data: [],
   id: "",
   password: "",
   error: "",
