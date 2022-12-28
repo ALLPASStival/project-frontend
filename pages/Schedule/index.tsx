@@ -1,6 +1,6 @@
 import HeaderBar from "@components/HeaderBar";
 import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { StyledDivColumn, StyledDivRow } from "../../Style/FlexBox";
 import { Wrapper } from "../../Style/Wrapper";
 import { getFesInfo } from "./infoSlice";
