@@ -1,12 +1,23 @@
 import HeaderBar from "@components/HeaderBar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { StyledDivColumn, StyledDivRow } from "../../Style/FlexBox";
 import { Wrapper } from "../../Style/Wrapper";
+import { getFesInfo } from "./infoSlice";
 import { Calendar, DateBox, DetailInfo, Info, Span } from "./styles";
 
 
 const Schedule = () => {
 const [dates,setDates] = useState([{date: 1, fests: ["딸기 축제", "불꽃 축제"]}, {date: 2, fests: []}, {date: 3, fests: []}, {date: 4, fests: []}, {date: 5, fests: []}, {date: 6, fests: []}, {date: 7, fests: []}, {date: 8, fests: []}, {date: 9, fests: []}, {date: 10, fests: []}, {date: 11, fests: []}, {date: 12, fests: []}, {date: 13, fests: []}, {date: 14, fests: []}, {date: 15, fests: []}, {date: 16, fests: []}, {date: 17, fests: []}, {date: 18, fests: []}, {date: 19, fests: []}, {date: 20, fests: []}, {date: 21, fests: []}, {date: 22, fests: []}, {date: 23, fests: []}, {date: 24, fests: []}, {date: 25, fests: []}, {date: 26, fests: []}, {date: 27, fests: []}, {date: 28, fests: []}, {date: 29, fests: []}, {date: 30, fests: []}, {date: 31, fests: []}])
+
+const [fesId, setFesId] = useState(0)
+
+const dispatch = useAppDispatch();
+const state = useAppSelector((state) => state);
+
+useEffect(() => {
+  dispatch(getFesInfo(fesId))
+}, [fesId])
 
 // 현재 날짜 구하기
 let now = new Date();
