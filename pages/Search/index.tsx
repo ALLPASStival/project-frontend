@@ -72,6 +72,7 @@ const Search = () => {
               {/*  onSelect={(record: any) => console.log(record.key)}*/}
               {/*  onChange={(value) => console.log(value)}*/}
               {/*/>*/}
+
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </TopSearch>
           </TopHeader>
