@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../redux/store";
-import { logIn } from "../actions/UserAPI";
+import { addUserAsync } from "../actions/UserAPI";
 import axios from "axios";
 
 export interface User {
@@ -32,15 +32,15 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) =>
     builder
-      .addCase(logIn.pending, (state, action) => {
+      .addCase(addUserAsync.pending, (state, action) => {
         state.data = null;
         state.isLoggingIn = true;
       })
-      .addCase(logIn.fulfilled, (state, action) => {
+      .addCase(addUserAsync.fulfilled, (state, action) => {
         state.data = action.payload;
         state.isLoggingIn = false;
       })
-      .addCase(logIn.rejected, (state, action) => {
+      .addCase(addUserAsync.rejected, (state, action) => {
         state.error = action.payload;
       }),
 });
@@ -61,5 +61,3 @@ export const userSlice = createSlice({
 // });
 
 export default userSlice;
-
-//회원가입
