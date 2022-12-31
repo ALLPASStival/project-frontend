@@ -9,6 +9,7 @@ const Mypage = loadable(() => import("@pages/MyPage"));
 const Schedule = loadable(() => import("@pages/Schedule"));
 const CallCenter = loadable(() => import("@pages/CallCenter"));
 const Search = loadable(() => import("@pages/Search"));
+const Community = loadable(() => import("@pages/Community"));
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
       <Route path="/schedule" component={Schedule} />
       <Route path="/callcenter" component={CallCenter} />
       <Route path="/search" component={Search} />
+      <Route path="/community" component={Community} />
     </Switch>
   );
 };

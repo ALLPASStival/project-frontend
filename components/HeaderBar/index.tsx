@@ -76,7 +76,7 @@ const HeaderBar = () => {
             <Link to="/home">일정</Link>
           </span>
           <span>
-            <Link to="/home">커뮤니티</Link>
+            <Link to="/community">커뮤니티</Link>
           </span>
         </div>
       </SubBar>
