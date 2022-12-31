@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Header, SubHeader, Wrapper, Form } from "@pages/LogIn/styles";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import axios from "axios";
 import useInput from "@hooks/useInput";
 import {
@@ -13,6 +14,8 @@ import {
 } from "@pages/SignUp/styles";
 
 const SingUp = () => {
+  const dispatch = useAppDispatch();
+
   const [id, onChangeId, setId] = useInput("");
   const [nickname, onChangeNickname, setNickname] = useInput("");
   const [password, , setPassword] = useInput("");
@@ -63,12 +66,11 @@ const SingUp = () => {
       e.preventDefault();
       axios
         .post(
-          "",
+          "http://3.36.112.187:8080/api/v1/auth/register",
           {
-            id,
+            email: id,
             password,
             nickname,
-            age,
           },
           { withCredentials: true, headers }
         )
@@ -202,7 +204,7 @@ const SingUp = () => {
           <Label>
             <div>비밀번호</div>
             <Input
-              type="text"
+              type="password"
               id="password"
               name="password"
               value={password}

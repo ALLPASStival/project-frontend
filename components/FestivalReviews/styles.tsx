@@ -10,31 +10,30 @@ export const TopLeft = styled.div`
   font-size: 2rem;
   font-weight: bold;
 `;
-export const TopRight = styled.button`
-  width: 20rem;
+export const MiddleBox = styled.button`
+  width: 100%;
   height: 5rem;
-  background-color: #fe9010;
+  background-color: #7084ab;
   color: black;
-  border-radius: 25px;
+  border-radius: 12px;
   border: none;
   font-size: 2rem;
   font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    background-color: #f93011;
-  }
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 `;
 
 export const Rank = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 1rem;
 `;
 export const RankBox = styled.div`
   font-size: 3rem;
   background-color: #d9d9d9;
   color: #fe9010;
+  border-radius: 10px;
   width: 20rem;
-  height: 25rem;
-
-  margin: 1rem;
+  height: 23rem;
+  margin-top: 1rem;
 `;
