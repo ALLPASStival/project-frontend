@@ -68,10 +68,9 @@ const SingUp = () => {
         .post(
           "http://3.36.112.187:8080/api/v1/auth/register",
           {
-            id,
+            email: id,
             password,
             nickname,
-            age,
           },
           { withCredentials: true, headers }
         )
@@ -205,7 +204,7 @@ const SingUp = () => {
           <Label>
             <div>비밀번호</div>
             <Input
-              type="text"
+              type="password"
               id="password"
               name="password"
               value={password}

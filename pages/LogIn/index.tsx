@@ -53,9 +53,9 @@ const Login = () => {
       e.preventDefault();
       axios
         .post(
-          "",
+          "http://3.36.112.187:8080/api/v1/auth/login",
           {
-            id,
+            email: id,
             password,
           },
           { withCredentials: true }
@@ -97,7 +97,7 @@ const Login = () => {
         </Lable>
         <Lable>
           <Input
-            type="text"
+            type="password"
             id="password"
             name="password"
             value={password}
