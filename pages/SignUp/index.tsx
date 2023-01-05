@@ -16,14 +16,14 @@ import {
 const SingUp = () => {
   const dispatch = useAppDispatch();
 
-  const [id, onChangeId, setId] = useInput("");
+  const [email, onChangeEmail, setEmail] = useInput("");
   const [nickname, onChangeNickname, setNickname] = useInput("");
   const [password, , setPassword] = useInput("");
   const [passwordCheck, , setPasswordCheck] = useInput("");
   const [age, onChangeAge, setAge] = useInput("");
 
   //중복 확인 검사
-  const [checkID, setCheckID] = useState(false);
+  const [checkEmail, setCheckEmail] = useState(false);
   const [checkNickName, setCheckNickName] = useState(false);
 
   //비밀번호 맞나 틀리나 검사
@@ -68,7 +68,7 @@ const SingUp = () => {
         .post(
           "http://3.36.112.187:8080/api/v1/auth/register",
           {
-            email: id,
+            email,
             password,
             nickname,
           },
@@ -77,7 +77,7 @@ const SingUp = () => {
 
         .then((response) => {
           alert("성공");
-          setId("");
+          setEmail("");
           setNickname("");
           setPassword("");
           setPasswordCheck("");
@@ -87,36 +87,30 @@ const SingUp = () => {
           alert("에러");
         });
     },
-    [id, password, passwordCheck, nickname, age]
+    [email, password, passwordCheck, nickname, age]
   );
 
   //아이디 중복 확인 전송
-  const onCheckId = useCallback(
+  const onCheckEmail = useCallback(
     (e: any) => {
       e.preventDefault();
       axios
-        .post(
-          "",
-          {
-            id,
-          },
-          { withCredentials: true }
-        )
+        .get(`http://3.36.112.187:8080/api/v1/users/email-exists/${email}`)
 
         .then((response) => {
           alert("사용가능한 아이디입니다.");
-          setCheckID(true);
+          setCheckEmail(true);
 
-          if (id.length < 5) {
-            setCheckID(false);
+          if (email.length < 5) {
+            setCheckEmail(false);
           }
         })
         .catch((error) => {
-          alert("에러");
-          setCheckID(false);
+          alert("사용 불가능한 아이디입니다.");
+          setCheckEmail(false);
         });
     },
-    [id]
+    [email]
   );
 
   //닉네임 중복 확인 전송
@@ -124,12 +118,8 @@ const SingUp = () => {
     (e: any) => {
       e.preventDefault();
       axios
-        .post(
-          "",
-          {
-            nickname,
-          },
-          { withCredentials: true }
+        .get(
+          `http://3.36.112.187:8080/api/v1/users/nickname-exists/${nickname}`
         )
 
         .then((response) => {
@@ -141,7 +131,7 @@ const SingUp = () => {
           }
         })
         .catch((error) => {
-          alert("에러");
+          alert("사용불가능한 닉네임입니다.");
           setCheckNickName(false);
         });
     },
@@ -159,18 +149,18 @@ const SingUp = () => {
               <div>아이디</div>
               <Input
                 type="text"
-                id="id"
-                name="id"
-                value={id}
-                onChange={onChangeId}
+                id="email"
+                name="email"
+                value={email}
+                onChange={onChangeEmail}
                 placeholder="아이디"
               />
-              <CheckBtn onClick={onCheckId}>아이디 중복 확인</CheckBtn>
+              <CheckBtn onClick={onCheckEmail}>아이디 중복 확인</CheckBtn>
             </Label>
-            {checkID && id.length > 0 && (
+            {checkEmail && email.length > 0 && (
               <Error>사용 불가능한 아이디입니다.</Error>
             )}
-            {checkID && <Correct>사용 가능한 아이디입니다.</Correct>}
+            {checkEmail && <Correct>사용 가능한 아이디입니다.</Correct>}
           </Div>
           <Div>
             <Label>
@@ -219,7 +209,7 @@ const SingUp = () => {
           <Label>
             <div>비밀번호 확인</div>
             <Input
-              type="text"
+              type="password"
               id="password"
               name="password"
               value={passwordCheck}
