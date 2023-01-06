@@ -12,6 +12,7 @@ import {
   Correct,
   Error,
 } from "@pages/SignUp/styles";
+import { addUserAsync } from "../../actions/UserAPI";
 
 const SingUp = () => {
   const dispatch = useAppDispatch();
@@ -60,35 +61,41 @@ const SingUp = () => {
     "X-Requested-With": "XMLHttpRequest",
   };
 
-  //회원가입 전송
-  const onSubmit = useCallback(
-    (e: any) => {
-      e.preventDefault();
-      axios
-        .post(
-          "http://3.36.112.187:8080/api/v1/auth/register",
-          {
-            email,
-            password,
-            nickname,
-          },
-          { withCredentials: true, headers }
-        )
+  const onSubmit = useCallback(() => {
+    dispatch(addUserAsync({ email, password, nickname })).catch((error) => {
+      alert(error.err);
+    });
+  }, [email, password, nickname]);
 
-        .then((response) => {
-          alert("성공");
-          setEmail("");
-          setNickname("");
-          setPassword("");
-          setPasswordCheck("");
-          setAge("");
-        })
-        .catch((error) => {
-          alert("에러");
-        });
-    },
-    [email, password, passwordCheck, nickname, age]
-  );
+  // 회원가입 전송
+  // const onSubmit = useCallback(
+  //   (e: any) => {
+  //     e.preventDefault();
+  //     axios
+  //       .post(
+  //         "http://3.36.112.187:8080/api/v1/auth/register",
+  //         {
+  //           email,
+  //           password,
+  //           nickname,
+  //         },
+  //         { withCredentials: true, headers }
+  //       )
+  //
+  //       .then((response) => {
+  //         alert("성공");
+  //         setEmail("");
+  //         setNickname("");
+  //         setPassword("");
+  //         setPasswordCheck("");
+  //         setAge("");
+  //       })
+  //       .catch((error) => {
+  //         alert("에러");
+  //       });
+  //   },
+  //   [email, password, passwordCheck, nickname]
+  // );
 
   //아이디 중복 확인 전송
   const onCheckEmail = useCallback(

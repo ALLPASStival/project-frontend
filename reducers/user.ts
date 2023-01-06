@@ -1,21 +1,23 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../redux/store";
-import { addUserAsync } from "../actions/UserAPI";
+import { addUserAsync, setUserAsync } from "../actions/UserAPI";
 import axios from "axios";
 
 export interface User {
   isLoggingIn: boolean;
-  data: any;
-  id: string;
+  email: string;
   password: string;
+  nickname: string;
+  accessToken: string;
   error: any;
 }
 
 const initialState: User = {
   isLoggingIn: false,
-  data: [],
-  id: "",
+  email: "",
   password: "",
+  nickname: "",
+  accessToken: "",
   error: "",
 };
 
@@ -23,41 +25,43 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    logOut(state, action) {
-      state.data = null;
-    },
-    setLoginForm(state, action) {
-      state.data = action.payload;
+    logOut: (state) => {
+      state.accessToken = "";
     },
   },
   extraReducers: (builder) =>
     builder
+      //회원가입
       .addCase(addUserAsync.pending, (state, action) => {
-        state.data = null;
-        state.isLoggingIn = true;
+        console.log("pending");
       })
       .addCase(addUserAsync.fulfilled, (state, action) => {
-        state.data = action.payload;
-        state.isLoggingIn = false;
+        console.log(action.payload);
+        state.email = action.payload.email;
+        state.password = action.payload.password;
+        state.nickname = action.payload.nickname;
       })
       .addCase(addUserAsync.rejected, (state, action) => {
+        console.log("error");
+        state.error = action.payload;
+      })
+      //로그인
+      .addCase(setUserAsync.pending, (state, action) => {
+        console.log("pending");
+        state.isLoggingIn = true;
+      })
+      .addCase(setUserAsync.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.isLoggingIn = false;
+        state.accessToken = action.payload.accessToken;
+        state.email = action.payload.email;
+        state.password = action.payload.password;
+        state.nickname = action.payload.nickname;
+      })
+      .addCase(setUserAsync.rejected, (state, action) => {
+        console.log("error");
         state.error = action.payload;
       }),
 });
-
-// const delay = (time: number, value: object) =>
-//   new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       resolve(value);
-//     }, time);
-//   });
-//
-// export const logIn = createAsyncThunk("user/logIn", async (data, thunkAPI) => {
-//   // throw new Error('비밀번호가 틀렸습니다.');
-//   return await delay(500, {
-//     userId: 1,
-//     nickname: "seongjun",
-//   });
-// });
 
 export default userSlice;

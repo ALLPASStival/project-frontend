@@ -13,72 +13,46 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import useInput from "@hooks/useInput";
 import HeaderBar from "@components/HeaderBar";
-
-import { User, userSlice } from "../../reducers/user";
-// import { logIn } from "../../actions/UserAPI";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { useSelector } from "react-redux";
+import { useAppDispatch } from "../../redux/hooks";
+import { setUserAsync } from "../../actions/UserAPI";
 
 const Login = () => {
-  const user = useAppSelector((state) => state.user);
-  const [id, onChangeId, setId] = useInput("");
+  const dispatch = useAppDispatch();
+  const [email, onChangeEmail, setEmail] = useInput("");
   const [password, onChangePassword, setPassword] = useInput("");
 
-  // const [user, setUser] = useState<User>({
-  //   isLoggingIn: false,
-  //   data: null,
-  //   id: "",
-  //   password: "",
-  //   error: "",
-  // });
-
-  // const onLogout = useCallback(() => {
-  //   useAppDispatch(userSlice.actions.logOut());
-  // }, []);
+  const onSubmit = useCallback(
+    (e: any) => {
+      e.preventDefault();
+      dispatch(setUserAsync({ email, password })).catch((error) => {
+        alert(error.err);
+      });
+    },
+    [email, password]
+  );
 
   // const onSubmit = useCallback(
   //   (e: any) => {
   //     e.preventDefault();
-  //     useAppDispatch(
-  //       logIn({
-  //         id,
-  //         password,
+  //     axios
+  //       .post(
+  //         "http://3.36.112.187:8080/api/v1/auth/login",
+  //         {
+  //           email,
+  //           password,
+  //         },
+  //         { withCredentials: true }
+  //       )
+  //
+  //       .then((response) => {
+  //         alert("성공");
   //       })
-  //     );
+  //       .catch((error) => {
+  //         alert("에러");
+  //       });
   //   },
-  //   [useAppDispatch, id, password]
+  //   [email, password]
   // );
-  const onSubmit = useCallback(
-    (e: any) => {
-      e.preventDefault();
-      axios
-        .post(
-          "http://3.36.112.187:8080/api/v1/auth/login",
-          {
-            email: id,
-            password,
-          },
-          { withCredentials: true }
-        )
-
-        .then((response) => {
-          alert("성공");
-        })
-        .catch((error) => {
-          alert("에러");
-        });
-    },
-    [id, password]
-  );
-
-  // const onClick = useCallback(() => {
-  //   useAppDispatch(
-  //     logIn({
-  //       id: "seongjun",
-  //       password: "password",
-  //     })
-  //   );
-  // }, [useAppDispatch, id, password]);
 
   return (
     <Wrapper>
@@ -90,8 +64,8 @@ const Login = () => {
             type="text"
             id="id"
             name="id"
-            value={id}
-            onChange={onChangeId}
+            value={email}
+            onChange={onChangeEmail}
             placeholder="아이디"
           />
         </Lable>
