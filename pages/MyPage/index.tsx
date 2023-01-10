@@ -245,6 +245,7 @@ const Mypage = () => {
                     width: "30rem",
                     height: "30rem",
                     borderRadius: "50%",
+                    marginBottom: "2.6rem",
                   }}
                 />
               </>
@@ -281,8 +282,7 @@ const Mypage = () => {
                   <FontAwesomeIcon
                     icon={faPencil}
                     style={{ fontSize: "2.5rem" }}
-                    onClick={()=> setIsNickname(false)}
-
+                    onClick={() => setIsNickname(false)}
                   />
                 </>
               ) : (
@@ -309,7 +309,7 @@ const Mypage = () => {
                   <FontAwesomeIcon
                     icon={faPencil}
                     style={{ fontSize: "2.5rem" }}
-                    onClick={()=> setIsId(false)}
+                    onClick={() => setIsId(false)}
                   />
                 </>
               ) : (
