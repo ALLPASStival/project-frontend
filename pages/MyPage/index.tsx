@@ -1,19 +1,14 @@
 import HeaderBar from "@components/HeaderBar";
 import {
-  faFaceLaugh,
+  faCheck,
   faPencil,
-  faPerson,
   faThumbsUp,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Wrapper } from "../../Style/Wrapper";
-import {
-  StyledDivCenter,
-  StyledDivColumn,
-  StyledDivRow,
-} from "../../Style/FlexBox";
+import { StyledDivColumn, StyledDivRow } from "../../Style/FlexBox";
 import { OrangeBox } from "../../Style/OrangeBox";
 import {
   CatBar,
@@ -24,6 +19,8 @@ import {
   ProfileBg,
   SecondRow,
   UserIcon,
+  UserInput,
+  UserSpan,
 } from "./styles";
 import { getUserInfo } from "./userSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -36,6 +33,11 @@ const Mypage = () => {
   const [title, setTitle] = useState("");
 
   const [cat, setCat] = useState("");
+
+  const [nickname, setNickname] = useState("");
+  const [isNickname, setIsNickname] = useState(true);
+  const [id, setId] = useState(0);
+  const [isId, setIsId] = useState(true);
 
   const [userInfo, setUserInfo] = useState({
     email: "happyday@naver.com",
@@ -100,7 +102,6 @@ const Mypage = () => {
   };
 
   // 임시
-
   // const onAddNewPost = () => {
   //   const formData = new FormData();
   //   formData.append("imageUrl", files);
@@ -132,6 +133,10 @@ const Mypage = () => {
   //       console.log("⚠️ 새 프로필 등록 ⚠️ ", err);
   //     });
   // };
+
+  const onChangeValue = (e: any) => {
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  };
 
   const showDipFes = () => {
     setCat("dip");
@@ -270,13 +275,58 @@ const Mypage = () => {
             )}
             <OrangeBox style={{ width: "39.9rem" }}>
               <OrangeSpan>닉네임</OrangeSpan>
-              <span>{userInfo.nickname}</span>
-              <FontAwesomeIcon icon={faPencil} style={{ fontSize: "2.5rem" }} />
+              {isNickname ? (
+                <>
+                  <UserSpan>{userInfo.nickname}</UserSpan>
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    style={{ fontSize: "2.5rem" }}
+                    onClick={()=> setIsNickname(false)}
+
+                  />
+                </>
+              ) : (
+                <>
+                  <UserInput
+                    type="text"
+                    id="nickname"
+                    name="nickname"
+                    onChange={onChangeValue}
+                  />
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    style={{ fontSize: "2.5rem" }}
+                    onClick={() => setIsNickname(true)}
+                  />
+                </>
+              )}
             </OrangeBox>
             <OrangeBox style={{ width: "39.9rem" }}>
               <OrangeSpan>아이디</OrangeSpan>
-              <span>{userInfo.email}</span>
-              <FontAwesomeIcon icon={faPencil} style={{ fontSize: "2.5rem" }} />
+              {isId ? (
+                <>
+                  <UserSpan>{userInfo.email}</UserSpan>
+                  <FontAwesomeIcon
+                    icon={faPencil}
+                    style={{ fontSize: "2.5rem" }}
+                    onClick={()=> setIsId(false)}
+                  />
+                </>
+              ) : (
+                <>
+                  <UserInput
+                    type="text"
+                    id="email"
+                    name="email"
+                    onChange={onChangeValue}
+                  />
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    style={{ fontSize: "2.5rem" }}
+                    onClick={() => setIsId(true)}
+                  />
+                </>
+              )}
             </OrangeBox>
           </StyledDivColumn>
           <StyledDivColumn
@@ -302,7 +352,7 @@ const Mypage = () => {
                 </button>
               </CatBar>
             </StyledDivColumn>
-            {cat == "dip" ? dipFes : writing}
+            {cat == "writing" ? writing : dipFes}
           </StyledDivColumn>
         </StyledDivRow>
         <div
