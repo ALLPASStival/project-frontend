@@ -4,7 +4,7 @@ import { StyledDivCenter, StyledDivColumn, StyledDivRow } from "../../Style/Flex
 
 export const ProfileBg = styled(StyledDivCenter)`
 background-color:#D9D9D9;
-width: 29.2rem;
+width: 30rem;
 height: 30rem;
 border-radius: 50%;
 flex-direction: column;
@@ -20,7 +20,7 @@ margin-bottom: 2.6rem;
 
 export const UserIcon = styled(FontAwesomeIcon)`
 color: black;
-width: 15rem;
+width: 12rem;
 height: 15rem;
 `
 
@@ -40,6 +40,9 @@ justify-content: space-around;
     font-weight: bold;
     border-style: none;
     background-color: white;
+    &.select {
+        color: #E98715
+    }
 }
 `
 
