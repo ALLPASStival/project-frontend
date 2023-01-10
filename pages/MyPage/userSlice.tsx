@@ -11,7 +11,7 @@ interface InfoAtt {
 // Action
 export const getUserInfo = createAsyncThunk <InfoAtt, any>("users/getUserInfo", async (userId, thunkAPI) => {
     try{
-        const res = await axios.get(preURL.preURL+ "/api/users/"+userId)
+        const res = await axios.get(preURL.preURL+ "/api/v1/users/"+userId)
         console.log("❕유저 정보 조회❕ ", res.data);
         return res.data;
     } catch (e) {
