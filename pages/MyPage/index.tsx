@@ -126,10 +126,10 @@ const Mypage = () => {
   //   axios
   //     .post(preURL.preURL + `/boards/image`, formData, config)
   //     .then((res) => {
-  //       console.log("❕새 짤 등록❕ ", res.data);
+  //       console.log("❕새 프로필 등록❕ ", res.data);
   //     })
   //     .catch((err) => {
-  //       console.log("⚠️ 새 짤 등록 ⚠️ ", err);
+  //       console.log("⚠️ 새 프로필 등록 ⚠️ ", err);
   //     });
   // };
 
