@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { User } from "../reducers/user";
+import { Register } from "../reducers/user";
 
 const headers = {
   "X-Requested-With": "XMLHttpRequest",
@@ -23,7 +23,7 @@ const delay = (time: number, value: object) =>
 // });
 
 //회원가입
-export const addUserAsync = createAsyncThunk<User, any>(
+export const addUserAsync = createAsyncThunk<Register, any>(
   "ADD_USER",
   async ({ email, password, nickname }: any, thunkAPI) => {
     try {
@@ -42,7 +42,7 @@ export const addUserAsync = createAsyncThunk<User, any>(
 );
 
 // 로그인
-export const setUserAsync = createAsyncThunk<User, any>(
+export const setUserAsync = createAsyncThunk<Register, any>(
   "SET_USER",
   async ({ email, password }: any, thunkAPI) => {
     try {

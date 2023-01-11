@@ -3,7 +3,7 @@ import { RootState } from "../redux/store";
 import { addUserAsync, setUserAsync } from "../actions/UserAPI";
 import axios from "axios";
 
-export interface User {
+export interface Register {
   isLoggingIn: boolean;
   email: string;
   password: string;
@@ -12,7 +12,7 @@ export interface User {
   error: any;
 }
 
-const initialState: User = {
+const initialState: Register = {
   isLoggingIn: false,
   email: "",
   password: "",
@@ -21,8 +21,8 @@ const initialState: User = {
   error: "",
 };
 
-export const userSlice = createSlice({
-  name: "user",
+export const registerSlice = createSlice({
+  name: "register",
   initialState,
   reducers: {
     logOut: (state) => {
@@ -64,4 +64,4 @@ export const userSlice = createSlice({
       }),
 });
 
-export default userSlice;
+export default registerSlice;
