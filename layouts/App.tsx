@@ -10,6 +10,7 @@ const Schedule = loadable(() => import("@pages/Schedule"));
 const CallCenter = loadable(() => import("@pages/CallCenter"));
 const Search = loadable(() => import("@pages/Search"));
 const Community = loadable(() => import("@pages/Community"));
+const Map = loadable(() => import("@pages/Map"));
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
       <Route path="/callcenter" component={CallCenter} />
       <Route path="/search" component={Search} />
       <Route path="/community" component={Community} />
+      <Route path="/map" component={Map} />
     </Switch>
   );
 };
