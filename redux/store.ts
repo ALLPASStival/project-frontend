@@ -4,6 +4,10 @@ import {
   ThunkAction,
   Action,
 } from "@reduxjs/toolkit";
+import userReducer from "../pages/MyPage/userSlice";
+import writingSlice from "../pages/MyPage/writingSlice";
+import dipSlice from "../pages/MyPage/dipSlice";
+// import infoSlice from "../pages/MyPage/infoSlice"
 
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -22,6 +26,9 @@ const rootReducer = combineReducers({
   counter: testSlice,
   register: registerSlice.reducer,
   festival: festivalSLice.reducer,
+  user: userReducer,
+  dipping: dipSlice,
+  writing: writingSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
