@@ -1,19 +1,33 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import {
+  configureStore,
+  combineReducers,
+  ThunkAction,
+  Action,
+} from "@reduxjs/toolkit";
+
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 import testSlice from "../reducers/TestSlice";
-import userReducer from "../pages/MyPage/userSlice"
-import writingSlice from "@pages/MyPage/writingSlice";
-import dipSlice from "@pages/MyPage/dipSlice";
-import infoSlice from "@pages/Schedule/infoSlice";
+import { registerSlice } from "../reducers/user";
+import festivalSLice from "../reducers/festival";
 
-export  const store = configureStore({
-  reducer: {
-    counter: testSlice,
-    user: userReducer,
-    dipping: dipSlice,
-    wrting: writingSlice,
-    info: infoSlice
-  },
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["register"], // 해당 reducer만 저장
+};
+
+const rootReducer = combineReducers({
+  counter: testSlice,
+  register: registerSlice.reducer,
+  festival: festivalSLice.reducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;
@@ -25,5 +39,3 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >;
-
-export default store;
