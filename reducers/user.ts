@@ -8,7 +8,7 @@ export interface Register {
   email: string;
   password: string;
   nickname: string;
-  accessToken: string;
+  jwt: string;
   error: any;
 }
 
@@ -17,18 +17,14 @@ const initialState: Register = {
   email: "",
   password: "",
   nickname: "",
-  accessToken: "",
+  jwt: "",
   error: "",
 };
 
-export const registerSlice = createSlice({
+export const registerSlice: any = createSlice({
   name: "register",
   initialState,
-  reducers: {
-    logOut: (state) => {
-      state.accessToken = "";
-    },
-  },
+  reducers: {},
   extraReducers: (builder) =>
     builder
       //회원가입
@@ -53,7 +49,7 @@ export const registerSlice = createSlice({
       .addCase(setUserAsync.fulfilled, (state, action) => {
         console.log(action.payload);
         state.isLoggingIn = false;
-        state.accessToken = action.payload.accessToken;
+        state.jwt = action.payload.jwt;
         state.email = action.payload.email;
         state.password = action.payload.password;
         state.nickname = action.payload.nickname;

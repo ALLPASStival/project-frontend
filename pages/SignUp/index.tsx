@@ -97,7 +97,7 @@ const SingUp = () => {
   //   [email, password, passwordCheck, nickname]
   // );
 
-  //아이디 중복 확인 전송
+  // 아이디 중복 확인 전송
   const onCheckEmail = useCallback(
     (e: any) => {
       e.preventDefault();
