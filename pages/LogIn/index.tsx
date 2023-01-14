@@ -24,6 +24,7 @@ const Login = () => {
   const onSubmit = useCallback(
     (e: any) => {
       e.preventDefault();
+
       dispatch(setUserAsync({ email, password })).catch((error) => {
         alert(error.err);
       });

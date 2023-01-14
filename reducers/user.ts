@@ -10,6 +10,7 @@ export interface Register {
   nickname: string;
   jwt: string;
   error: any;
+  result: any;
 }
 
 const initialState: Register = {
@@ -19,6 +20,7 @@ const initialState: Register = {
   nickname: "",
   jwt: "",
   error: "",
+  result: {},
 };
 
 export const registerSlice: any = createSlice({
@@ -49,7 +51,7 @@ export const registerSlice: any = createSlice({
       .addCase(setUserAsync.fulfilled, (state, action) => {
         console.log(action.payload);
         state.isLoggingIn = false;
-        state.jwt = action.payload.jwt;
+        state.jwt = action.payload?.result?.jwt;
         state.email = action.payload.email;
         state.password = action.payload.password;
         state.nickname = action.payload.nickname;
