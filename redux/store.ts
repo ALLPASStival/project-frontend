@@ -10,7 +10,7 @@ import storage from "redux-persist/lib/storage";
 
 import testSlice from "../reducers/TestSlice";
 import { registerSlice } from "../reducers/user";
-import festivalSLice from "../reducers/festival";
+// import festivalSLice from "../reducers/festival";
 
 const persistConfig = {
   key: "root",
@@ -21,7 +21,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   counter: testSlice,
   register: registerSlice.reducer,
-  festival: festivalSLice.reducer,
+  // festival: festivalSLice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
