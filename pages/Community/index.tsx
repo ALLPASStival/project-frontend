@@ -6,6 +6,7 @@ import {
   MiddleSide,
   SearchMain,
   TopHeader,
+  TopSearch,
 } from "@pages/Search/styles";
 import { StyledDivCenter, StyledDivRow } from "../../Style/FlexBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,14 +28,14 @@ const Community = () => {
         <StyledDivRow
           style={{
             justifyContent: "space-between",
-            padding: "5rem 10rem 5rem 10rem"
+            padding: "5rem 10rem 5rem 10rem",
           }}
         >
           <span style={{ fontSize: "4.5rem", fontWeight: "bold" }}>{cat}</span>
-          <SearchBox>
+          <TopSearch>
             <FontAwesomeIcon icon={faSearch} style={{ fontSize: "2.5rem" }} />
             <input type="text" id="search" name="search" />
-          </SearchBox>
+          </TopSearch>
         </StyledDivRow>
         <StyledDivRow style={{ justifyContent: "space-evenly" }}>
           <Category

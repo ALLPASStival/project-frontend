@@ -7,6 +7,7 @@ import {
   faMagnifyingGlass,
   faThumbsUp,
   faPencil,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -23,9 +24,12 @@ import {
   SearchMain,
   TopHeader,
   TopSearch,
+  TopSearchBox,
   TopTitle,
 } from "@pages/Search/styles";
 import FestivalReviews from "@components/FestivalReviews";
+import { SearchBox } from "@pages/Community/style";
+import { StyledDivRow } from "../../Style/FlexBox";
 
 const Search = () => {
   // const data = [
@@ -65,16 +69,18 @@ const Search = () => {
         <SearchMain>
           <TopHeader>
             <TopTitle>축제 찾기</TopTitle>
-            <TopSearch>
-              {/*<ReactSearchBox*/}
-              {/*  placeholder="검색창"*/}
-              {/*  data={data}*/}
-              {/*  onSelect={(record: any) => console.log(record.key)}*/}
-              {/*  onChange={(value) => console.log(value)}*/}
-              {/*/>*/}
 
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </TopSearch>
+            {/*<ReactSearchBox*/}
+            {/*  placeholder="검색창"*/}
+            {/*  data={data}*/}
+            {/*  onSelect={(record: any) => console.log(record.key)}*/}
+            {/*  onChange={(value) => console.log(value)}*/}
+            {/*/>*/}
+
+            <TopSearchBox>
+              <FontAwesomeIcon icon={faSearch} style={{ fontSize: "1.4rem" }} />
+              <input type="text" id="search" name="search" />
+            </TopSearchBox>
           </TopHeader>
           <MiddleSide>
             <LeftOpt>
