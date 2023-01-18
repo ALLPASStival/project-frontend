@@ -10,9 +10,9 @@ const Schedule = loadable(() => import("@pages/Schedule"));
 const CallCenter = loadable(() => import("@pages/CallCenter"));
 const Search = loadable(() => import("@pages/Search"));
 const Community = loadable(() => import("@pages/Community"));
-const Page1 = loadable(() => import("@pages/page1"));
-const Page2 = loadable(() => import("@pages/Page2"));
-const Page3 = loadable(() => import("@pages/Page3"));
+const CommunityDetail = loadable(() => import("@pages/CommunityDetail"));
+const WritingCommunity = loadable(() => import("@pages/WritingCommunity"));
+const WritingReview = loadable(() => import("@pages/WritingReview"));
 
 const App = () => {
   return (
@@ -28,9 +28,9 @@ const App = () => {
       <Route path="/callcenter" component={CallCenter} />
       <Route path="/search" component={Search} />
       <Route path="/community" component={Community} />
-      <Route path="/page1" component={Page1} />
-      <Route path="/page2" component={Page2} />
-      <Route path="/page3" component={Page3} />
+      <Route path="/detail/:id" component={CommunityDetail} />
+      <Route path="/writingcommunity" component={WritingCommunity} />
+      <Route path="/writingreview" component={WritingReview} />
     </Switch>
   );
 };

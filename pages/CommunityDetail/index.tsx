@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import HeaderBar from "@components/HeaderBar";
 import { Wrapper } from "../../Style/Wrapper";
 
-const page2 = () => {
+const CommunityDetail = () => {
   return (
     <>
       <HeaderBar />
@@ -11,4 +11,4 @@ const page2 = () => {
   );
 };
 
-export default page2;
+export default CommunityDetail;
