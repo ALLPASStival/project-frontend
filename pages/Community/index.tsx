@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import HeaderBar from "@components/HeaderBar";
 import { Wrapper } from "../../Style/Wrapper";
-import {
-  BottomSide,
-  MiddleSide,
-  SearchMain,
-  TopHeader,
-} from "@pages/Search/styles";
-import { StyledDivCenter, StyledDivRow } from "../../Style/FlexBox";
+import { StyledDivRow } from "../../Style/FlexBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Category, SearchBox } from "./style";
+import { Category } from "./style";
+import { OrgBtn, SearchBox, StyledDiv } from "../../Style/Community";
+import Articles from "@components/Articles";
 
 const Community = () => {
   const [cat, setCat] = useState("커뮤니티");
@@ -22,12 +18,13 @@ const Community = () => {
         style={{
           height: "100%",
           width: "100%",
+          justifyContent: "flex-start",
         }}
       >
         <StyledDivRow
           style={{
             justifyContent: "space-between",
-            padding: "5rem 10rem 5rem 10rem"
+            padding: "0rem 10rem 3rem 10rem",
           }}
         >
           <span style={{ fontSize: "4.5rem", fontWeight: "bold" }}>{cat}</span>
@@ -56,6 +53,10 @@ const Community = () => {
             구인게시판
           </Category>
         </StyledDivRow>
+        <Articles />
+        <StyledDiv>
+          <OrgBtn>글쓰기</OrgBtn>
+        </StyledDiv>
       </Wrapper>
     </>
   );
