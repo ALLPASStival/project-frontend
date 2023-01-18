@@ -19,6 +19,7 @@ const FestivalReviews = () => {
         <RankBox></RankBox>
         <RankBox></RankBox>
         <RankBox></RankBox>
+        <RankBox></RankBox>
       </Rank>
     </Wrapper>
   );
