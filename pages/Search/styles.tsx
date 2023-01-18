@@ -54,7 +54,7 @@ export const RightOpt = styled.select`
 `;
 
 export const BottomSide = styled.div``;
-export const FestivalList = styled.div`
+export const List = styled.div`
   width: 100%;
   height: 5rem;
   background-color: #d9d9d9;
@@ -107,7 +107,7 @@ export const ListBottom = styled.div`
 `;
 
 export const TopSearch = styled.div`
-  width: 20rem;
+  width: 23rem;
   height: 3rem;
   background-color: #fe9010;
   color: black;
@@ -115,4 +115,18 @@ export const TopSearch = styled.div`
   border: none;
   font-size: 1.5rem;
   font-weight: bold;
+  justify-content: space-around;
+
+  & input {
+    width: 15rem;
+    height: 3rem;
+    border: none;
+    background-color: #fe9010;
+    font-size: 2rem;
+    margin-left: 2rem;
+
+    :focus {
+      outline: none;
+    }
+  }
 `;

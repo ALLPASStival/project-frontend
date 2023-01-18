@@ -7,11 +7,12 @@ import {
   faMagnifyingGlass,
   faThumbsUp,
   faPencil,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
   BottomSide,
-  FestivalList,
+  List,
   LeftOpt,
   ListBottom,
   ListTop,
@@ -25,7 +26,10 @@ import {
   TopSearch,
   TopTitle,
 } from "@pages/Search/styles";
+
 import FestivalReviews from "@components/FestivalReviews";
+
+import FestivalList from "@components/FestivalList";
 
 const Search = () => {
   // const data = [
@@ -73,7 +77,11 @@ const Search = () => {
               {/*  onChange={(value) => console.log(value)}*/}
               {/*/>*/}
 
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <FontAwesomeIcon
+                icon={faSearch}
+                style={{ fontSize: "1.8rem", marginLeft: "0.8rem" }}
+              />
+              <input type="text" id="search" name="search" />
             </TopSearch>
           </TopHeader>
           <MiddleSide>
@@ -112,54 +120,55 @@ const Search = () => {
             </RightOpt>
           </MiddleSide>
           <BottomSide>
-            <FestivalList>
-              <ListTop>
-                <ListTopTitle>[지역 축제] 어디 지역 딸기 축제</ListTopTitle>
-                <ListTopGood>
-                  <FontAwesomeIcon icon={faThumbsUp} />
-                  11
-                  <FontAwesomeIcon icon={faPencil} />
-                  11
-                </ListTopGood>
-              </ListTop>
-              <ListBottom>
-                <div>장소</div>
-                <div>일시</div>
-                <div>월</div>
-              </ListBottom>
-            </FestivalList>
-            <FestivalList>
-              <ListTop>
-                <ListTopTitle>[지역 축제] 어디 지역 딸기 축제</ListTopTitle>
-                <ListTopGood>
-                  <FontAwesomeIcon icon={faThumbsUp} />
-                  11
-                  <FontAwesomeIcon icon={faPencil} />
-                  11
-                </ListTopGood>
-              </ListTop>
-              <ListBottom>
-                <div>장소</div>
-                <div>일시</div>
-                <div>월</div>
-              </ListBottom>
-            </FestivalList>
-            <FestivalList>
-              <ListTop>
-                <ListTopTitle>[지역 축제] 어디 지역 딸기 축제</ListTopTitle>
-                <ListTopGood>
-                  <FontAwesomeIcon icon={faThumbsUp} />
-                  11
-                  <FontAwesomeIcon icon={faPencil} />
-                  11
-                </ListTopGood>
-              </ListTop>
-              <ListBottom>
-                <div>장소</div>
-                <div>일시</div>
-                <div>월</div>
-              </ListBottom>
-            </FestivalList>
+            <FestivalList />
+            {/*<List>*/}
+            {/*  <ListTop>*/}
+            {/*    <ListTopTitle>[지역 축제] 어디 지역 딸기 축제</ListTopTitle>*/}
+            {/*    <ListTopGood>*/}
+            {/*      <FontAwesomeIcon icon={faThumbsUp} />*/}
+            {/*      11*/}
+            {/*      <FontAwesomeIcon icon={faPencil} />*/}
+            {/*      11*/}
+            {/*    </ListTopGood>*/}
+            {/*  </ListTop>*/}
+            {/*  <ListBottom>*/}
+            {/*    <div>장소</div>*/}
+            {/*    <div>일시</div>*/}
+            {/*    <div>월</div>*/}
+            {/*  </ListBottom>*/}
+            {/*</List>*/}
+            {/*<List>*/}
+            {/*  <ListTop>*/}
+            {/*    <ListTopTitle>[지역 축제] 어디 지역 딸기 축제</ListTopTitle>*/}
+            {/*    <ListTopGood>*/}
+            {/*      <FontAwesomeIcon icon={faThumbsUp} />*/}
+            {/*      11*/}
+            {/*      <FontAwesomeIcon icon={faPencil} />*/}
+            {/*      11*/}
+            {/*    </ListTopGood>*/}
+            {/*  </ListTop>*/}
+            {/*  <ListBottom>*/}
+            {/*    <div>장소</div>*/}
+            {/*    <div>일시</div>*/}
+            {/*    <div>월</div>*/}
+            {/*  </ListBottom>*/}
+            {/*</List>*/}
+            {/*<List>*/}
+            {/*  <ListTop>*/}
+            {/*    <ListTopTitle>[지역 축제] 어디 지역 딸기 축제</ListTopTitle>*/}
+            {/*    <ListTopGood>*/}
+            {/*      <FontAwesomeIcon icon={faThumbsUp} />*/}
+            {/*      11*/}
+            {/*      <FontAwesomeIcon icon={faPencil} />*/}
+            {/*      11*/}
+            {/*    </ListTopGood>*/}
+            {/*  </ListTop>*/}
+            {/*  <ListBottom>*/}
+            {/*    <div>장소</div>*/}
+            {/*    <div>일시</div>*/}
+            {/*    <div>월</div>*/}
+            {/*  </ListBottom>*/}
+            {/*</List>*/}
           </BottomSide>
         </SearchMain>
         <FestivalReviews />
