@@ -1,22 +1,45 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import testSlice from "../reducers/TestSlice";
-import userReducer from "../pages/MyPage/userSlice"
-import writingSlice from "@pages/MyPage/writingSlice";
-import dipSlice from "@pages/MyPage/dipSlice";
-import infoSlice from "@pages/Schedule/infoSlice";
+import {
+  configureStore,
+  combineReducers,
+  ThunkAction,
+  Action,
+} from "@reduxjs/toolkit";
+import userReducer from "../pages/MyPage/userSlice";
+import writingSlice from "../pages/MyPage/writingSlice";
+import dipSlice from "../pages/MyPage/dipSlice";
+// import infoSlice from "../pages/MyPage/infoSlice"
 
-export  const store = configureStore({
-  reducer: {
-    counter: testSlice,
-    user: userReducer,
-    dipping: dipSlice, 
-    wrting: writingSlice,
-    info: infoSlice
-  },
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
+import testSlice from "../reducers/TestSlice";
+import { registerSlice } from "../reducers/user";
+import festivalSLice from "../reducers/festival";
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["register"], // 해당 reducer만 저장
+};
+
+const rootReducer = combineReducers({
+  counter: testSlice,
+  register: registerSlice.reducer,
+  festival: festivalSLice.reducer,
+  user: userReducer,
+  dipping: dipSlice,
+  writing: writingSlice,
 });
 
-export type AppDispatch = typeof store.dispatch;
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+});
+
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,

@@ -37,6 +37,7 @@ export const LeftMenu = styled.div`
   font-size: 3rem;
   font-weight: bold;
   color: #fe9010;
+  
 `;
 
 export const RightMenu = styled.div`

@@ -1,4 +1,4 @@
-import React, { FormEvent, useCallback } from "react";
+import React, { FormEvent, useCallback, useState } from "react";
 import {
   Wrapper,
   Header,
@@ -13,33 +13,47 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import useInput from "@hooks/useInput";
 import HeaderBar from "@components/HeaderBar";
+import { useAppDispatch } from "../../redux/hooks";
+import { setUserAsync } from "../../actions/UserAPI";
 
 const Login = () => {
-  const [id, onChangeId, setId] = useInput("");
+  const dispatch = useAppDispatch();
+  const [email, onChangeEmail, setEmail] = useInput("");
   const [password, onChangePassword, setPassword] = useInput("");
 
   const onSubmit = useCallback(
     (e: any) => {
       e.preventDefault();
-      axios
-        .post(
-          "",
-          {
-            id,
-            password,
-          },
-          { withCredentials: true }
-        )
 
-        .then((response) => {
-          alert("성공");
-        })
-        .catch((error) => {
-          alert("에러");
-        });
+      dispatch(setUserAsync({ email, password })).catch((error) => {
+        alert(error.err);
+      });
     },
-    [id, password]
+    [email, password]
   );
+
+  // const onSubmit = useCallback(
+  //   (e: any) => {
+  //     e.preventDefault();
+  //     axios
+  //       .post(
+  //         "http://3.36.112.187:8080/api/v1/auth/login",
+  //         {
+  //           email,
+  //           password,
+  //         },
+  //         { withCredentials: true }
+  //       )
+  //
+  //       .then((response) => {
+  //         alert("성공");
+  //       })
+  //       .catch((error) => {
+  //         alert("에러");
+  //       });
+  //   },
+  //   [email, password]
+  // );
 
   return (
     <Wrapper>
@@ -51,14 +65,14 @@ const Login = () => {
             type="text"
             id="id"
             name="id"
-            value={id}
-            onChange={onChangeId}
+            value={email}
+            onChange={onChangeEmail}
             placeholder="아이디"
           />
         </Lable>
         <Lable>
           <Input
-            type="text"
+            type="password"
             id="password"
             name="password"
             value={password}
@@ -72,8 +86,9 @@ const Login = () => {
           </span>
           <span>아이디/비밀번호 찾기</span>
         </SearchBox>
-        <LoginBtn onClick={onSubmit}>로그인</LoginBtn>
+        <LoginBtn type="submit">로그인</LoginBtn>
       </Form>
+      {/*<button onClick={onClick}>로그인</button>*/}
     </Wrapper>
   );
 };
