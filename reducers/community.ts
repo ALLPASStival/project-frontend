@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../redux/store";
-import { getFree, getRecruit, getReview } from "../actions/FestivalAPI";
+import { getFree, getRecruit, getReview } from "../actions/Community";
 
 export interface CommunityState {
   review: string;
