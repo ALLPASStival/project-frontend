@@ -22,7 +22,7 @@ const HeaderBar = () => {
     <Bar>
       <MainBar>
         <TopMenu>
-          <Link to="main" style={{ textDecoration: "none" }} >
+          <Link to="main" style={{ textDecoration: "none" }}>
             <LeftMenu>ALLPASSTIVAL</LeftMenu>
           </Link>
           <RightMenu>
@@ -77,6 +77,15 @@ const HeaderBar = () => {
           </span>
           <span>
             <Link to="/community">커뮤니티</Link>
+          </span>
+          <span>
+            <Link to="/writingcommunity">자유</Link>
+          </span>
+          <span>
+            <Link to="/writingreview">후기</Link>
+          </span>
+          <span>
+            <Link to="/writingHuman">구인</Link>
           </span>
         </div>
       </SubBar>
