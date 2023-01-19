@@ -14,6 +14,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
+//22 후기
 const WritingReview = () => {
   return (
     <>
@@ -22,12 +23,12 @@ const WritingReview = () => {
         <Category>후기 쓰기</Category>
         <Table>
           <Block>
-            <Left>제목</Left>
-            <Right>제목 넣는 input</Right>
-          </Block>
-          <Block>
             <Left>작성자</Left>
             <Right>작성자 받아 와서 여기 넣기!</Right>
+          </Block>
+          <Block>
+            <Left>제목</Left>
+            <Right>제목 넣는 input</Right>
           </Block>
           <Block>
             <Left>축제</Left>
@@ -45,14 +46,6 @@ const WritingReview = () => {
                 />
               </SearchBox>
             </Right>
-          </Block>
-          <Block>
-            <Left>성별</Left>
-            <Right>성별 받아 와서 여기 넣기!</Right>
-          </Block>
-          <Block>
-            <Left>나이</Left>
-            <Right>나이 받아 와서 여기 넣기!</Right>
           </Block>
           <Block>
             <Left>별점</Left>
