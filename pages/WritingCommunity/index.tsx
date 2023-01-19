@@ -11,6 +11,7 @@ import {
   Table,
 } from "../../Style/Community";
 
+//21 자유
 const WritingCommunity = () => {
   return (
     <>
