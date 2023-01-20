@@ -32,29 +32,6 @@ const Login = () => {
     [email, password]
   );
 
-  // const onSubmit = useCallback(
-  //   (e: any) => {
-  //     e.preventDefault();
-  //     axios
-  //       .post(
-  //         "http://3.36.112.187:8080/api/v1/auth/login",
-  //         {
-  //           email,
-  //           password,
-  //         },
-  //         { withCredentials: true }
-  //       )
-  //
-  //       .then((response) => {
-  //         alert("성공");
-  //       })
-  //       .catch((error) => {
-  //         alert("에러");
-  //       });
-  //   },
-  //   [email, password]
-  // );
-
   return (
     <Wrapper>
       <Header>ALLPASSTIVAL</Header>

@@ -10,15 +10,15 @@ import {
   CommunityContainer,
   Form,
 } from "../WritingCommunity/styles";
-import { Category, Right, SearchBox } from "../../Style/Community";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch } from "../../redux/hooks";
 import useInput from "@hooks/useInput";
-import { postReview } from "../../actions/Community";
+import { Category, Right, SearchBox } from "../../Style/Community";
+import { postRecruit } from "../../actions/Community";
 
-//22 후기
-const WritingReview = () => {
+//22 구인
+const WritingRecruit = () => {
   const dispatch = useAppDispatch();
 
   const [articleContent, onChangeArticleContent, setArticleContent] =
@@ -26,19 +26,19 @@ const WritingReview = () => {
   const [title, onChangeTitle, setTitle] = useInput("");
   const [writer, onChangeWriter, setwriter] = useInput("");
 
-  const onSubmitReview = useCallback(
+  const onSubmitRecruit = useCallback(
     (e: any) => {
       e.preventDefault();
 
-      dispatch(postReview({ articleContent, title })).catch((error) => {
+      dispatch(postRecruit({ articleContent, title })).catch((error) => {
         alert(error.err);
       });
     },
     [articleContent, title]
   );
-
+  //
   // useEffect(() => {
-  //   dispatch(getReview({}))
+  //   dispatch(getRecruit({}))
   //     .unwrap()
   //     .then((response) => {
   //       console.log("### response: ", response);
@@ -52,8 +52,8 @@ const WritingReview = () => {
     <>
       <HeaderBar />
       <Wrapper style={{ width: "100%" }}>
-        <Category>후기 쓰기</Category>
-        <Form onSubmit={onSubmitReview}>
+        <Category>구인 쓰기</Category>
+        <Form onSubmit={onSubmitRecruit}>
           <CommunityContainer>
             <Block>
               <Left>제목</Left>
@@ -80,23 +80,31 @@ const WritingReview = () => {
             <Block>
               <Left>축제</Left>
               <Right>
-                <SearchBox style={{ width: "26.7rem", height: "4.8rem" }}>
-                  <FontAwesomeIcon
-                    icon={faSearch}
-                    style={{ fontSize: "2.5rem" }}
-                  />
-                  <input
-                    type="text"
-                    id="search"
-                    name="search"
-                    style={{ width: "16rem", height: "4.5rem" }}
-                  />
-                </SearchBox>
+                {/*<SearchBox style={{ width: "26.7rem", height: "4.8rem" }}>*/}
+                {/*  <FontAwesomeIcon*/}
+                {/*    icon={faSearch}*/}
+                {/*    style={{ fontSize: "2.5rem" }}*/}
+                {/*  />*/}
+                {/*  <input*/}
+                {/*    type="text"*/}
+                {/*    id="search"*/}
+                {/*    name="search"*/}
+                {/*    style={{ width: "16rem", height: "4.5rem" }}*/}
+                {/*  />*/}
+                {/*</SearchBox>*/}
               </Right>
             </Block>
             <Block>
+              <Left>성별</Left>
+              <Right>성별 받아 와서 여기 넣기!</Right>
+            </Block>
+            <Block>
+              <Left>나이</Left>
+              <Right>나이 받아 와서 여기 넣기!</Right>
+            </Block>
+            <Block>
               <Left>별점</Left>
-              {/*<Right></Right>*/}
+              <Right></Right>
             </Block>
             <Block style={{ height: "21.3rem" }}>
               <Left>본문</Left>
@@ -119,4 +127,4 @@ const WritingReview = () => {
   );
 };
 
-export default WritingReview;
+export default WritingRecruit;

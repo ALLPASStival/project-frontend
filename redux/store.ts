@@ -7,7 +7,6 @@ import {
 import userReducer from "../pages/MyPage/userSlice";
 import writingSlice from "../pages/MyPage/writingSlice";
 import dipSlice from "../pages/MyPage/dipSlice";
-// import infoSlice from "../pages/MyPage/infoSlice"
 
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -15,6 +14,7 @@ import storage from "redux-persist/lib/storage";
 import testSlice from "../reducers/TestSlice";
 import { registerSlice } from "../reducers/user";
 import festivalSLice from "../reducers/festival";
+import communitySlice from "../reducers/community";
 
 const persistConfig = {
   key: "root",
@@ -26,6 +26,7 @@ const rootReducer = combineReducers({
   counter: testSlice,
   register: registerSlice.reducer,
   festival: festivalSLice.reducer,
+  community: communitySlice.reducer,
   user: userReducer,
   dipping: dipSlice,
   writing: writingSlice,
