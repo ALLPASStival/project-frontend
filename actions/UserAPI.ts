@@ -52,6 +52,8 @@ export const setUserAsync = createAsyncThunk<Register, any>(
         { withCredentials: true }
       );
       alert("로그인에 성공하였습니다.");
+      console.log(response?.data?.result?.jwt);
+      localStorage.setItem("jwt", response?.data?.result?.jwt);
       return response.data;
     } catch (e: any) {
       alert("로그인에 실패하였습니다.");
