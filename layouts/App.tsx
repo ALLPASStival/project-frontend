@@ -13,7 +13,7 @@ const Community = loadable(() => import("@pages/Community"));
 // const CommunityDetail = loadable(() => import("@pages/CommunityDetail"));
 const WritingCommunity = loadable(() => import("@pages/WritingCommunity"));
 const WritingReview = loadable(() => import("@pages/WritingReview"));
-const WritingHuman = loadable(() => import("@pages/WritingHuman"));
+const WritingRecruit = loadable(() => import("@pages/WritingRecruit"));
 
 const App = () => {
   return (
@@ -33,7 +33,7 @@ const App = () => {
       {/*<Route path="/communitydetail/:id" component={CommunityDetail} />*/}
       <Route path="/writingcommunity" component={WritingCommunity} />
       <Route path="/writingreview" component={WritingReview} />
-      <Route path="/writingHuman" component={WritingHuman} />
+      <Route path="/writingrecruit" component={WritingRecruit} />
     </Switch>
   );
 };

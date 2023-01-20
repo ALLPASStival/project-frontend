@@ -16,6 +16,7 @@ import {
   SubBar,
   TopMenu,
 } from "@components/HeaderBar/styles";
+import WritingRecruit from "@pages/WritingRecruit";
 
 const HeaderBar = () => {
   return (
@@ -85,7 +86,7 @@ const HeaderBar = () => {
             <Link to="/writingreview">후기</Link>
           </span>
           <span>
-            <Link to="/writingHuman">구인</Link>
+            <Link to="/writingrecruit">구인</Link>
           </span>
         </div>
       </SubBar>
