@@ -13,22 +13,11 @@ import {
 import { Category } from "../../Style/Community";
 import { useAppDispatch } from "../../redux/hooks";
 import useInput from "@hooks/useInput";
-import { getFree, postFree } from "../../actions/Community";
+import { postFree } from "../../actions/Community";
 
 //21 자유
 const WritingCommunity = () => {
   const dispatch = useAppDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getFree({}))
-  //     .unwrap()
-  //     .then((response) => {
-  //       console.log("### response: ", response);
-  //     })
-  //     .catch((error) => {
-  //       console.log("### error: ", error);
-  //     });
-  // }, []);
 
   const [articleContent, onChangeArticleContent, setArticleContent] =
     useInput("");
@@ -45,8 +34,6 @@ const WritingCommunity = () => {
     },
     [articleContent, title]
   );
-  console.log("articleContent" + articleContent);
-  console.log("title" + title);
 
   return (
     <>
