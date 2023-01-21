@@ -16,7 +16,6 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch } from "../../redux/hooks";
 import useInput from "@hooks/useInput";
 import { postReview } from "../../actions/Community";
-
 //22 후기
 const WritingReview = () => {
   const dispatch = useAppDispatch();
@@ -25,17 +24,24 @@ const WritingReview = () => {
     useInput("");
   const [title, onChangeTitle, setTitle] = useInput("");
   const [writer, onChangeWriter, setwriter] = useInput("");
+  const festivalId = 2;
 
   const onSubmitReview = useCallback(
     (e: any) => {
       e.preventDefault();
 
-      dispatch(postReview({ articleContent, title })).catch((error) => {
-        alert(error.err);
-      });
+      dispatch(postReview({ articleContent, festivalId, title })).catch(
+        (error) => {
+          alert(error.err);
+        }
+      );
     },
-    [articleContent, title]
+    [articleContent, title, festivalId]
   );
+
+  console.log(articleContent);
+  console.log(title);
+  console.log(festivalId);
 
   // useEffect(() => {
   //   dispatch(getReview({}))
