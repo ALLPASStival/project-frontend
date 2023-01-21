@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderBar from "@components/HeaderBar";
 import { Wrapper } from "../../Style/Wrapper";
 import {
@@ -12,9 +12,46 @@ import {
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { P } from "./styles";
+import { useAppDispatch } from "../../redux/hooks";
+import { getCommentCount } from "../../actions/Comment";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { useLocation } from "react-router";
+import { getEach } from "../../actions/Community";
 
 const CommunityDetail = () => {
+  const dispatch = useAppDispatch();
+  const location = useLocation();
+  const postId = location.pathname.split("/")[2];
   const [comments, setComments] = useState([]);
+
+  // 댓글개수 불러오기
+  // useEffect(() => {
+  //   dispatch(getCommentCount({ postId }))
+  //     .unwrap()
+  //     .then((response) => {
+  //       console.log("### response: ", response);
+  //     })
+  //     .catch((error) => {
+  //       console.log("### error: ", error);
+  //     });
+  // }, []);
+  // const Count = useSelector((state: RootState) => state.community.content);
+
+  //상세 글 내용 불러오기
+
+  useEffect(() => {
+    dispatch(getEach(postId))
+      .unwrap()
+      .then((response) => {
+        console.log("### response: ", response);
+      })
+      .catch((error) => {
+        console.log("### error: ", error);
+      });
+  }, [postId]);
+
+  const Each = useSelector((state: RootState) => state.community.content);
 
   const Comment = comments.map(() => {
     return (
@@ -40,11 +77,11 @@ const CommunityDetail = () => {
             <Left>작성자</Left>
             <Right>닉네임 받아와서 넣기!</Right>
             <Left>등록일</Left>
-            <Right>{/* 오늘 날짜 받아오기 */}</Right>
+            <Right>{Each?.result?.createdAt}</Right>
           </Block>
           <Block>
             <Left>제목</Left>
-            <Right colSpan={2}>제목 넣는 input</Right>
+            <Right colSpan={2}>{Each?.result?.title}</Right>
             <Right>
               <FontAwesomeIcon icon={faThumbsUp} />
               {/* 좋아요 수  */}
@@ -52,7 +89,7 @@ const CommunityDetail = () => {
           </Block>
           <Block>
             <Right style={{ height: "18.9rem" }}>
-              {/* 본문 넣는 textarea */}
+              {Each?.result?.articleContent}
             </Right>
           </Block>
         </Table>
