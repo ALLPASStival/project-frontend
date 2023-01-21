@@ -16,6 +16,7 @@ import { useAppDispatch } from "../../redux/hooks";
 import useInput from "@hooks/useInput";
 import { Category, Right, SearchBox } from "../../Style/Community";
 import { postRecruit } from "../../actions/Community";
+import { getEachFestival } from "../../actions/FestivalAPI";
 
 //22 구인
 const WritingRecruit = () => {
@@ -26,27 +27,19 @@ const WritingRecruit = () => {
   const [title, onChangeTitle, setTitle] = useInput("");
   const [writer, onChangeWriter, setwriter] = useInput("");
 
+  const festivalId = 2;
   const onSubmitRecruit = useCallback(
     (e: any) => {
       e.preventDefault();
 
-      dispatch(postRecruit({ articleContent, title })).catch((error) => {
-        alert(error.err);
-      });
+      dispatch(postRecruit({ articleContent, title, festivalId })).catch(
+        (error) => {
+          alert(error.err);
+        }
+      );
     },
-    [articleContent, title]
+    [articleContent, title, festivalId]
   );
-  //
-  // useEffect(() => {
-  //   dispatch(getRecruit({}))
-  //     .unwrap()
-  //     .then((response) => {
-  //       console.log("### response: ", response);
-  //     })
-  //     .catch((error) => {
-  //       console.log("### error: ", error);
-  //     });
-  // }, []);
 
   return (
     <>
