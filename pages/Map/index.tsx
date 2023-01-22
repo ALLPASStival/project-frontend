@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import HeaderBar from "@components/HeaderBar";
 import { Wrapper } from "../../Style/Wrapper";
+import { getMap } from "../../actions/Map";
+import { useAppDispatch } from "../../redux/hooks";
 
 declare global {
   interface Window {
@@ -11,6 +13,23 @@ declare global {
 const { kakao } = window;
 
 const Map = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getMap({}))
+      .unwrap()
+      .then((response) => {
+        console.log("### response: ", response);
+      })
+      .catch((error) => {
+        console.log("### error: ", error);
+      });
+  }, []);
+
+  console.log(getMap);
+  console.log(getMap);
+  console.log(getMap);
+
   useEffect(() => {
     const mapContainer = document.getElementById("map"); //지도를 담을 영역의 DOM 레퍼런스
     const mapOption = {
