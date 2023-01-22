@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderBar from "@components/HeaderBar";
 import { Wrapper } from "../../Style/Wrapper";
-// import ReactSearchBox from "react-search-box";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
@@ -28,7 +28,6 @@ import {
   TopTitle,
 } from "@pages/Search/styles";
 import FestivalReviews from "@components/FestivalReviews";
-import { SearchBox } from "@pages/Community/style";
 import { StyledDivRow } from "../../Style/FlexBox";
 
 const Search = () => {
