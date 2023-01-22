@@ -7,6 +7,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Category } from "./style";
 import { OrgBtn, SearchBox, StyledDiv } from "../../Style/Community";
 import Articles from "@components/Articles";
+import { TopSearch } from "@pages/Search/styles";
 
 const Community = () => {
   const [cat, setCat] = useState("커뮤니티");
