@@ -62,11 +62,11 @@ export const getRecruit = createAsyncThunk<CommunityState, any>(
 
 export const postRecruit = createAsyncThunk<CommunityState, any>(
   "post_Recruit",
-  async ({ email, password }: any, thunkAPI) => {
+  async ({ articleContent, title, festivalId }: any, thunkAPI) => {
     try {
       const response = await axios.post(
         "http://3.36.112.187:8080/api/v1/posts?category=recruit",
-        { email, password },
+        { articleContent, title, festivalId },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -84,7 +84,7 @@ export const postRecruit = createAsyncThunk<CommunityState, any>(
 );
 
 export const getReview = createAsyncThunk<CommunityState, any>(
-  "Get_Review",
+  "get_Review",
   async (festival: CommunityState) => {
     try {
       const response = await axios.get(
@@ -101,12 +101,12 @@ export const getReview = createAsyncThunk<CommunityState, any>(
 );
 
 export const postReview = createAsyncThunk<CommunityState, any>(
-  "post_Revirw",
-  async ({ email, password }: any, thunkAPI) => {
+  "post_Review",
+  async ({ articleContent, festivalId, title }: any, thunkAPI) => {
     try {
       const response = await axios.post(
         "http://3.36.112.187:8080/api/v1/posts?category=review",
-        { email, password },
+        { articleContent, festivalId, title },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -119,6 +119,23 @@ export const postReview = createAsyncThunk<CommunityState, any>(
       alert("게시글 등록에 실패하였습니다.");
       console.log(e);
       return thunkAPI.rejectWithValue(e.response.data);
+    }
+  }
+);
+
+export const getEach = createAsyncThunk<CommunityState, any>(
+  "get_Each",
+  async (postId: string, thunkAPI) => {
+    try {
+      const response = await axios.get(
+        `http://3.36.112.187:8080/api/v1/posts/${postId}`
+      );
+      console.log(response.data);
+
+      return response.data;
+    } catch (e: any) {
+      alert("불러오기 실패");
+      return e.rejectWithValue(e.response.data);
     }
   }
 );

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../redux/store";
+
 import {
+  getEach,
   getFree,
   getRecruit,
   getReview,
@@ -10,7 +11,8 @@ import {
 } from "../actions/Community";
 
 export interface CommunityState {
-  review: string;
+  result: any;
+  content: any;
   recruit: string;
   free: string;
 
@@ -18,7 +20,8 @@ export interface CommunityState {
 }
 
 const initialState: CommunityState = {
-  review: "",
+  result: {},
+  content: [],
   recruit: "",
   free: "",
   error: "",
@@ -32,11 +35,11 @@ export const CommunityState = createSlice({
     builder
       //리뷰게시판 불러오기
       .addCase(getReview.fulfilled, (state, action) => {
-        state.review = action.payload.review;
+        state.content = action.payload.result.content;
       })
       //자유게시판 불러오기
       .addCase(getFree.fulfilled, (state, action) => {
-        state.free = action.payload.free;
+        state.content = action.payload.result.content;
       })
       //구인게시판 불러오기
       .addCase(getRecruit.fulfilled, (state, action) => {
@@ -49,7 +52,10 @@ export const CommunityState = createSlice({
         state.recruit = action.payload.recruit;
       })
       .addCase(postReview.fulfilled, (state, action) => {
-        state.review = action.payload.review;
+        state.content = action.payload.result.content;
+      })
+      .addCase(getEach.fulfilled, (state, action) => {
+        state.content = action.payload;
       }),
 });
 
