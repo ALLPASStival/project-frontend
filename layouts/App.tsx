@@ -14,6 +14,7 @@ const Community = loadable(() => import("@pages/Community"));
 const WritingCommunity = loadable(() => import("@pages/WritingCommunity"));
 const WritingReview = loadable(() => import("@pages/WritingReview"));
 const WritingRecruit = loadable(() => import("@pages/WritingRecruit"));
+const Map = loadable(() => import("@pages/Map"));
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
       <Route path="/writingcommunity" component={WritingCommunity} />
       <Route path="/writingreview" component={WritingReview} />
       <Route path="/writingrecruit" component={WritingRecruit} />
+      <Route path="/map" component={Map} />
     </Switch>
   );
 };
