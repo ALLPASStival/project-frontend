@@ -71,7 +71,7 @@ const HeaderBar = () => {
             <Link to="/search">축제 찾기</Link>
           </span>
           <span>
-            <Link to="/home">지도로 찾기</Link>
+            <Link to="/map">지도로 찾기</Link>
           </span>
           <span>
             <Link to="/home">일정</Link>

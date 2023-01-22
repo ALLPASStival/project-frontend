@@ -15,6 +15,11 @@ export const TopTitle = styled.div`
   font-weight: bold;
 `;
 
+export const TopSearchBox = styled.div`
+  font-size: 2rem;
+  font-weight: bold;
+`;
+
 export const MiddleSide = styled.div`
   display: flex;
   justify-content: space-between;
