@@ -10,7 +10,7 @@ const Schedule = loadable(() => import("@pages/Schedule"));
 const CallCenter = loadable(() => import("@pages/CallCenter"));
 const Search = loadable(() => import("@pages/Search"));
 const Community = loadable(() => import("@pages/Community"));
-// const CommunityDetail = loadable(() => import("@pages/CommunityDetail"));
+const CommunityDetail = loadable(() => import("@pages/CommunityDetail"));
 const WritingCommunity = loadable(() => import("@pages/WritingCommunity"));
 const WritingReview = loadable(() => import("@pages/WritingReview"));
 const WritingRecruit = loadable(() => import("@pages/WritingRecruit"));
@@ -30,8 +30,8 @@ const App = () => {
       <Route path="/callcenter" component={CallCenter} />
       <Route path="/search" component={Search} />
       <Route path="/community" component={Community} />
-      {/*<Route path="/communitydetail" component={CommunityDetail} />*/}
-      {/*<Route path="/communitydetail/:id" component={CommunityDetail} />*/}
+      <Route path="/communitydetail" component={CommunityDetail} />
+      <Route path="/communitydetail/:FreeId" component={CommunityDetail} />
       <Route path="/writingcommunity" component={WritingCommunity} />
       <Route path="/writingreview" component={WritingReview} />
       <Route path="/writingrecruit" component={WritingRecruit} />

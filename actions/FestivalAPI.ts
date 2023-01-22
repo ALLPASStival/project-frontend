@@ -25,7 +25,7 @@ export const getEachFestival = createAsyncThunk<FestivalState, any>(
   async (festival: FestivalState) => {
     try {
       const response = await axios.get(
-        "http://3.36.112.187:8080/api/v1/festivals/전체"
+        "http://3.36.112.187:8080/api/v1/festivals?page=0 "
       );
       console.log(response.data);
 
