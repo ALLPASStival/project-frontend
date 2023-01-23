@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { ContentBox, EachContent } from "@components/GetCommunity/styles";
 import { Link } from "react-router-dom";
+import { OrgBtn, StyledDiv } from "../../Style/Community";
 
 const GetRecruit = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +15,7 @@ const GetRecruit = () => {
     dispatch(getRecruit({}))
       .unwrap()
       .then((response) => {
-        console.log("### response: ", response);
+        console.log("### 구인글: ", response);
       })
       .catch((error) => {
         console.log("### error: ", error);
@@ -47,14 +48,19 @@ const GetRecruit = () => {
                 <EachContent>
                   <div>{recruit[ind].postId}</div>
                   <div>{recruit[ind].title}</div>
-                  <div>글쓴이</div>
+                  <div>{recruit[ind].userName}</div>
                   <div>{recruit[ind].createdAt}</div>
-                  <div>좋아요</div>
+                  <div>{recruit[ind].like}</div>
                 </EachContent>
               </Link>
             );
           })}
       </ContentBox>
+      <StyledDiv>
+        <Link to="/writingrecruit">
+          <OrgBtn>글쓰기</OrgBtn>
+        </Link>
+      </StyledDiv>
     </>
   );
 };

@@ -1,11 +1,14 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, isFulfilled } from "@reduxjs/toolkit";
 
 import {
+  getCallCenter,
   getEach,
   getFree,
   getRecruit,
   getReview,
+  postCall,
   postFree,
+  postGood,
   postRecruit,
   postReview,
 } from "../actions/Community";
@@ -15,6 +18,8 @@ export interface CommunityState {
   content: any;
   recruit: string;
   free: string;
+  good: number;
+  call: any;
 
   error: any;
 }
@@ -24,6 +29,8 @@ const initialState: CommunityState = {
   content: [],
   recruit: "",
   free: "",
+  good: 0,
+  call: "",
   error: "",
 };
 
@@ -43,7 +50,10 @@ export const CommunityState = createSlice({
       })
       //구인게시판 불러오기
       .addCase(getRecruit.fulfilled, (state, action) => {
-        state.recruit = action.payload.recruit;
+        state.content = action.payload.result.content;
+      })
+      .addCase(getCallCenter.fulfilled, (state, action) => {
+        state.content = action.payload.result.content;
       })
       .addCase(postFree.fulfilled, (state, action) => {
         state.free = action.payload.free;
@@ -56,6 +66,12 @@ export const CommunityState = createSlice({
       })
       .addCase(getEach.fulfilled, (state, action) => {
         state.content = action.payload;
+      })
+      .addCase(postGood.fulfilled, (state, action) => {
+        state.good = action.payload.result;
+      })
+      .addCase(postCall.fulfilled, (state, action) => {
+        state.call = action.payload.result.content;
       }),
 });
 

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { ContentBox, EachContent } from "@components/GetCommunity/styles";
 import { Link } from "react-router-dom";
+import { OrgBtn, StyledDiv } from "../../Style/Community";
 
 const GetReview = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +15,7 @@ const GetReview = () => {
     dispatch(getReview({}))
       .unwrap()
       .then((response) => {
-        console.log("### response: ", response);
+        console.log("### 후기글: ", response);
       })
       .catch((error) => {
         console.log("### error: ", error);
@@ -47,14 +48,19 @@ const GetReview = () => {
                 <EachContent>
                   <div>{review[ind].postId}</div>
                   <div>{review[ind].title}</div>
-                  <div>글쓴이</div>
+                  <div>{review[ind].userName}</div>
                   <div>{review[ind].createdAt}</div>
-                  <div>좋아요</div>
+                  <div>{review[ind].like}</div>
                 </EachContent>
               </Link>
             );
           })}
       </ContentBox>
+      <StyledDiv>
+        <Link to="/writingreview">
+          <OrgBtn>글쓰기</OrgBtn>
+        </Link>
+      </StyledDiv>
     </>
   );
 };

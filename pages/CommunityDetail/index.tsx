@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import HeaderBar from "@components/HeaderBar";
 import { Wrapper } from "../../Style/Wrapper";
 import {
@@ -11,71 +11,87 @@ import {
 } from "../../Style/Community";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { P } from "./styles";
+import { GoodOrgBtn, P } from "./styles";
 import { useAppDispatch } from "../../redux/hooks";
-import { getCommentCount } from "../../actions/Comment";
+import {
+  getCommentCount,
+  getCommentList,
+  postComment,
+} from "../../actions/Comment";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { useLocation } from "react-router";
-import { getEach } from "../../actions/Community";
+import { getEach, postFree, postGood } from "../../actions/Community";
+import {
+  BlockInPut,
+  CommunityContainer,
+  Form,
+} from "@pages/WritingCommunity/styles";
+import useInput from "@hooks/useInput";
+import { Root } from "react-dom/client";
 
 const CommunityDetail = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const postId = location.pathname.split("/")[2];
-  const [comments, setComments] = useState([]);
-
-  // 댓글개수 불러오기
-  // useEffect(() => {
-  //   dispatch(getCommentCount({ postId }))
-  //     .unwrap()
-  //     .then((response) => {
-  //       console.log("### response: ", response);
-  //     })
-  //     .catch((error) => {
-  //       console.log("### error: ", error);
-  //     });
-  // }, []);
-  // const Count = useSelector((state: RootState) => state.community.content);
+  const [comment, onChangeComment, setComment] = useInput("");
 
   //상세 글 내용 불러오기
-
   useEffect(() => {
     dispatch(getEach(postId))
       .unwrap()
       .then((response) => {
-        console.log("### response: ", response);
+        console.log("### 글 내용: ", response);
       })
       .catch((error) => {
-        console.log("### error: ", error);
+        console.log("### 글 내용 에러: ", error);
       });
   }, [postId]);
 
+  useEffect(() => {
+    dispatch(getCommentList({ postId }))
+      .unwrap()
+      .then((response) => {
+        console.log("### 댓글리스트: ", response);
+      })
+      .catch((error) => {
+        console.log("### 댓글리스트 에러: ", error);
+      });
+  }, [postId]);
+
+  //상세 페이지 글 내용
   const Each = useSelector((state: RootState) => state.community.content);
 
-  const Comment = comments.map(() => {
-    return (
-      <Table>
-        <Block>
-          <Left>작성자</Left>
-          <Right>닉네임 받아와서 넣기!</Right>
-        </Block>
-        <Block>
-          <Right colSpan={2}>본문 입력 input</Right>
-        </Block>
-      </Table>
-    );
-  });
+  //댓글 리스트
+  const CommentList = useSelector((state: RootState) => state.comment.result);
+
+  const onSubmitComment = useCallback(
+    (e: any) => {
+      dispatch(postComment({ comment, postId })).catch((error) => {
+        alert(error.err);
+      });
+    },
+    [comment]
+  );
+
+  const onSubmitGood = useCallback(
+    (e: any) => {
+      e.preventDefault();
+      dispatch(postGood(postId)).catch((error) => {
+        alert(error.err);
+      });
+    },
+    [postId]
+  );
 
   return (
     <>
       <HeaderBar />
       <Wrapper>
-        {/* 본문 */}
         <Table>
           <Block>
             <Left>작성자</Left>
-            <Right>닉네임 받아와서 넣기!</Right>
+            <Right>{Each?.result?.userName}</Right>
             <Left>등록일</Left>
             <Right>{Each?.result?.createdAt}</Right>
           </Block>
@@ -84,7 +100,7 @@ const CommunityDetail = () => {
             <Right colSpan={2}>{Each?.result?.title}</Right>
             <Right>
               <FontAwesomeIcon icon={faThumbsUp} />
-              {/* 좋아요 수  */}
+              {Each?.result?.like}
             </Right>
           </Block>
           <Block>
@@ -93,24 +109,52 @@ const CommunityDetail = () => {
             </Right>
           </Block>
         </Table>
-        {/* 댓글 */}
-        <P>댓글 [{/* 댓글 수 넣기 */}]</P>
-        {Comment}
-        {/* 새 댓글 작성 */}
-        <P>댓글 달기</P>
+
+        <Form onSubmit={onSubmitGood}>
+          <StyledDiv>
+            <GoodOrgBtn type="submit">좋아요 누르기</GoodOrgBtn>
+          </StyledDiv>
+        </Form>
+
+        <P>댓글 [{CommentList?.length}]</P>
         <Table>
-          <Block>
-            <Left>작성자</Left>
-            <Right>닉네임 받아와서 넣기!</Right>
-          </Block>
-          <Block>
-            <Left>본문</Left>
-            <Right style={{ height: "9.1rem" }}>본문 넣는 input</Right>
-          </Block>
+          {CommentList &&
+            [...Array(CommentList?.length)].map((e, ind) => {
+              return (
+                <>
+                  <Block>
+                    <Left>작성자</Left>
+                    <Right>{CommentList[ind]?.userName}</Right>
+                  </Block>
+                  <Block>
+                    <Right colSpan={2}>{CommentList[ind]?.comment}</Right>
+                  </Block>
+                </>
+              );
+            })}
         </Table>
-        <StyledDiv>
-          <OrgBtn>댓글 달기</OrgBtn>
-        </StyledDiv>
+        <P>댓글 달기</P>
+        <Form onSubmit={onSubmitComment}>
+          <CommunityContainer>
+            <Block>
+              <Left>작성자</Left>
+            </Block>
+            <Block>
+              <Left>본문</Left>
+              <BlockInPut
+                type="text"
+                id="id"
+                name="id"
+                value={comment}
+                onChange={onChangeComment}
+                placeholder="내용을 입력하세요"
+              />
+            </Block>
+          </CommunityContainer>
+          <StyledDiv>
+            <OrgBtn type="submit">댓글 달기</OrgBtn>
+          </StyledDiv>
+        </Form>
       </Wrapper>
     </>
   );
