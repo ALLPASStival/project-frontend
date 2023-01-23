@@ -29,10 +29,10 @@ const Community = () => {
           }}
         >
           <span style={{ fontSize: "4.5rem", fontWeight: "bold" }}>{cat}</span>
-          <TopSearch>
+          {/* <TopSearch>
             <FontAwesomeIcon icon={faSearch} style={{ fontSize: "2.5rem" }} />
             <input type="text" id="search" name="search" />
-          </TopSearch>
+          </TopSearch> */}
         </StyledDivRow>
         <StyledDivRow style={{ justifyContent: "space-evenly" }}>
           <Category

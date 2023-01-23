@@ -28,7 +28,6 @@ import {
   TopTitle,
 } from "@pages/Search/styles";
 import FestivalReviews from "@components/FestivalReviews";
-import { SearchBox } from "@pages/Community/style";
 import { StyledDivRow } from "../../Style/FlexBox";
 
 const Search = () => {
@@ -77,10 +76,10 @@ const Search = () => {
             {/*  onChange={(value) => console.log(value)}*/}
             {/*/>*/}
 
-            <TopSearchBox>
+            {/* <TopSearchBox>
               <FontAwesomeIcon icon={faSearch} style={{ fontSize: "1.4rem" }} />
               <input type="text" id="search" name="search" />
-            </TopSearchBox>
+            </TopSearchBox> */}
           </TopHeader>
           <MiddleSide>
             <LeftOpt>

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { User } from "../reducers/user";
+import { User } from "reducers/map";
 
 // 테스트 코드
 const delay = (time: number, value: object) =>
