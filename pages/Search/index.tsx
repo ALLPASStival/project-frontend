@@ -28,7 +28,7 @@ import {
   TopTitle,
 } from "@pages/Search/styles";
 import FestivalReviews from "@components/FestivalReviews";
-import { SearchBox } from "@pages/Community/style";
+
 import { StyledDivRow } from "../../Style/FlexBox";
 
 const Search = () => {
