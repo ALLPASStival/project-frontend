@@ -8,7 +8,12 @@ import {
   postRecruit,
   postReview,
 } from "../actions/Community";
-import { getComment, getCommentCount, postComment } from "../actions/Comment";
+import {
+  getComment,
+  getCommentCount,
+  getCommentList,
+  postComment,
+} from "../actions/Comment";
 
 export interface CommentState {
   result: any;
@@ -29,8 +34,8 @@ export const CommentSlice = createSlice({
         state.result = action.payload.result;
       })
       //댓글 불러오기
-      .addCase(getComment.fulfilled, (state, action) => {
-        state.result = action.payload.result;
+      .addCase(getCommentList.fulfilled, (state, action) => {
+        state.result = action.payload.result.content;
       })
       //댓글 달기
       .addCase(postComment.fulfilled, (state, action) => {
