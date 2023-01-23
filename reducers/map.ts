@@ -3,13 +3,17 @@ import { RootState } from "../redux/store";
 import { getMap } from "../actions/Map";
 
 export interface MapState {
-  map: string;
+  map: any;
+  content: any;
   error: any;
+  result: any;
 }
 
 const initialState: MapState = {
+  content: [],
   map: "",
   error: "",
+  result: {},
 };
 
 export const MapSlice = createSlice({
@@ -20,7 +24,7 @@ export const MapSlice = createSlice({
     builder
       //지도 정보 불러오기
       .addCase(getMap.fulfilled, (state, action) => {
-        state.map = action.payload.map;
+        state.content = action.payload?.result?.content;
       }),
 });
 

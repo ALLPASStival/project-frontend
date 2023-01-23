@@ -16,6 +16,7 @@ import { registerSlice } from "../reducers/user";
 import festivalSLice from "../reducers/festival";
 import communitySlice from "../reducers/community";
 import CommentSlice from "../reducers/comment";
+import mapSlice from "../reducers/map";
 
 const persistConfig = {
   key: "root",
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   festival: festivalSLice.reducer,
   community: communitySlice.reducer,
   comment: CommentSlice.reducer,
+  map: mapSlice.reducer,
   user: userReducer,
   dipping: dipSlice,
   writing: writingSlice,
