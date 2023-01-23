@@ -79,15 +79,6 @@ const HeaderBar = () => {
           <span>
             <Link to="/community">커뮤니티</Link>
           </span>
-          <span>
-            <Link to="/writingcommunity">자유</Link>
-          </span>
-          <span>
-            <Link to="/writingreview">후기</Link>
-          </span>
-          <span>
-            <Link to="/writingrecruit">구인</Link>
-          </span>
         </div>
       </SubBar>
     </Bar>
