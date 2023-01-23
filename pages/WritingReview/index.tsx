@@ -24,24 +24,23 @@ const WritingReview = () => {
     useInput("");
   const [title, onChangeTitle, setTitle] = useInput("");
   const [writer, onChangeWriter, setwriter] = useInput("");
-  const festivalId = 2;
-
+  const festivalName = "굿모닝양림";
   const onSubmitReview = useCallback(
     (e: any) => {
       e.preventDefault();
 
-      dispatch(postReview({ articleContent, festivalId, title })).catch(
+      dispatch(postReview({ articleContent, festivalName, title })).catch(
         (error) => {
           alert(error.err);
         }
       );
     },
-    [articleContent, title, festivalId]
+    [articleContent, title, festivalName]
   );
 
   console.log(articleContent);
   console.log(title);
-  console.log(festivalId);
+  console.log(festivalName);
 
   // useEffect(() => {
   //   dispatch(getReview({}))
