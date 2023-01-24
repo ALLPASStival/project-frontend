@@ -1,3 +1,3 @@
 export const preURL = {
-  preURL: "http://localhost:3090",
+  preURL: "http://3.36.112.187:8080/api/v1",
 };
