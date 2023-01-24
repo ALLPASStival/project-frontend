@@ -22,8 +22,8 @@ import {
   UserInput,
   UserSpan,
 } from "./styles";
-import { getUserInfo } from "./userSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { getUserInfo } from "../../actions/UserAPI";
 
 const Mypage = () => {
   // 새 이미지
@@ -36,14 +36,18 @@ const Mypage = () => {
 
   const [nickname, setNickname] = useState("");
   const [isNickname, setIsNickname] = useState(true);
+  const [email, setEmail] = useState("");
+
   const [id, setId] = useState(0);
   const [isId, setIsId] = useState(true);
 
-  const [userInfo, setUserInfo] = useState({
-    email: "happyday@naver.com",
-    nickname: "축제가 좋아요",
-    profilPicUrl: "",
-  });
+  let userInfo = {
+    email: "1234",
+    nickname: "1234",
+    profilePicUrl: "",
+    gender: "",
+    age: "",
+  };
 
   const [festivals, setFestival] = useState([
     {
@@ -73,12 +77,18 @@ const Mypage = () => {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state);
 
-  console.log("State", state);
-
   useEffect(() => {
-    dispatch(getUserInfo(1));
-    // setUserInfo(state.user.data)
-  }, []);
+    dispatch(getUserInfo(0));
+    if (state.user.resultCode == "SUCCESS") {
+      console.log("State", state);
+      console.log("State", state.user.result);
+
+      userInfo = state.user.result;
+      console.log(userInfo);
+      setNickname(userInfo.nickname);
+      setEmail(userInfo.email);
+    }
+  }, [state.user.resultCode]);
 
   // 사진 받아오기
   const onLoadfile = (e: any) => {
@@ -135,7 +145,15 @@ const Mypage = () => {
   // };
 
   const onChangeValue = (e: any) => {
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+    userInfo = { ...userInfo, [e.target.name]: e.target.value };
+  };
+
+  const postEmail = () => {
+    let element = document.getElementById("email") as HTMLInputElement | null;
+    if (element != null) {
+      let email = element.value;
+      return email;
+    }
   };
 
   const showDipFes = () => {
@@ -236,7 +254,7 @@ const Mypage = () => {
       >
         <StyledDivRow style={{ justifyContent: "space-between" }}>
           <StyledDivColumn style={{ alignItems: "center" }}>
-            {userInfo.profilPicUrl.length > 5 || previewImg ? (
+            {userInfo.profilePicUrl.length > 5 || previewImg ? (
               <>
                 <img
                   src={previewImg}
@@ -278,7 +296,7 @@ const Mypage = () => {
               <OrangeSpan>닉네임</OrangeSpan>
               {isNickname ? (
                 <>
-                  <UserSpan>{userInfo.nickname}</UserSpan>
+                  <UserSpan>{nickname}</UserSpan>
                   <FontAwesomeIcon
                     icon={faPencil}
                     style={{ fontSize: "2.5rem" }}
@@ -296,16 +314,18 @@ const Mypage = () => {
                   <FontAwesomeIcon
                     icon={faCheck}
                     style={{ fontSize: "2.5rem" }}
-                    onClick={() => setIsNickname(true)}
+                    onClick={() => {
+                      setIsNickname(true);
+                    }}
                   />
                 </>
               )}
             </OrangeBox>
             <OrangeBox style={{ width: "39.9rem" }}>
-              <OrangeSpan>아이디</OrangeSpan>
+              <OrangeSpan>이메일</OrangeSpan>
               {isId ? (
                 <>
-                  <UserSpan>{userInfo.email}</UserSpan>
+                  <UserSpan>{email}</UserSpan>
                   <FontAwesomeIcon
                     icon={faPencil}
                     style={{ fontSize: "2.5rem" }}
@@ -323,7 +343,10 @@ const Mypage = () => {
                   <FontAwesomeIcon
                     icon={faCheck}
                     style={{ fontSize: "2.5rem" }}
-                    onClick={() => setIsId(true)}
+                    onClick={() => {
+                      setIsId(true);
+                      postEmail();
+                    }}
                   />
                 </>
               )}
