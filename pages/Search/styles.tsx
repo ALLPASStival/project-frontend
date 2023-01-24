@@ -8,10 +8,11 @@ export const SearchMain = styled.div`
 export const TopHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 4rem;
+  height: 8rem;
+  margin-top: 3rem;
 `;
 export const TopTitle = styled.div`
-  font-size: 2rem;
+  font-size: 3.5rem;
   font-weight: bold;
 `;
 
@@ -24,22 +25,22 @@ export const MiddleSide = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 1.5rem;
-  height: 4rem;
+  height: 10rem;
   margin-bottom: 0.5rem;
 `;
 export const LeftOpt = styled.select`
-  width: 20rem;
-  height: 2.5rem;
+  width: 35rem;
+  height: 5rem;
   background-color: #ffb763;
   text-align-last: center;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: bold;
   border-radius: 5px;
 `;
 export const MiddleOpt = styled.select`
-  width: 20rem;
-  height: 2.5rem;
+  width: 35rem;
+  height: 5rem;
   background-color: #ffb763;
   text-align-last: center;
   text-align: center;
@@ -48,8 +49,8 @@ export const MiddleOpt = styled.select`
   border-radius: 5px;
 `;
 export const RightOpt = styled.select`
-  width: 20rem;
-  height: 2.5rem;
+  width: 35rem;
+  height: 5rem;
   background-color: #ffb763;
   text-align-last: center;
   text-align: center;
@@ -61,7 +62,7 @@ export const RightOpt = styled.select`
 export const BottomSide = styled.div``;
 export const FestivalList = styled.div`
   width: 100%;
-  height: 5rem;
+  height: 10rem;
   background-color: #d9d9d9;
   border-radius: 10px;
   margin-bottom: 1rem;
@@ -74,10 +75,12 @@ export const ListTop = styled.div`
   padding: 0.5rem;
 `;
 export const ListTopTitle = styled.div`
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: bold;
 `;
-export const ListTopGood = styled.div``;
+export const ListTopGood = styled.div`
+  font-size: 2rem;
+`;
 export const ListBottom = styled.div`
   display: flex;
   justify-content: space-between;
@@ -90,22 +93,23 @@ export const ListBottom = styled.div`
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    font-size: 2rem;
   }
   & div:first-child {
-    width: 12rem;
-    height: 1.8rem;
+    width: 23rem;
+    height: 4rem;
     background-color: #fe9010;
     border-radius: 10px;
   }
   & div:nth-child(2) {
-    width: 26rem;
-    height: 1.8rem;
+    width: 55rem;
+    height: 4rem;
     background-color: #fe9010;
     border-radius: 10px;
   }
   & div:last-child {
-    width: 12rem;
-    height: 1.8rem;
+    width: 23rem;
+    height: 4rem;
     background-color: #fe9010;
     border-radius: 10px;
   }

@@ -1,10 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  MiddleBox,
-  Rank,
-  RankBox,
-  Wrapper,
-} from "@components/FestivalReviews/styles";
+import { MiddleBox, Rank, Wrapper } from "@components/FestivalReviews/styles";
 import { getFestivalReview } from "../../actions/FestivalAPI";
 import { useAppDispatch } from "../../redux/hooks";
 import { getFree } from "../../actions/Community";
@@ -34,16 +29,12 @@ const FestivalReviews = () => {
   return (
     <Wrapper>
       <MiddleBox>Lots of reviews</MiddleBox>
-      {FestivalReview &&
-        [...Array(FestivalReview?.length)].map((e, ind) => {
-          return (
-            <RankBox>
-              <Rank>
-                <img src={FestivalReview[ind]?.etc} alt="" />
-              </Rank>
-            </RankBox>
-          );
-        })}
+      <Rank>
+        {FestivalReview &&
+          [...Array(FestivalReview?.length)].map((e, ind) => {
+            return <img src={FestivalReview[ind]?.etc} alt="" />;
+          })}
+      </Rank>
     </Wrapper>
   );
 };

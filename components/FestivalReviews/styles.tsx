@@ -12,26 +12,24 @@ export const TopLeft = styled.div`
 `;
 export const MiddleBox = styled.button`
   width: 100%;
-  height: 5rem;
+  height: 9.5rem;
   background-color: #7084ab;
   color: black;
   border-radius: 12px;
   border: none;
-  font-size: 2rem;
+  font-size: 3.5rem;
   font-weight: bold;
   margin-top: 2rem;
   margin-bottom: 1rem;
 `;
 
-export const RankBox = styled.div`
+export const Rank = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
-`;
-export const Rank = styled.div`
   & img {
-    width: 15rem;
-    height: 20rem;
+    width: 27rem;
+    height: 40rem;
   }
 `;
