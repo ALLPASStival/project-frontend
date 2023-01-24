@@ -72,7 +72,6 @@ const CommunityDetail = () => {
 
   const onSubmitGood = useCallback(
     (e: any) => {
-      e.preventDefault();
       dispatch(postGood(postId)).catch((error) => {
         alert(error.err);
       });
