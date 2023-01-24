@@ -23,7 +23,8 @@ import {
   UserSpan,
 } from "./styles";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { getUserInfo } from "../../actions/UserAPI";
+import { getMypost, getUserInfo } from "../../actions/UserAPI";
+import { userPostInitialState } from "../../reducers/user";
 
 const Mypage = () => {
   // 새 이미지
@@ -60,17 +61,7 @@ const Mypage = () => {
       size: "중간",
     },
   ]);
-  const [writings, setWriting] = useState([
-    {
-      cat: "[ 지역 ]",
-      title: "딸기 축제 후기 알려드림",
-      like: "11",
-      comment: "11",
-      place: "서울",
-      time: "10:00AM ~ 20:00PM",
-      date: "1월",
-    },
-  ]);
+  let posts = userPostInitialState.content;
   const [rFestivals, setRFestival] = useState([]);
   const [select, setSelect] = useState("");
 
@@ -89,6 +80,15 @@ const Mypage = () => {
       setEmail(userInfo.email);
     }
   }, [state.user.resultCode]);
+
+  useEffect(() => {
+    dispatch(getMypost(0));
+    if (state.post.resultCode == "SUCCESS") {
+      console.log("State", state);
+      console.log("State", state.post.result);
+      posts = state.post.result.content;
+    }
+  }, [state.post.resultCode]);
 
   // 사진 받아오기
   const onLoadfile = (e: any) => {
@@ -200,12 +200,12 @@ const Mypage = () => {
     setSelect("writing");
   };
 
-  const writing = writings.map((w) => {
+  const writing = posts.map((w: any) => {
     return (
       <OneFes>
         <FirstRow>
           <div>
-            <span>{w.cat}</span>
+            <span>{w.category}</span>
             <span>{w.title}</span>
           </div>
           <div>
