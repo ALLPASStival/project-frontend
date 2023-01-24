@@ -22,8 +22,8 @@ import {
   UserInput,
   UserSpan,
 } from "./styles";
-import { getUserInfo } from "./userSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { getUserInfo } from "../../actions/UserAPI";
 
 const Mypage = () => {
   // 새 이미지
@@ -146,6 +146,14 @@ const Mypage = () => {
 
   const onChangeValue = (e: any) => {
     userInfo = { ...userInfo, [e.target.name]: e.target.value };
+  };
+
+  const postEmail = () => {
+    let element = document.getElementById("email") as HTMLInputElement | null;
+    if (element != null) {
+      let email = element.value;
+      return email;
+    }
   };
 
   const showDipFes = () => {
@@ -306,7 +314,9 @@ const Mypage = () => {
                   <FontAwesomeIcon
                     icon={faCheck}
                     style={{ fontSize: "2.5rem" }}
-                    onClick={() => setIsNickname(true)}
+                    onClick={() => {
+                      setIsNickname(true);
+                    }}
                   />
                 </>
               )}
@@ -333,7 +343,10 @@ const Mypage = () => {
                   <FontAwesomeIcon
                     icon={faCheck}
                     style={{ fontSize: "2.5rem" }}
-                    onClick={() => setIsId(true)}
+                    onClick={() => {
+                      setIsId(true);
+                      postEmail();
+                    }}
                   />
                 </>
               )}

@@ -4,7 +4,6 @@ import {
   ThunkAction,
   Action,
 } from "@reduxjs/toolkit";
-import userReducer from "../pages/MyPage/userSlice";
 import writingSlice from "../pages/MyPage/writingSlice";
 import dipSlice from "../pages/MyPage/dipSlice";
 
@@ -12,7 +11,7 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import testSlice from "../reducers/TestSlice";
-import { registerSlice } from "../reducers/user";
+import { registerSlice, userSlice } from "../reducers/user";
 import festivalSLice from "../reducers/festival";
 import communitySlice from "../reducers/community";
 import CommentSlice from "../reducers/comment";
@@ -29,7 +28,7 @@ const rootReducer = combineReducers({
   festival: festivalSLice.reducer,
   community: communitySlice.reducer,
   comment: CommentSlice.reducer,
-  user: userReducer,
+  user: userSlice.reducer,
   dipping: dipSlice,
   writing: writingSlice,
 });
