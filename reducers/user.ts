@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../redux/store";
 import {
   addUserAsync,
+  getUserInfo,
   logoutUserAsync,
   setUserAsync,
 } from "../actions/UserAPI";
@@ -78,7 +79,6 @@ export const registerSlice = createSlice({
       }),
 });
 
-
 export interface InfoAtt {
   resultCode: "";
   result: {
@@ -89,8 +89,6 @@ export interface InfoAtt {
     age: any;
   };
 }
-
-
 
 const userSlice = createSlice({
   name: "user",
@@ -119,4 +117,4 @@ const userSlice = createSlice({
   },
 });
 
-export {registerSlice, userSlice}
+export default userSlice;

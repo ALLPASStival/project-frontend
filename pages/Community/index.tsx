@@ -41,7 +41,9 @@ const Community = () => {
             padding: "5rem 10rem 5rem 10rem",
           }}
         >
-          <span style={{ fontSize: "4.5rem", fontWeight: "bold" }}>{cat}</span>
+          <span style={{ fontSize: "4.5rem", fontWeight: "bold" }}>
+            {category}
+          </span>
           {/* <TopSearch>
             <FontAwesomeIcon icon={faSearch} style={{ fontSize: "2.5rem" }} />
             <input type="text" id="search" name="search" />

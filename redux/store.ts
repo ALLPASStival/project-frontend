@@ -11,7 +11,8 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import testSlice from "../reducers/TestSlice";
-import { registerSlice, userSlice } from "../reducers/user";
+import registerSlice from "../reducers/user";
+import userSlice from "../reducers/user";
 import festivalSLice from "../reducers/festival";
 import communitySlice from "../reducers/community";
 import CommentSlice from "../reducers/comment";
