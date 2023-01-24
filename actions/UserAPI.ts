@@ -42,7 +42,7 @@ export const setUserAsync = createAsyncThunk<Register, any>(
       const response = await axios.post(
         "http://3.36.112.187:8080/api/v1/auth/login",
         { email, password },
-        { withCredentials: true }
+        { withCredentials: true, headers }
       );
       alert("로그인에 성공하였습니다.");
       console.log(response?.data?.result?.jwt);

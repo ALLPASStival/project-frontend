@@ -27,8 +27,6 @@ const HeaderBar = () => {
   const isLoggingIn = useSelector(
     (state: RootState) => state.register?.isLoggingIn
   );
-
-  console.log(isLoggingIn);
   const jwt = localStorage.getItem("jwt");
 
   const onLogout = useCallback(
