@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import HeaderBar from "@components/HeaderBar";
 import { Wrapper } from "../../Style/Wrapper";
 import {
@@ -13,9 +13,10 @@ import {
 import { Category, Right, SearchBox } from "../../Style/Community";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import useInput from "@hooks/useInput";
 import { postReview } from "../../actions/Community";
+import { getUserInfo } from "../../actions/UserAPI";
 //22 후기
 const WritingReview = () => {
   const dispatch = useAppDispatch();
@@ -24,7 +25,9 @@ const WritingReview = () => {
     useInput("");
   const [title, onChangeTitle, setTitle] = useInput("");
   const [writer, onChangeWriter, setwriter] = useInput("");
-  const festivalName = "굿모닝양림";
+  const [nickname, setNickname] = useState("");
+  const festivalName = "삼척맹방유채꽃행사";
+
   const onSubmitReview = useCallback(
     (e: any) => {
       e.preventDefault();
@@ -38,20 +41,33 @@ const WritingReview = () => {
     [articleContent, title, festivalName]
   );
 
-  console.log(articleContent);
-  console.log(title);
-  console.log(festivalName);
+  // useEffect(() => {
+  //   dispatch(getUserInfo(0));
+  //   if (state.user.resultCode == "SUCCESS") {
+  //     console.log("State", state);
+  //     console.log("State", state.user.result);
+  //
+  //     userInfo = state.user.result;
+  //     console.log(userInfo);
+  //     setNickname(userInfo.nickname);
+  //     setEmail(userInfo.email);
+  //   }
+  // }, [state.user.resultCode]);
+
+  const state = useAppSelector((state) => state);
 
   // useEffect(() => {
-  //   dispatch(getReview({}))
-  //     .unwrap()
-  //     .then((response) => {
-  //       console.log("### response: ", response);
-  //     })
-  //     .catch((error) => {
-  //       console.log("### error: ", error);
-  //     });
-  // }, []);
+  //   dispatch(getUserInfo(0));
+  //   if (state.user.resultCode == "SUCCESS") {
+  //     console.log("State", state);
+  //     console.log("State", state.user.result);
+  //
+  //     userInfo = state.user.result;
+  //     console.log(userInfo);
+  //     setNickname(userInfo.nickname);
+  //     setEmail(userInfo.email);
+  //   }
+  // }, [state.user.resultCode]);
 
   return (
     <>
@@ -98,10 +114,6 @@ const WritingReview = () => {
                   />
                 </SearchBox>
               </Right>
-            </Block>
-            <Block>
-              <Left>별점</Left>
-              {/*<Right></Right>*/}
             </Block>
             <Block style={{ height: "21.3rem" }}>
               <Left>본문</Left>
