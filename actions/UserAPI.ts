@@ -1,7 +1,7 @@
 import { TokenHeader } from "@components/TokenHeader";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { InfoAtt, Register } from "../reducers/user";
+import { InfoAtt, PostAtt, Register } from "../reducers/user";
 
 const headers = {
   "X-Requested-With": "XMLHttpRequest",
@@ -56,23 +56,6 @@ export const setUserAsync = createAsyncThunk<Register, any>(
   }
 );
 
-// 유저 정보 조회
-export const getUserInfo = createAsyncThunk<InfoAtt, any>(
-  "users/getUserInfo",
-  async () => {
-    try {
-      const res = await axios.get(
-        "http://3.36.112.187:8080/api/v1" + "/users",
-        TokenHeader
-      );
-      console.log("❕유저 정보 조회❕ ", res.data);
-      return res.data;
-    } catch (e) {
-      console.error("⚠️ 유저 정보 조회 ⚠️ ", e);
-    }
-  }
-);
-
 export const logoutUserAsync = createAsyncThunk<Register, any>(
   "LOGOUT_USER",
   async ({ jwt }: any, thunkAPI) => {
@@ -93,6 +76,39 @@ export const logoutUserAsync = createAsyncThunk<Register, any>(
       alert("로그아웃에 실패하였습니다.");
       console.log(e);
       return thunkAPI.rejectWithValue(e.response.data);
+    }
+  }
+);
+
+// 유저 정보 조회
+export const getUserInfo = createAsyncThunk<InfoAtt, any>(
+  "users/getUserInfo",
+  async () => {
+    try {
+      const res = await axios.get(
+        "http://3.36.112.187:8080/api/v1" + "/users",
+        TokenHeader
+      );
+      console.log("❕유저 정보 조회❕ ", res.data);
+      return res.data;
+    } catch (e) {
+      console.error("⚠️ 유저 정보 조회 ⚠️ ", e);
+    }
+  }
+);
+
+export const getMypost = createAsyncThunk<PostAtt, any>(
+  "users/getUserPost",
+  async () => {
+    try {
+      const res = await axios.get(
+        "http://3.36.112.187:8080/api/v1" + "/users/my-posts",
+        TokenHeader
+      );
+      console.log("❕내가 쓴 글 조회❕ ", res.data);
+      return res.data;
+    } catch (e) {
+      console.error("⚠️ 내가 쓴 글 조회 ⚠️ ", e);
     }
   }
 );
