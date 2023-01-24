@@ -23,7 +23,8 @@ import {
   UserSpan,
 } from "./styles";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { getUserInfo } from "../../actions/UserAPI";
+import { getMypost, getUserInfo } from "../../actions/UserAPI";
+import { userPostInitialState } from "../../reducers/user";
 
 const Mypage = () => {
   // 새 이미지
@@ -41,17 +42,17 @@ const Mypage = () => {
   const [id, setId] = useState(0);
   const [isId, setIsId] = useState(true);
 
-  let userInfo = {
-    email: "1234",
-    nickname: "1234",
+  const [userInfo, setUserInfo] = useState({
+    email: "ita@naver.com",
+    nickname: "야무지조",
     profilePicUrl: "",
     gender: "",
     age: "",
-  };
+  });
 
   const [festivals, setFestival] = useState([
     {
-      cat: "[ 지역 ]",
+      cat: "[ 지역 ] ",
       title: "딸기 축제",
       like: "11",
       comment: "11",
@@ -60,35 +61,59 @@ const Mypage = () => {
       size: "중간",
     },
   ]);
-  const [writings, setWriting] = useState([
+  let posts = [
     {
-      cat: "[ 지역 ]",
-      title: "딸기 축제 후기 알려드림",
-      like: "11",
-      comment: "11",
+      postId: 14,
+      title: "딸기 축제",
+      articleContent: "test",
+      imageUrl: "",
+      category: "[ 지역 ] ",
+      state: "onGoing",
+      createdAt: "2023-01-21- 07:16:05",
+      lastModifiedAt: "2023-01-21- 07:16:05",
+      like: "10",
+      comment: "10",
       place: "서울",
       time: "10:00AM ~ 20:00PM",
-      date: "1월",
+      size: "중간",
+    },
+  ];
+  const [rFestivals, setRFestival] = useState([
+    {
+      postId: 1,
+      url: "http://imgnews.naver.net/image/5364/2021/08/10/0000530204_001_20210810160832237.jpg",
+    },
+    {
+      postId: 2,
+      url: "http://imgnews.naver.net/image/5510/2022/10/27/0000091880_001_20221027083802827.jpg",
     },
   ]);
-  const [rFestivals, setRFestival] = useState([]);
   const [select, setSelect] = useState("");
 
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state);
 
-  useEffect(() => {
-    dispatch(getUserInfo(0));
-    if (state.user.resultCode == "SUCCESS") {
-      console.log("State", state);
-      console.log("State", state.user.result);
+  // useEffect(() => {
+  //   dispatch(getUserInfo(0));
+  //   if (state.user.resultCode == "SUCCESS") {
+  //     console.log("State", state);
+  //     console.log("State", state.user.result);
 
-      userInfo = state.user.result;
-      console.log(userInfo);
-      setNickname(userInfo.nickname);
-      setEmail(userInfo.email);
-    }
-  }, [state.user.resultCode]);
+  //     userInfo = state.user.result;
+  //     console.log(userInfo);
+  //     setNickname(userInfo.nickname);
+  //     setEmail(userInfo.email);
+  //   }
+  // }, [state.user.resultCode]);
+
+  // useEffect(() => {
+  //   dispatch(getMypost(0));
+  //   if (state.post.resultCode == "SUCCESS") {
+  //     console.log("State", state);
+  //     console.log("State", state.post.result);
+  //     posts = state.post.result.content;
+  //   }
+  // }, [state.post.resultCode]);
 
   // 사진 받아오기
   const onLoadfile = (e: any) => {
@@ -145,7 +170,7 @@ const Mypage = () => {
   // };
 
   const onChangeValue = (e: any) => {
-    userInfo = { ...userInfo, [e.target.name]: e.target.value };
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
   const postEmail = () => {
@@ -200,12 +225,12 @@ const Mypage = () => {
     setSelect("writing");
   };
 
-  const writing = writings.map((w) => {
+  const writing = posts.map((w: any) => {
     return (
       <OneFes>
         <FirstRow>
           <div>
-            <span>{w.cat}</span>
+            <span>{w.category}</span>
             <span>{w.title}</span>
           </div>
           <div>
@@ -228,15 +253,20 @@ const Mypage = () => {
         <SecondRow>
           <span>장소 : {w.place}</span>
           <span>일시 : {w.time}</span>
-          <span>규모 : {w.date}</span>
+          <span>규모 : {w.size}</span>
         </SecondRow>
       </OneFes>
     );
   });
 
-  // const recentFest = rFestivals.map((r) => {
-  //   return <img src={r.url} style={{width: "17.7rem", height: "18.5rem"}}/>
-  // })
+  const recentFest = rFestivals.map((r) => {
+    return (
+      <img
+        src={r.url}
+        style={{ width: "17.7rem", height: "18.5rem", marginRight: "2%" }}
+      />
+    );
+  });
 
   return (
     <>
@@ -246,7 +276,8 @@ const Mypage = () => {
           height: "100%",
           width: "90%",
           marginTop: 0,
-          paddingTop: "7%",
+          paddingTop: "15%",
+          paddingBottom: "10%",
           paddingLeft: "5rem",
           paddingRight: "5rem",
           alignItems: "center",
@@ -296,7 +327,8 @@ const Mypage = () => {
               <OrangeSpan>닉네임</OrangeSpan>
               {isNickname ? (
                 <>
-                  <UserSpan>{nickname}</UserSpan>
+                  {/* <UserSpan>{nickname}</UserSpan> */}
+                  <UserSpan>{userInfo.nickname}</UserSpan>
                   <FontAwesomeIcon
                     icon={faPencil}
                     style={{ fontSize: "2.5rem" }}
@@ -325,7 +357,8 @@ const Mypage = () => {
               <OrangeSpan>이메일</OrangeSpan>
               {isId ? (
                 <>
-                  <UserSpan>{email}</UserSpan>
+                  {/* <UserSpan>{email}</UserSpan> */}
+                  <UserSpan>{userInfo.email}</UserSpan>
                   <FontAwesomeIcon
                     icon={faPencil}
                     style={{ fontSize: "2.5rem" }}
@@ -345,7 +378,6 @@ const Mypage = () => {
                     style={{ fontSize: "2.5rem" }}
                     onClick={() => {
                       setIsId(true);
-                      postEmail();
                     }}
                   />
                 </>
@@ -388,7 +420,9 @@ const Mypage = () => {
         >
           <FesWrapper>
             <span>최근 본 축제</span>
-            {/* {recentFest} */}
+            <StyledDivRow style={{ paddingLeft: "3rem", paddingTop: "3rem" }}>
+              {recentFest}
+            </StyledDivRow>
           </FesWrapper>
         </div>
       </Wrapper>

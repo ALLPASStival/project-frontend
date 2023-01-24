@@ -11,7 +11,7 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import testSlice from "../reducers/TestSlice";
-import { registerSlice, userSlice } from "../reducers/user";
+import { registerSlice, userPostSlice, userSlice } from "../reducers/user";
 
 import festivalSLice from "../reducers/festival";
 import communitySlice from "../reducers/community";
@@ -30,6 +30,7 @@ const rootReducer = combineReducers({
   community: communitySlice.reducer,
   comment: CommentSlice.reducer,
   user: userSlice.reducer,
+  post: userPostSlice.reducer,
   dipping: dipSlice,
   writing: writingSlice,
 });
