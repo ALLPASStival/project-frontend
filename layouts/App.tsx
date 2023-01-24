@@ -9,6 +9,7 @@ const Mypage = loadable(() => import("@pages/MyPage"));
 const Schedule = loadable(() => import("@pages/Schedule"));
 const CallCenter = loadable(() => import("@pages/CallCenter"));
 const Search = loadable(() => import("@pages/Search"));
+const Map = loadable(() => import("@pages/Map"));
 const Community = loadable(() => import("@pages/Community"));
 const CommunityDetail = loadable(() => import("@pages/CommunityDetail"));
 const WritingCommunity = loadable(() => import("@pages/WritingCommunity"));
@@ -29,6 +30,7 @@ const App = () => {
       <Route path="/schedule" component={Schedule} />
       <Route path="/callcenter" component={CallCenter} />
       <Route path="/search" component={Search} />
+      <Route path="/map" component={Map} />
       <Route path="/community" component={Community} />
       <Route path="/communitydetail" component={CommunityDetail} />
       <Route path="/communitydetail/:FreeId" component={CommunityDetail} />
