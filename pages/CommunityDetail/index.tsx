@@ -13,11 +13,7 @@ import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GoodOrgBtn, P } from "./styles";
 import { useAppDispatch } from "../../redux/hooks";
-import {
-  getCommentCount,
-  getCommentList,
-  postComment,
-} from "../../actions/Comment";
+import { getCommentList, postComment } from "../../actions/Comment";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { useLocation } from "react-router";
