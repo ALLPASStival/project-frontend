@@ -9,6 +9,7 @@ import {
   Div,
   Label,
   Input,
+  InputGender,
   Correct,
   Error,
 } from "@pages/SignUp/styles";
@@ -22,6 +23,7 @@ const SingUp = () => {
   const [password, , setPassword] = useInput("");
   const [passwordCheck, , setPasswordCheck] = useInput("");
   const [age, onChangeAge, setAge] = useInput("");
+  const [gender, onChangegender, setGender] = useInput("");
 
   //중복 확인 검사
   const [checkEmail, setCheckEmail] = useState(false);
@@ -62,40 +64,12 @@ const SingUp = () => {
   };
 
   const onSubmit = useCallback(() => {
-    dispatch(addUserAsync({ email, password, nickname })).catch((error) => {
-      alert(error.err);
-    });
+    dispatch(addUserAsync({ email, password, nickname, gender, age })).catch(
+      (error) => {
+        alert(error.err);
+      }
+    );
   }, [email, password, nickname]);
-
-  // 회원가입 전송
-  // const onSubmit = useCallback(
-  //   (e: any) => {
-  //     e.preventDefault();
-  //     axios
-  //       .post(
-  //         "http://3.36.112.187:8080/api/v1/auth/register",
-  //         {
-  //           email,
-  //           password,
-  //           nickname,
-  //         },
-  //         { withCredentials: true, headers }
-  //       )
-  //
-  //       .then((response) => {
-  //         alert("성공");
-  //         setEmail("");
-  //         setNickname("");
-  //         setPassword("");
-  //         setPasswordCheck("");
-  //         setAge("");
-  //       })
-  //       .catch((error) => {
-  //         alert("에러");
-  //       });
-  //   },
-  //   [email, password, passwordCheck, nickname]
-  // );
 
   // 아이디 중복 확인 전송
   const onCheckEmail = useCallback(
@@ -196,6 +170,23 @@ const SingUp = () => {
               value={age}
               onChange={onChangeAge}
               placeholder="나이"
+            />
+          </Label>
+          <Label>
+            <div>성별</div>
+            남자
+            <InputGender
+              type="radio"
+              name="성별"
+              value="남자"
+              onChange={onChangegender}
+            />
+            여자
+            <InputGender
+              type="radio"
+              name="성별"
+              value="여자"
+              onChange={onChangegender}
             />
           </Label>
           <Label>

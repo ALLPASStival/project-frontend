@@ -15,6 +15,9 @@ import useInput from "@hooks/useInput";
 import HeaderBar from "@components/HeaderBar";
 import { useAppDispatch } from "../../redux/hooks";
 import { setUserAsync } from "../../actions/UserAPI";
+import { Redirect } from "react-router";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -31,6 +34,14 @@ const Login = () => {
     },
     [email, password]
   );
+
+  const isLoggingIn = useSelector(
+    (state: RootState) => state.register?.isLoggingIn
+  );
+
+  if (isLoggingIn) {
+    return <Redirect to={"/main"} />;
+  }
 
   return (
     <Wrapper>

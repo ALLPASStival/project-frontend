@@ -14,22 +14,14 @@ const delay = (time: number, value: object) =>
     }, time);
   });
 
-// export const logIn = createAsyncThunk("user/logIn", async (data, thunkAPI) => {
-//   // throw new Error('비밀번호가 틀렸습니다.');
-//   return await delay(500, {
-//     userId: 1,
-//     nickname: "seongjun",
-//   });
-// });
-
 //회원가입
 export const addUserAsync = createAsyncThunk<Register, any>(
   "ADD_USER",
-  async ({ email, password, nickname }: any, thunkAPI) => {
+  async ({ email, password, nickname, gender, age }: any, thunkAPI) => {
     try {
       const response = await axios.post(
         "http://3.36.112.187:8080/api/v1/auth/register",
-        { email, password, nickname },
+        { email, password, nickname, gender, age },
         { withCredentials: true, headers }
       );
       alert("회원가입에 성공하였습니다.");
@@ -57,6 +49,30 @@ export const setUserAsync = createAsyncThunk<Register, any>(
       return response.data;
     } catch (e: any) {
       alert("로그인에 실패하였습니다.");
+      console.log(e);
+      return thunkAPI.rejectWithValue(e.response.data);
+    }
+  }
+);
+
+export const logoutUserAsync = createAsyncThunk<Register, any>(
+  "LOGOUT_USER",
+  async ({ jwt }: any, thunkAPI) => {
+    try {
+      const response = await axios.post(
+        "http://3.36.112.187:8080/api/v1/auth/logout",
+        { jwt },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+        }
+      );
+      alert("로그아웃에 성공하였습니다.");
+      localStorage.removeItem("jwt");
+      return response.data;
+    } catch (e: any) {
+      alert("로그아웃에 실패하였습니다.");
       console.log(e);
       return thunkAPI.rejectWithValue(e.response.data);
     }

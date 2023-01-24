@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRightToBracket,
@@ -16,9 +16,28 @@ import {
   SubBar,
   TopMenu,
 } from "@components/HeaderBar/styles";
-import WritingRecruit from "@pages/WritingRecruit";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { useAppDispatch } from "../../redux/hooks";
+import { logoutUserAsync } from "../../actions/UserAPI";
 
 const HeaderBar = () => {
+  const dispatch = useAppDispatch();
+
+  const isLoggingIn = useSelector(
+    (state: RootState) => state.register?.isLoggingIn
+  );
+
+  const jwt = localStorage.getItem("jwt");
+
+  const onLogout = useCallback(
+    (e: any) => {
+      dispatch(logoutUserAsync({ jwt })).catch((error) => {
+        alert(error.err);
+      });
+    },
+    [jwt]
+  );
   return (
     <Bar>
       <MainBar>
@@ -31,7 +50,11 @@ const HeaderBar = () => {
               <Link to="login">
                 <span>
                   <FontAwesomeIcon icon={faArrowRightToBracket} />
-                  로그인
+                  {!isLoggingIn ? (
+                    <Link to="/login">로그인</Link>
+                  ) : (
+                    <div onClick={onLogout}>로그아웃</div>
+                  )}
                 </span>
               </Link>
             </span>

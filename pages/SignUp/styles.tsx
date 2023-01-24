@@ -42,6 +42,8 @@ export const Input = styled.input`
   }
 `;
 
+export const InputGender = styled.input``;
+
 export const SignUpBtn = styled.div`
   display: flex;
   justify-content: center;
