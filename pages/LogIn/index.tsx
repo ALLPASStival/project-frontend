@@ -36,7 +36,7 @@ const Login = () => {
   );
 
   const isLoggingIn = useSelector(
-    (state: RootState) => state.register?.isLoggingIn
+    (state: RootState) => state.register.isLoggingIn
   );
 
   if (isLoggingIn) {

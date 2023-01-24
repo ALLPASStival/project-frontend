@@ -28,7 +28,7 @@ const initialState: Register = {
   result: {},
 };
 
-export const registerSlice = createSlice({
+const registerSlice = createSlice({
   name: "register",
   initialState,
   reducers: {},
@@ -117,4 +117,4 @@ const userSlice = createSlice({
   },
 });
 
-export default userSlice;
+export { userSlice, registerSlice };
