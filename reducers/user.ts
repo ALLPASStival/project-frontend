@@ -95,8 +95,8 @@ const userSlice = createSlice({
   initialState: {
     resultCode: "",
     result: {
-      email: "1234",
-      nickname: "1234",
+      email: "",
+      nickname: "",
       profilePicUrl: "",
       gender: "",
       age: "",
@@ -164,10 +164,10 @@ export const userPostInitialState = {
   content: [
     {
       postId: 14,
-      title: "하이",
+      title: "딸기 축제",
       articleContent: "test",
       imageUrl: "",
-      category: "service",
+      category: "[지역] ",
       state: "onGoing",
       createdAt: "2023-01-21- 07:16:05",
       lastModifiedAt: "2023-01-21- 07:16:05",

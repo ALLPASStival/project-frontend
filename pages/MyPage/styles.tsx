@@ -29,9 +29,10 @@ export const UserIcon = styled(FontAwesomeIcon)`
 
 export const UserSpan = styled.span`
   width: 15.5rem;
-white-space: nowrap;
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;`
+  text-overflow: ellipsis;
+`;
 
 export const UserInput = styled.input`
   border: none;
@@ -94,9 +95,9 @@ export const SecondRow = styled(StyledDivRow)`
   }
 `;
 
-export const FesWrapper = styled(StyledDivRow)`
+export const FesWrapper = styled(StyledDivColumn)`
   width: 137.4rem;
-  height: 26.2rem;
+  height: 36.2rem;
   background-color: #ffd29c;
   flex-wrap: wrap;
 
