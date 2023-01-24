@@ -1,25 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   MiddleBox,
   Rank,
   RankBox,
-  TopHeader,
-  TopLeft,
   Wrapper,
 } from "@components/FestivalReviews/styles";
-import { TopSearch } from "@pages/Search/styles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { getFestivalReview } from "../../actions/FestivalAPI";
+import { useAppDispatch } from "../../redux/hooks";
+import { getFree } from "../../actions/Community";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const FestivalReviews = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getFestivalReview({}))
+      .unwrap()
+      .then((response) => {
+        console.log("### 리뷰 랭킹: ", response);
+      })
+      .catch((error) => {
+        console.log("### error: ", error);
+      });
+  }, []);
+
+  const FestivalReview = useSelector(
+    (state: RootState) => state.festival.festivalReview
+  );
+
+  console.log(FestivalReview[0]?.etc);
+
   return (
     <Wrapper>
       <MiddleBox>Lots of reviews</MiddleBox>
-      <Rank>
-        <RankBox></RankBox>
-        <RankBox></RankBox>
-        <RankBox></RankBox>
-      </Rank>
+      {FestivalReview &&
+        [...Array(FestivalReview?.length)].map((e, ind) => {
+          return (
+            <RankBox>
+              <Rank>
+                <img src={FestivalReview[ind]?.etc} alt="" />
+              </Rank>
+            </RankBox>
+          );
+        })}
     </Wrapper>
   );
 };

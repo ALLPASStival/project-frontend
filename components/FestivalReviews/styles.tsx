@@ -23,17 +23,15 @@ export const MiddleBox = styled.button`
   margin-bottom: 1rem;
 `;
 
-export const Rank = styled.div`
+export const RankBox = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
 `;
-export const RankBox = styled.div`
-  font-size: 3rem;
-  background-color: #d9d9d9;
-  color: #fe9010;
-  border-radius: 10px;
-  width: 20rem;
-  height: 23rem;
-  margin-top: 1rem;
+export const Rank = styled.div`
+  & img {
+    width: 15rem;
+    height: 20rem;
+  }
 `;
