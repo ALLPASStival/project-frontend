@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../redux/store";
-import { addUserAsync, getUserInfo, setUserAsync } from "../actions/UserAPI";
+import {
+  addUserAsync,
+  logoutUserAsync,
+  setUserAsync,
+} from "../actions/UserAPI";
 import axios from "axios";
 
 export interface Register {
@@ -23,7 +27,7 @@ const initialState: Register = {
   result: {},
 };
 
-const registerSlice: any = createSlice({
+export const registerSlice = createSlice({
   name: "register",
   initialState,
   reducers: {},
@@ -45,18 +49,30 @@ const registerSlice: any = createSlice({
       })
       //로그인
       .addCase(setUserAsync.pending, (state, action) => {
-        console.log("pending");
-        state.isLoggingIn = true;
+        console.log("로그인 중");
+        state.isLoggingIn = false;
       })
       .addCase(setUserAsync.fulfilled, (state, action) => {
         console.log(action.payload);
-        state.isLoggingIn = false;
+        state.isLoggingIn = true;
         state.jwt = action.payload?.result?.jwt;
         state.email = action.payload.email;
         state.password = action.payload.password;
         state.nickname = action.payload.nickname;
       })
       .addCase(setUserAsync.rejected, (state, action) => {
+        console.log("error");
+        state.error = action.payload;
+      })
+      .addCase(logoutUserAsync.pending, (state, action) => {
+        console.log("로그아웃 중");
+        state.isLoggingIn = true;
+      })
+      .addCase(logoutUserAsync.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.isLoggingIn = false;
+      })
+      .addCase(logoutUserAsync.rejected, (state, action) => {
         console.log("error");
         state.error = action.payload;
       }),

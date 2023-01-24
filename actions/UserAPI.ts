@@ -15,22 +15,14 @@ const delay = (time: number, value: object) =>
     }, time);
   });
 
-// export const logIn = createAsyncThunk("user/logIn", async (data, thunkAPI) => {
-//   // throw new Error('비밀번호가 틀렸습니다.');
-//   return await delay(500, {
-//     userId: 1,
-//     nickname: "seongjun",
-//   });
-// });
-
 //회원가입
 export const addUserAsync = createAsyncThunk<Register, any>(
   "ADD_USER",
-  async ({ email, password, nickname }: any, thunkAPI) => {
+  async ({ email, password, nickname, gender, age }: any, thunkAPI) => {
     try {
       const response = await axios.post(
         "http://3.36.112.187:8080/api/v1/auth/register",
-        { email, password, nickname },
+        { email, password, nickname, gender, age },
         { withCredentials: true, headers }
       );
       alert("회원가입에 성공하였습니다.");

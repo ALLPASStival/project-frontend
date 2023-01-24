@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Link } from "react-router-dom";
 import { getEachFestival } from "../../actions/FestivalAPI";
+import { OrgBtn, StyledDiv } from "../../Style/Community";
 
 const GetCommunity = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +15,7 @@ const GetCommunity = () => {
     dispatch(getFree({}))
       .unwrap()
       .then((response) => {
-        console.log("### response: ", response);
+        console.log("### 자유글: ", response);
       })
       .catch((error) => {
         console.log("### error: ", error);
@@ -58,14 +59,19 @@ const GetCommunity = () => {
                 <EachContent>
                   <div>{free[ind].postId}</div>
                   <div>{free[ind].title}</div>
-                  <div>글쓴이</div>
+                  <div>{free[ind].userName}</div>
                   <div>{free[ind].createdAt}</div>
-                  <div>좋아요</div>
+                  <div>{free[ind].like}</div>
                 </EachContent>
               </Link>
             );
           })}
       </ContentBox>
+      <StyledDiv>
+        <Link to="/writingcommunity">
+          <OrgBtn>글쓰기</OrgBtn>
+        </Link>
+      </StyledDiv>
     </>
   );
 };

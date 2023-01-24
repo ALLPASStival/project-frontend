@@ -27,18 +27,18 @@ const WritingRecruit = () => {
   const [title, onChangeTitle, setTitle] = useInput("");
   const [writer, onChangeWriter, setwriter] = useInput("");
 
-  const festivalId = 2;
+  const festivalName = "굿모닝양림";
   const onSubmitRecruit = useCallback(
     (e: any) => {
       e.preventDefault();
 
-      dispatch(postRecruit({ articleContent, title, festivalId })).catch(
+      dispatch(postRecruit({ articleContent, title, festivalName })).catch(
         (error) => {
           alert(error.err);
         }
       );
     },
-    [articleContent, title, festivalId]
+    [articleContent, title, festivalName]
   );
 
   return (

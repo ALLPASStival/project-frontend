@@ -9,56 +9,38 @@ import {
   StyledDiv,
   CommunityContainer,
   Form,
-} from "../WritingCommunity/styles";
-import { Category, Right, SearchBox } from "../../Style/Community";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+} from "./styles";
+import { Category } from "../../Style/Community";
 import { useAppDispatch } from "../../redux/hooks";
 import useInput from "@hooks/useInput";
-import { postReview } from "../../actions/Community";
-//22 후기
-const WritingReview = () => {
+import { postCall, postFree } from "../../actions/Community";
+
+//21 자유
+const WritingCallCenter = () => {
   const dispatch = useAppDispatch();
 
   const [articleContent, onChangeArticleContent, setArticleContent] =
     useInput("");
   const [title, onChangeTitle, setTitle] = useInput("");
   const [writer, onChangeWriter, setwriter] = useInput("");
-  const festivalName = "굿모닝양림";
-  const onSubmitReview = useCallback(
+
+  const onSubmitCallCenter = useCallback(
     (e: any) => {
       e.preventDefault();
 
-      dispatch(postReview({ articleContent, festivalName, title })).catch(
-        (error) => {
-          alert(error.err);
-        }
-      );
+      dispatch(postCall({ articleContent, title })).catch((error) => {
+        alert(error.err);
+      });
     },
-    [articleContent, title, festivalName]
+    [articleContent, title]
   );
-
-  console.log(articleContent);
-  console.log(title);
-  console.log(festivalName);
-
-  // useEffect(() => {
-  //   dispatch(getReview({}))
-  //     .unwrap()
-  //     .then((response) => {
-  //       console.log("### response: ", response);
-  //     })
-  //     .catch((error) => {
-  //       console.log("### error: ", error);
-  //     });
-  // }, []);
 
   return (
     <>
       <HeaderBar />
       <Wrapper style={{ width: "100%" }}>
-        <Category>후기 쓰기</Category>
-        <Form onSubmit={onSubmitReview}>
+        <Category>고객센터 글쓰기</Category>
+        <Form onSubmit={onSubmitCallCenter}>
           <CommunityContainer>
             <Block>
               <Left>제목</Left>
@@ -82,27 +64,6 @@ const WritingReview = () => {
                 placeholder="작성자"
               />
             </Block>
-            <Block>
-              <Left>축제</Left>
-              <Right>
-                <SearchBox style={{ width: "26.7rem", height: "4.8rem" }}>
-                  <FontAwesomeIcon
-                    icon={faSearch}
-                    style={{ fontSize: "2.5rem" }}
-                  />
-                  <input
-                    type="text"
-                    id="search"
-                    name="search"
-                    style={{ width: "16rem", height: "4.5rem" }}
-                  />
-                </SearchBox>
-              </Right>
-            </Block>
-            <Block>
-              <Left>별점</Left>
-              {/*<Right></Right>*/}
-            </Block>
             <Block style={{ height: "21.3rem" }}>
               <Left>본문</Left>
               <BlockInPut
@@ -116,7 +77,7 @@ const WritingReview = () => {
             </Block>
           </CommunityContainer>
           <StyledDiv>
-            <OrgBtn>글 작성하기</OrgBtn>
+            <OrgBtn type="submit">글 작성하기</OrgBtn>
           </StyledDiv>
         </Form>
       </Wrapper>
@@ -124,4 +85,4 @@ const WritingReview = () => {
   );
 };
 
-export default WritingReview;
+export default WritingCallCenter;

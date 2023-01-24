@@ -1,28 +1,27 @@
 import React, { useEffect } from "react";
-import { Th } from "./styles";
+import { ContentBox, EachContent, Th } from "./styles";
 import { useAppDispatch } from "../../redux/hooks";
-import { getFree, getReview } from "../../actions/Community";
+import { getCallCenter, getFree } from "../../actions/Community";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { ContentBox, EachContent } from "@components/GetCommunity/styles";
 import { Link } from "react-router-dom";
 import { OrgBtn, StyledDiv } from "../../Style/Community";
 
-const GetReview = () => {
+const GetCallCenter = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getReview({}))
+    dispatch(getCallCenter({}))
       .unwrap()
       .then((response) => {
-        console.log("### 후기글: ", response);
+        console.log("### 고객센터: ", response);
       })
       .catch((error) => {
         console.log("### error: ", error);
       });
   }, []);
 
-  const review = useSelector((state: RootState) => state.community.content);
+  const call = useSelector((state: RootState) => state.community.content);
 
   return (
     <>
@@ -32,13 +31,13 @@ const GetReview = () => {
           <Th style={{ width: "40%" }}>제목</Th>
           <Th style={{ width: "20%" }}>글쓴이</Th>
           <Th style={{ width: "15%" }}>작성시간</Th>
-          <Th style={{ width: "15%" }}>좋아요</Th>
+          <Th style={{ width: "15%" }}>답변여부</Th>
         </thead>
       </table>
       <ContentBox>
-        {review &&
-          [...Array(review?.length)].map((e, ind) => {
-            const id = review[ind].postId;
+        {call &&
+          [...Array(call?.length)].map((e, ind) => {
+            const id = call[ind].postId;
             return (
               <Link
                 to={`/communitydetail/${id}`}
@@ -46,18 +45,18 @@ const GetReview = () => {
                 key={ind}
               >
                 <EachContent>
-                  <div>{review[ind].postId}</div>
-                  <div>{review[ind].title}</div>
-                  <div>{review[ind].userName}</div>
-                  <div>{review[ind].createdAt}</div>
-                  <div>{review[ind].like}</div>
+                  <div>{call[ind].postId}</div>
+                  <div>{call[ind].title}</div>
+                  <div>{call[ind].userName}</div>
+                  <div>{call[ind].createdAt}</div>
+                  <div>{call[ind].state}</div>
                 </EachContent>
               </Link>
             );
           })}
       </ContentBox>
       <StyledDiv>
-        <Link to="/writingreview">
+        <Link to="/writingcallcenter">
           <OrgBtn>글쓰기</OrgBtn>
         </Link>
       </StyledDiv>
@@ -65,4 +64,4 @@ const GetReview = () => {
   );
 };
 
-export default GetReview;
+export default GetCallCenter;
