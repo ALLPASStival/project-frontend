@@ -3,6 +3,7 @@ import HeaderBar from "@components/HeaderBar";
 import SliderImage from "@components/SlideImage";
 import FestivalRank from "@components/FestivalRank";
 import { Wrapper } from "../../Style/Wrapper";
+import FestivalReviews from "@components/FestivalReviews";
 
 const Main = () => {
   return (
@@ -17,6 +18,7 @@ const Main = () => {
       <HeaderBar />
       <SliderImage />
       <FestivalRank />
+      <FestivalReviews />
     </Wrapper>
   );
 };
