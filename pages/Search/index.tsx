@@ -37,7 +37,7 @@ import { useInView } from "react-intersection-observer";
 const Search = () => {
   const dispatch = useAppDispatch();
   const [value, setValue] = useState("");
-  const [ref, inView] = useInView({ threshold: [0, 0.25, 0.5, 0.75, 1] });
+  const [ref, inView] = useInView({ threshold: [0.5] });
 
   const List = useSelector((state: RootState) => state.festival.festival);
 
@@ -244,7 +244,7 @@ const Search = () => {
                     <ListBottom>
                       <div>장소:{List2[ind].place}</div>
                       <div>일시:{List2[ind].date}</div>
-                      <div>월: {List2[ind].month}월</div>
+                      <div>월: {List2[ind].month}</div>
                     </ListBottom>
                   </FestivalList>
                 );
