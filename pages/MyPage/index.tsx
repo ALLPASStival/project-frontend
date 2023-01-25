@@ -43,10 +43,10 @@ const Mypage = () => {
   const [isId, setIsId] = useState(true);
 
   const [userInfo, setUserInfo] = useState({
-    email: "ita@naver.com",
+    email: "yamu@naver.com",
     nickname: "야무지조",
     profilePicUrl: "",
-    gender: "",
+    gender: "남자",
     age: "",
   });
 
@@ -59,20 +59,21 @@ const Mypage = () => {
       place: "서울",
       time: "10:00AM ~ 20:00PM",
       size: "중간",
+      month: "1월",
     },
   ]);
   let posts = [
     {
       postId: 14,
-      title: "딸기 축제",
+      title: "같이 축제 가실 분~",
       articleContent: "test",
       imageUrl: "",
-      category: "[ 지역 ] ",
+      category: "",
       state: "onGoing",
       createdAt: "2023-01-21- 07:16:05",
       lastModifiedAt: "2023-01-21- 07:16:05",
-      like: "10",
-      comment: "10",
+      like: "0",
+      comment: "0",
       place: "서울",
       time: "10:00AM ~ 20:00PM",
       size: "중간",
@@ -214,7 +215,7 @@ const Mypage = () => {
         <SecondRow>
           <span>장소 : {fes.place}</span>
           <span>일시 : {fes.time}</span>
-          <span>규모 : {fes.size}</span>
+          <span> {fes.month} </span>
         </SecondRow>
       </OneFes>
     );
@@ -227,7 +228,7 @@ const Mypage = () => {
 
   const writing = posts.map((w: any) => {
     return (
-      <OneFes>
+      <OneFes style={{ height: "2rem" }}>
         <FirstRow>
           <div>
             <span>{w.category}</span>
@@ -250,11 +251,6 @@ const Mypage = () => {
             <span>{w.comment}</span>
           </div>
         </FirstRow>
-        <SecondRow>
-          <span>장소 : {w.place}</span>
-          <span>일시 : {w.time}</span>
-          <span>규모 : {w.size}</span>
-        </SecondRow>
       </OneFes>
     );
   });
