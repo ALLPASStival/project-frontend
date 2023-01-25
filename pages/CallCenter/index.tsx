@@ -45,10 +45,10 @@ const CallCenter = () => {
           <span style={{ fontSize: "4.5rem", fontWeight: "bold" }}>
             고객 센터
           </span>
-          <TopSearch>
-            <FontAwesomeIcon icon={faSearch} style={{ fontSize: "2.5rem" }} />
-            <input type="text" id="search" name="search" />
-          </TopSearch>
+          {/*<TopSearch>*/}
+          {/*  <FontAwesomeIcon icon={faSearch} style={{ fontSize: "2.5rem" }} />*/}
+          {/*  <input type="text" id="search" name="search" />*/}
+          {/*</TopSearch>*/}
         </StyledDivRow>
         <StyledDivRow style={{ justifyContent: "space-evenly" }}>
           <Category>FAQ</Category>
