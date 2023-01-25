@@ -43,6 +43,12 @@ export const Left = styled.td`
 `;
 export const Right = styled.td`
   padding-left: 3rem;
+  padding-top: 0.5rem;
+
+  & select {
+    width: 20rem;
+    height: 3rem;
+    font-weight: bold;
 `;
 
 export const StyledDiv = styled.div`

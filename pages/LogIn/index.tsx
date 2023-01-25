@@ -38,9 +38,6 @@ const Login = () => {
   const isLoggingIn = useSelector(
     (state: RootState) => state.register.isLoggingIn
   );
-  console.log(isLoggingIn);
-  console.log(isLoggingIn);
-  console.log(isLoggingIn);
 
   if (isLoggingIn) {
     return <Redirect to={"/main"} />;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HeaderBar from "@components/HeaderBar";
 import { Wrapper } from "../../Style/Wrapper";
 // import ReactSearchBox from "react-search-box";
@@ -27,8 +27,11 @@ import {
   TopSearchBox,
   TopTitle,
 } from "@pages/Search/styles";
-import FestivalReviews from "@components/FestivalReviews";
-import { StyledDivRow } from "../../Style/FlexBox";
+import { getFestival, getFestivalReview } from "../../actions/FestivalAPI";
+import { useAppDispatch } from "../../redux/hooks";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { Link } from "react-router-dom";
 
 const Search = () => {
   // const data = [
@@ -54,6 +57,20 @@ const Search = () => {
   //   },
   // ];
 
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getFestival({}))
+      .unwrap()
+      .then((response) => {
+        console.log("### 축제 리스트: ", response);
+      })
+      .catch((error) => {
+        console.log("### error: ", error);
+      });
+  }, []);
+
+  const List = useSelector((state: RootState) => state.festival.festival);
   return (
     <>
       <HeaderBar />
@@ -117,38 +134,38 @@ const Search = () => {
             </RightOpt>
           </MiddleSide>
           <BottomSide>
-            <FestivalList>
-              <ListTop>
-                <ListTopTitle>[지역 축제] 어디 지역 딸기 축제</ListTopTitle>
-                <ListTopGood>
-                  <FontAwesomeIcon icon={faThumbsUp} />
-                  11
-                  <FontAwesomeIcon icon={faPencil} />
-                  11
-                </ListTopGood>
-              </ListTop>
-              <ListBottom>
-                <div>장소</div>
-                <div>일시</div>
-                <div>월</div>
-              </ListBottom>
-            </FestivalList>
-            <FestivalList>
-              <ListTop>
-                <ListTopTitle>[지역 축제] 어디 지역 딸기 축제</ListTopTitle>
-                <ListTopGood>
-                  <FontAwesomeIcon icon={faThumbsUp} />
-                  11
-                  <FontAwesomeIcon icon={faPencil} />
-                  11
-                </ListTopGood>
-              </ListTop>
-              <ListBottom>
-                <div>장소</div>
-                <div>일시</div>
-                <div>월</div>
-              </ListBottom>
-            </FestivalList>
+            {List &&
+              [...Array(List?.length)].map((e, ind) => {
+                const MainId = List[ind].festivalId;
+                return (
+                  <Link
+                    to={`/???/${MainId}`}
+                    style={{ textDecoration: "none", color: "black" }}
+                    key={ind}
+                  >
+                    <FestivalList>
+                      <ListTop>
+                        <ListTopTitle>
+                          [지역 축제] {List[ind].festivalName}
+                        </ListTopTitle>
+                        <ListTopGood>
+                          <FontAwesomeIcon icon={faThumbsUp} />
+                          {List[ind].likes}
+                          <FontAwesomeIcon icon={faPencil} />
+                          {List[ind].review}
+                        </ListTopGood>
+                      </ListTop>
+                      <ListBottom>
+                        <div>장소:{List[ind].holdingVenue}</div>
+                        <div>
+                          일시:{List[ind].startDate}~ {List[ind].finishDate}
+                        </div>
+                        <div>월: {List[ind].startDate.substring(5, 7)}월</div>
+                      </ListBottom>
+                    </FestivalList>
+                  </Link>
+                );
+              })}
             <FestivalList>
               <ListTop>
                 <ListTopTitle>[지역 축제] 어디 지역 딸기 축제</ListTopTitle>
@@ -167,7 +184,6 @@ const Search = () => {
             </FestivalList>
           </BottomSide>
         </SearchMain>
-        <FestivalReviews />
       </Wrapper>
     </>
   );

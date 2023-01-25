@@ -44,7 +44,7 @@ export const MiddleOpt = styled.select`
   background-color: #ffb763;
   text-align-last: center;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: bold;
   border-radius: 5px;
 `;
@@ -54,7 +54,7 @@ export const RightOpt = styled.select`
   background-color: #ffb763;
   text-align-last: center;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: bold;
   border-radius: 5px;
 `;
