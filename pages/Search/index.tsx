@@ -32,45 +32,28 @@ import { useAppDispatch } from "../../redux/hooks";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Link } from "react-router-dom";
+import { useInView } from "react-intersection-observer";
 
 const Search = () => {
-  // const data = [
-  //   {
-  //     key: "john",
-  //     value: "John Doe",
-  //   },
-  //   {
-  //     key: "jane",
-  //     value: "Jane Doe",
-  //   },
-  //   {
-  //     key: "mary",
-  //     value: "Mary Phillips",
-  //   },
-  //   {
-  //     key: "robert",
-  //     value: "Robert",
-  //   },
-  //   {
-  //     key: "karius",
-  //     value: "Karius",
-  //   },
-  // ];
-
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(getFestival({}))
-      .unwrap()
-      .then((response) => {
-        console.log("### 축제 리스트: ", response);
-      })
-      .catch((error) => {
-        console.log("### error: ", error);
-      });
-  }, []);
+  const [ref, inView] = useInView({ threshold: [0, 0.25, 0.5, 0.75, 1] });
 
   const List = useSelector((state: RootState) => state.festival.festival);
+
+  useEffect(() => {
+    if (List.length === 0) {
+      console.log("첫 축제 로딩");
+      dispatch(getFestival({}));
+      return;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (List.length !== 0 && inView) {
+      console.log("첫 로딩 이후 무한 스크롤");
+      dispatch(getFestival({}));
+    }
+  }, [inView]);
   return (
     <>
       <HeaderBar />
@@ -163,9 +146,11 @@ const Search = () => {
                         <div>월: {List[ind].startDate.substring(5, 7)}월</div>
                       </ListBottom>
                     </FestivalList>
+                    <div ref={ref} />
                   </Link>
                 );
               })}
+
             <FestivalList>
               <ListTop>
                 <ListTopTitle>[지역 축제] 어디 지역 딸기 축제</ListTopTitle>

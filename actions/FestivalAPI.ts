@@ -20,13 +20,19 @@ export const getEachFestival = createAsyncThunk<FestivalState, any>(
   }
 );
 
+function getRandNumber() {
+  const ranNum = Math.floor(Math.random() * 50 + 1);
+  return ranNum;
+}
+
 //축제 리스트 조회
 export const getFestival = createAsyncThunk<FestivalState, any>(
   "GET_Festival",
   async (festival: FestivalState) => {
     try {
       const response = await axios.get(
-        "http://3.36.112.187:8080/api/v1/festivals?page=0 "
+        `http://3.36.112.187:8080/api/v1/festivals?page=${getRandNumber()}`,
+        { params: { page: getRandNumber() } }
       );
 
       return response.data;
