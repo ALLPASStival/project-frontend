@@ -40,21 +40,21 @@ export const Lable = styled.div`
   }
 `;
 export const Input = styled.input`
-  background-color: #d9d9d9;
+  background-color: #fffcfc;
   position: relative;
   box-sizing: border-box;
   border: 1px solid #ebebeb;
-  width: 30rem;
-  height: 5rem;
+  border-radius: 12px;
+  width: 35rem;
+  height: 4rem;
   outline: none;
   font-size: 1.5rem;
-  padding: 10px 0 12px;
-  margin-top: 1.5rem;
+  padding: 10px 15px 12px;
+  margin-top: 0.6rem;
   :focus {
-    border-bottom: 2px solid black;
+    border: 1px solid #e89735;
   }
   ::placeholder {
-    padding: 1rem 1rem;
     font-size: 1.5rem;
     font-weight: bolder;
   }
@@ -83,16 +83,17 @@ export const LoginBtn = styled.button`
   align-items: center;
   vertical-align: middle;
   text-align: center;
-  width: 9rem;
-  height: 2.7rem;
+  width: 35rem;
+  height: 4rem;
   background-color: #fe9010;
   color: black;
   border-radius: 25px;
   outline: none;
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 2rem;
   cursor: pointer;
+  margin-top: 1rem;
+  border: none;
   &:hover {
     background-color: #f93011;
     border: none;

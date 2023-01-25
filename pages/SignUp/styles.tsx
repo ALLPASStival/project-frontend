@@ -63,13 +63,12 @@ export const Input = styled.input`
   height: 4rem;
   outline: none;
   font-size: 1.5rem;
-  padding: 10px 0 12px;
+  padding: 10px 15px 12px;
   margin-top: 0.6rem;
   :focus {
     border: 1px solid #e89735;
   }
   ::placeholder {
-    padding: 1rem 1rem;
     font-size: 1.5rem;
     font-weight: bolder;
   }
@@ -81,8 +80,8 @@ export const SignUpBtn = styled.div`
   align-items: center;
   vertical-align: middle;
   text-align: center;
-  width: 12rem;
-  height: 3.2rem;
+  width: 35rem;
+  height: 4rem;
   background-color: #fe9010;
   color: black;
   border-radius: 25px;
