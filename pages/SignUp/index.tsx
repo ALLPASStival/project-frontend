@@ -12,16 +12,23 @@ import {
   InputGender,
   Correct,
   Error,
+  Label2,
 } from "@pages/SignUp/styles";
 import { addUserAsync } from "../../actions/UserAPI";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { Redirect } from "react-router";
 
 const SingUp = () => {
   const dispatch = useAppDispatch();
+  const sign = useSelector((state: RootState) => state.register.email);
 
   const [email, onChangeEmail, setEmail] = useInput("");
   const [nickname, onChangeNickname, setNickname] = useInput("");
   const [password, , setPassword] = useInput("");
   const [passwordCheck, , setPasswordCheck] = useInput("");
+  const [clickCheck, setClickCheck] = useState(false);
+  const [clickCheck2, setClickCheck2] = useState(false);
   const [age, onChangeAge, setAge] = useInput("");
   const [gender, onChangegender, setGender] = useInput("");
 
@@ -89,6 +96,9 @@ const SingUp = () => {
         .catch((error) => {
           alert("사용 불가능한 아이디입니다.");
           setCheckEmail(false);
+        })
+        .finally(() => {
+          setClickCheck(true);
         });
     },
     [email]
@@ -114,10 +124,17 @@ const SingUp = () => {
         .catch((error) => {
           alert("사용불가능한 닉네임입니다.");
           setCheckNickName(false);
+        })
+        .finally(() => {
+          setClickCheck2(true);
         });
     },
     [nickname]
   );
+
+  if (sign) {
+    return <Redirect to={"/login"} />;
+  }
 
   return (
     <div>
@@ -138,10 +155,12 @@ const SingUp = () => {
               />
               <CheckBtn onClick={onCheckEmail}>아이디 중복 확인</CheckBtn>
             </Label>
-            {checkEmail && email.length > 0 && (
+            {clickCheck && !checkEmail && email.length > 0 && (
               <Error>사용 불가능한 아이디입니다.</Error>
             )}
-            {checkEmail && <Correct>사용 가능한 아이디입니다.</Correct>}
+            {clickCheck && checkEmail && (
+              <Correct>사용 가능한 아이디입니다.</Correct>
+            )}
           </Div>
           <Div>
             <Label>
@@ -156,39 +175,47 @@ const SingUp = () => {
               />
               <CheckBtn onClick={onCheckNickname}>닉네임 중복 확인</CheckBtn>
             </Label>
-            {checkNickName && nickname.length > 0 && (
+            {clickCheck2 && !checkNickName && nickname.length > 0 && (
               <Error>사용 불가능한 닉네임입니다.</Error>
             )}
-            {checkNickName && <Correct>사용 가능한 닉네임입니다.</Correct>}
+            {clickCheck2 && checkNickName && (
+              <Correct>사용 가능한 닉네임입니다.</Correct>
+            )}
           </Div>
-          <Label>
-            <div>나이</div>
-            <Input
-              type="text"
-              id="age"
-              name="age"
-              value={age}
-              onChange={onChangeAge}
-              placeholder="나이"
-            />
-          </Label>
-          <Label>
-            <div>성별</div>
-            남자
-            <InputGender
-              type="radio"
-              name="성별"
-              value="남자"
-              onChange={onChangegender}
-            />
-            여자
-            <InputGender
-              type="radio"
-              name="성별"
-              value="여자"
-              onChange={onChangegender}
-            />
-          </Label>
+          <Div>
+            <Label>
+              <div>나이</div>
+              <Input
+                type="text"
+                id="age"
+                name="age"
+                value={age}
+                onChange={onChangeAge}
+                placeholder="나이"
+              />
+            </Label>
+          </Div>
+          <Div>
+            <Label2>
+              <div>성별</div>
+              <div>
+                남자
+                <InputGender
+                  type="radio"
+                  name="성별"
+                  value="남자"
+                  onChange={onChangegender}
+                />
+                여자
+                <InputGender
+                  type="radio"
+                  name="성별"
+                  value="여자"
+                  onChange={onChangegender}
+                />
+              </div>
+            </Label2>
+          </Div>
           <Label>
             <div>비밀번호</div>
             <Input

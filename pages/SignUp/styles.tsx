@@ -21,11 +21,44 @@ export const Label = styled.label`
   }
 `;
 
+export const Label2 = styled.label`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1rem;
+
+  & div:first-child {
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 700;
+
+    width: 10rem;
+  }
+
+  & div:last-child {
+    width: 35rem;
+    height: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 1.5rem;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+`;
+
+export const InputGender = styled.input`
+  width: 2rem;
+  height: 2rem;
+`;
+
 export const Input = styled.input`
-  background-color: #d9d9d9;
+  background-color: #fffcfc;
   position: relative;
   box-sizing: border-box;
   border: 1px solid #ebebeb;
+  border-radius: 12px;
   width: 35rem;
   height: 4rem;
   outline: none;
@@ -41,8 +74,6 @@ export const Input = styled.input`
     font-weight: bolder;
   }
 `;
-
-export const InputGender = styled.input``;
 
 export const SignUpBtn = styled.div`
   display: flex;

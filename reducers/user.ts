@@ -40,7 +40,7 @@ const registerSlice = createSlice({
       })
       .addCase(addUserAsync.fulfilled, (state, action) => {
         console.log(action.payload);
-        state.email = action.payload.email;
+        state.email = action.payload?.result?.email;
         state.password = action.payload.password;
         state.nickname = action.payload.nickname;
       })
