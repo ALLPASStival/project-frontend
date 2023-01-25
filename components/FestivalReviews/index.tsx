@@ -26,7 +26,11 @@ const FestivalReviews = () => {
 
   return (
     <Wrapper>
-      <MiddleBox>Lots of reviews</MiddleBox>
+      <MiddleBox>
+        <div />
+        <span>Lots of reviews</span>
+        <div />
+      </MiddleBox>
       <Rank>
         {FestivalReview &&
           [...Array(FestivalReview?.length)].map((e, ind) => {

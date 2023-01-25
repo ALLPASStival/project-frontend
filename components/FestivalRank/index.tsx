@@ -36,7 +36,11 @@ const FestivalRank = () => {
       {/*  <TopLeft>축제 순위</TopLeft>*/}
       {/*  <TopRight>전체 보기</TopRight>*/}
       {/*</TopHeader>*/}
-      <MiddleBox>Lots of likes</MiddleBox>
+      <MiddleBox>
+        <div />
+        <span>Lots of likes</span>
+        <div />
+      </MiddleBox>
       <Rank>
         {FestivalGood &&
           [...Array(FestivalGood?.length)].map((e, ind) => {
