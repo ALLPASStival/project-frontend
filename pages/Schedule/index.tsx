@@ -20,7 +20,7 @@ const Schedule = () => {
     { date: 7, fests: [] },
     { date: 8, fests: [] },
     { date: 9, fests: [] },
-    { date: 10, fests: ["겨울왕국제천 페스티벌"] },
+    { date: 10, fests: ["처용문화제"] },
     { date: 11, fests: [] },
     { date: 12, fests: [] },
     { date: 13, fests: [] },
@@ -34,9 +34,9 @@ const Schedule = () => {
     { date: 21, fests: [] },
     { date: 22, fests: [] },
     { date: 23, fests: [] },
-    { date: 24, fests: ["처용문화제", "동성로축제"] },
+    { date: 24, fests: ["동성로축제"] },
     { date: 25, fests: [] },
-    { date: 26, fests: [] },
+    { date: 26, fests: ["겨울왕국제천 페스티벌"] },
     { date: 27, fests: [] },
     { date: 28, fests: [] },
     { date: 29, fests: [] },
@@ -50,7 +50,7 @@ const Schedule = () => {
     festivalName: "거제 섬꽃축제",
     holdingVenue: "거제시 농업개발원",
     startDate: "2023-01-01",
-    finishDate: "2023-01-06",
+    finishDate: "01-06",
     hostInst: "거제시농업기술센터 농업관광과",
     hostOrg: "거제시농업기술센터 농업관광과",
     telNum: "",
@@ -99,7 +99,7 @@ const Schedule = () => {
       return (
         <li
           style={{
-            fontSize: "2rem",
+            fontSize: "1.7rem",
             listStyleType: "disc",
             listStylePosition: "outside",
             marginBottom: "1.1rem",
@@ -107,10 +107,10 @@ const Schedule = () => {
           }}
           onClick={() => {
             setFestInfo({
-              festivalName: "겨울왕국제천 페스티벌",
-              holdingVenue: "제천 시내",
+              festivalName: "처용문화제",
+              holdingVenue: "태화강 국가정원 일원",
               startDate: "2023-01-10",
-              finishDate: "2023-01-16",
+              finishDate: "01-16",
               hostInst: "거제시농업기술센터 농업관광과",
               hostOrg: "거제시농업기술센터 농업관광과",
               telNum: "",
@@ -119,7 +119,7 @@ const Schedule = () => {
               content:
                 '"꽃, 문화, 사람이 어우러지는 가을꽃 축제이다. 주행사로는 국화분재 전시, 힐링허브랜드, 가을꽃 조형물 전시, 테마꽃동산, 국화소품, 실증시험온실, 화목류시험포, 난지과수원 등이 있다."',
               view: null,
-              etc: "http://www.jccf.or.kr/theme/jccf/html/festival/image/61.jpg",
+              etc: "https://uacf.or.kr/images/sub/220126_15.jpg",
               author: null,
               likes: 5,
               review: 1,
@@ -186,7 +186,9 @@ const Schedule = () => {
           </StyledDivColumn>
           <Span style={{ fontSize: "4rem" }}>{monthWord}</Span>
         </StyledDivRow>
-        <StyledDivRow style={{ alignItems: "flex-start" }}>
+        <StyledDivRow
+          style={{ justifyContent: "space-around", alignItems: "flex-start" }}
+        >
           <Calendar>{calendar}</Calendar>
           <DetailInfo>
             <Info style={{ fontSize: "3rem", fontWeight: "bold" }}>
