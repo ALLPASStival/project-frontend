@@ -3,12 +3,7 @@ import HeaderBar from "@components/HeaderBar";
 import { Wrapper } from "../../Style/Wrapper";
 // import ReactSearchBox from "react-search-box";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMagnifyingGlass,
-  faThumbsUp,
-  faPencil,
-  faSearch,
-} from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faPencil } from "@fortawesome/free-solid-svg-icons";
 
 import {
   BottomSide,
@@ -151,6 +146,7 @@ const Search = () => {
         style={{
           height: "100%",
           width: "90%",
+          paddingTop: "40rem",
           paddingLeft: "5rem",
           paddingRight: "5rem",
         }}
@@ -158,7 +154,6 @@ const Search = () => {
         <SearchMain>
           <TopHeader>
             <TopTitle>축제 찾기</TopTitle>
-
             {/*<ReactSearchBox*/}
             {/*  placeholder="검색창"*/}
             {/*  data={data}*/}
@@ -211,18 +206,28 @@ const Search = () => {
                           [지역 축제] {List[ind].festivalName}
                         </ListTopTitle>
                         <ListTopGood>
-                          <FontAwesomeIcon icon={faThumbsUp} />
-                          {List[ind].likes}
-                          <FontAwesomeIcon icon={faPencil} />
-                          {List[ind].review}
+                          <FontAwesomeIcon
+                            icon={faThumbsUp}
+                            style={{ marginRight: "0.7rem" }}
+                          />
+                          <span style={{ marginRight: "0.7rem" }}>
+                            {List[ind].likes}
+                          </span>
+                          <FontAwesomeIcon
+                            icon={faPencil}
+                            style={{ marginRight: "0.7rem" }}
+                          />
+                          <span style={{ marginRight: "0.7rem" }}>
+                            {List[ind].review}
+                          </span>
                         </ListTopGood>
                       </ListTop>
                       <ListBottom>
-                        <div>장소:{List[ind].holdingVenue}</div>
+                        <div>장소 : {List[ind].holdingVenue}</div>
                         <div>
-                          일시:{List[ind].startDate}~ {List[ind].finishDate}
+                          일시 : {List[ind].startDate}~ {List[ind].finishDate}
                         </div>
-                        <div>월: {List[ind].startDate.substring(5, 7)}월</div>
+                        <div>월 : {List[ind].startDate.substring(5, 7)}월</div>
                       </ListBottom>
                     </FestivalList>
                   </Link>

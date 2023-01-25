@@ -43,11 +43,12 @@ export const Rank = styled.div`
   width: 100%;
   justify-content: space-between;
   margin: 1rem;
-  background-color: #6a758e;
   padding: 2%;
   border-radius: 2rem;
   & img {
     width: 25rem;
-    height: 35rem;
+    height: 33rem;
+    border-radius: 1rem;
+    border: 15px solid #6a758e;
   }
 `;
