@@ -518,7 +518,7 @@ const Map = () => {
     <>
       <HeaderBar />
       <Wrapper>
-        <div id="map" style={{ width: "1600px", height: "1000px" }}></div>
+        <div id="map" style={{ width: "1430px", height: "650px" }} />
       </Wrapper>
     </>
   );
