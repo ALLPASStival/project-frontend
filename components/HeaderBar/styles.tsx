@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Bar = styled.div`
   background-color: #34435b;
@@ -11,7 +12,7 @@ export const Bar = styled.div`
 `;
 
 export const MainBar = styled.div`
-  padding: 0.5rem 3rem;
+  padding: 1.5rem 5rem;
 
   & span a {
     text-decoration: none;
@@ -32,12 +33,15 @@ export const TopMenu = styled.div`
   }
 `;
 
+export const Icon = styled(FontAwesomeIcon)`
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+`;
+
 export const LeftMenu = styled.div`
-  margin-left: 1rem;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: bold;
   color: #fe9010;
-  
 `;
 
 export const RightMenu = styled.div`
@@ -46,7 +50,6 @@ export const RightMenu = styled.div`
 
   & span {
     color: #fe9010;
-    font-weight: bold;
     font-size: 1.3rem;
 
     & span {
@@ -65,7 +68,7 @@ export const Profile = styled.div`
   }
 `;
 export const SubBar = styled.div`
-  padding: 0.8rem 2rem;
+  padding: 1.5rem 2rem;
 
   display: flex;
   justify-content: space-between;
@@ -79,7 +82,6 @@ export const SubBar = styled.div`
 
   & span {
     font-size: 1.3rem;
-    font-weight: bold;
     color: #fe9010;
     margin-left: 2rem;
     cursor: pointer;

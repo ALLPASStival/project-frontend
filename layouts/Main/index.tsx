@@ -4,13 +4,15 @@ import SliderImage from "@components/SlideImage";
 import FestivalRank from "@components/FestivalRank";
 import { Wrapper } from "../../Style/Wrapper";
 import FestivalReviews from "@components/FestivalReviews";
+import { StyledDivColumn } from "../../Style/FlexBox";
 
 const Main = () => {
   return (
-    <Wrapper
+    <StyledDivColumn
       style={{
         height: "100%",
         width: "90%",
+        paddingTop: "40%",
         paddingLeft: "5rem",
         paddingRight: "5rem",
       }}
@@ -19,7 +21,7 @@ const Main = () => {
       <SliderImage />
       <FestivalRank />
       <FestivalReviews />
-    </Wrapper>
+    </StyledDivColumn>
   );
 };
 

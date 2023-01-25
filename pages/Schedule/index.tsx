@@ -2,6 +2,7 @@ import HeaderBar from "@components/HeaderBar";
 import { faPencil, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { StyledDivColumn, StyledDivRow } from "../../Style/FlexBox";
 import { Wrapper } from "../../Style/Wrapper";
@@ -19,21 +20,21 @@ const Schedule = () => {
     { date: 7, fests: [] },
     { date: 8, fests: [] },
     { date: 9, fests: [] },
-    { date: 10, fests: [] },
+    { date: 10, fests: ["겨울왕국제천 페스티벌"] },
     { date: 11, fests: [] },
     { date: 12, fests: [] },
     { date: 13, fests: [] },
     { date: 14, fests: [] },
-    { date: 15, fests: [] },
+    { date: 15, fests: ["왕버들기원제"] },
     { date: 16, fests: [] },
-    { date: 17, fests: [] },
+    { date: 17, fests: ["울산고래축제"] },
     { date: 18, fests: [] },
     { date: 19, fests: [] },
     { date: 20, fests: [] },
     { date: 21, fests: [] },
     { date: 22, fests: [] },
     { date: 23, fests: [] },
-    { date: 24, fests: [] },
+    { date: 24, fests: ["처용문화제", "동성로축제"] },
     { date: 25, fests: [] },
     { date: 26, fests: [] },
     { date: 27, fests: [] },
@@ -103,6 +104,27 @@ const Schedule = () => {
             listStylePosition: "outside",
             marginBottom: "1.1rem",
             fontWeight: "normal",
+          }}
+          onClick={() => {
+            setFestInfo({
+              festivalName: "겨울왕국제천 페스티벌",
+              holdingVenue: "제천 시내",
+              startDate: "2023-01-10",
+              finishDate: "2023-01-16",
+              hostInst: "거제시농업기술센터 농업관광과",
+              hostOrg: "거제시농업기술센터 농업관광과",
+              telNum: "",
+              homepAddr: "",
+              streetAddr: "경상남도 거제시 거제면 거제남서로 3577",
+              content:
+                '"꽃, 문화, 사람이 어우러지는 가을꽃 축제이다. 주행사로는 국화분재 전시, 힐링허브랜드, 가을꽃 조형물 전시, 테마꽃동산, 국화소품, 실증시험온실, 화목류시험포, 난지과수원 등이 있다."',
+              view: null,
+              etc: "http://www.jccf.or.kr/theme/jccf/html/festival/image/61.jpg",
+              author: null,
+              likes: 5,
+              review: 1,
+            });
+            setLikes(festInfo.likes);
           }}
         >
           {f}
@@ -206,7 +228,9 @@ const Schedule = () => {
             </StyledDivColumn>
             <StyledDivRow style={{ marginTop: "3rem" }}>
               <OrangeBtn onClick={onClickLike}>좋아요</OrangeBtn>
-              <OrangeBtn>후기쓰기</OrangeBtn>
+              <Link to="/writingreview">
+                <OrangeBtn>후기쓰기</OrangeBtn>
+              </Link>
             </StyledDivRow>
           </DetailInfo>
         </StyledDivRow>

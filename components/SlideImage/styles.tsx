@@ -7,8 +7,8 @@ export const Wrapper = styled.section`
   .slide {
     margin: 0 auto;
 
-    height: 35rem;
-    width: 90vw;
+    height: 60rem;
+    width: 92vw;
   }
 `;
 

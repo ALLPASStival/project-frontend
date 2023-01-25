@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
+import { StyledDivColumn } from "../../Style/FlexBox";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled(StyledDivColumn)`
+  align-items: center;
+`;
 export const TopHeader = styled.div`
   display: flex;
   justify-content: space-between;
@@ -29,10 +32,13 @@ export const Rank = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 1rem;
+  background-color: #6a758e;
+  padding: 2%;
+  width: 100%;
+  border-radius: 2rem;
   & img {
-    width: 27rem;
-    height: 40rem;
+    width: 25rem;
+    height: 35rem;
   }
 `;
 export const RankBox = styled.div`

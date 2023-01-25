@@ -15,6 +15,7 @@ import {
   RightMenu,
   SubBar,
   TopMenu,
+  Icon,
 } from "@components/HeaderBar/styles";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -48,7 +49,7 @@ const HeaderBar = () => {
             <span>
               <Link to="login">
                 <span>
-                  <FontAwesomeIcon icon={faArrowRightToBracket} />
+                  <Icon icon={faArrowRightToBracket} />
                   {!isLoggingIn ? (
                     <Link to="/login">로그인</Link>
                   ) : (
@@ -60,7 +61,7 @@ const HeaderBar = () => {
             <span>
               <Link to="signup">
                 <span>
-                  <FontAwesomeIcon icon={faCheckToSlot} />
+                  <Icon icon={faCheckToSlot} />
                   회원가입
                 </span>
               </Link>
@@ -68,7 +69,7 @@ const HeaderBar = () => {
             <span>
               <Link to="mypage">
                 <span>
-                  <FontAwesomeIcon icon={faUser} />
+                  <Icon icon={faUser} />
                   MY PAGE
                 </span>
               </Link>
@@ -76,7 +77,7 @@ const HeaderBar = () => {
             <span>
               <Link to="callcenter">
                 <span>
-                  <FontAwesomeIcon icon={faPhone} />
+                  <Icon icon={faPhone} />
                   고객 센터
                 </span>
               </Link>
