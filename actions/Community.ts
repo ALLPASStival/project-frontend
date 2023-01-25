@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import CommunityState from "../reducers/community";
-import { Register } from "../reducers/user";
 
 export const postFree = createAsyncThunk<CommunityState, any>(
   "post_Free",
