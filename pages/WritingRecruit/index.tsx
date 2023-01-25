@@ -86,30 +86,11 @@ const WritingRecruit = () => {
             </Block>
             <Block>
               <Left>작성자</Left>
-              <BlockInPut
-                type="text"
-                id="id"
-                name="id"
-                value={writer}
-                onChange={onChangeWriter}
-                placeholder="작성자"
-              />
+              <Right>야무지조</Right>
             </Block>
             <Block>
               <Left>축제</Left>
               <Right>
-                {/*<SearchBox style={{ width: "26.7rem", height: "4.8rem" }}>*/}
-                {/*  <FontAwesomeIcon*/}
-                {/*    icon={faSearch}*/}
-                {/*    style={{ fontSize: "2.5rem" }}*/}
-                {/*  />*/}
-                {/*  <input*/}
-                {/*    type="text"*/}
-                {/*    id="search"*/}
-                {/*    name="search"*/}
-                {/*    style={{ width: "16rem", height: "4.5rem" }}*/}
-                {/*  />*/}
-                {/*</SearchBox>*/}
                 <select onChange={onChangeFestival} value={festivalName}>
                   {festivalList.map((item) => (
                     <option value={item} key={item}>
@@ -121,16 +102,13 @@ const WritingRecruit = () => {
             </Block>
             <Block>
               <Left>성별</Left>
-              <Right>성별 받아 와서 여기 넣기!</Right>
+              <Right>남자</Right>
             </Block>
             <Block>
               <Left>나이</Left>
-              <Right>나이 받아 와서 여기 넣기!</Right>
+              <Right>25</Right>
             </Block>
-            <Block>
-              <Left>별점</Left>
-              <Right></Right>
-            </Block>
+
             <Block style={{ height: "21.3rem" }}>
               <Left>본문</Left>
               <BlockInPut

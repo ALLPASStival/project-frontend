@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import HeaderBar from "@components/HeaderBar";
 import { Wrapper } from "../../Style/Wrapper";
 // import ReactSearchBox from "react-search-box";
@@ -36,6 +36,7 @@ import { useInView } from "react-intersection-observer";
 
 const Search = () => {
   const dispatch = useAppDispatch();
+  const [value, setValue] = useState("");
   const [ref, inView] = useInView({ threshold: [0, 0.25, 0.5, 0.75, 1] });
 
   const List = useSelector((state: RootState) => state.festival.festival);
@@ -54,6 +55,95 @@ const Search = () => {
       dispatch(getFestival({}));
     }
   }, [inView]);
+
+  const festivalList = [
+    "학교 축제",
+    "지역 축제",
+    "영화제",
+    "음악 축제",
+    "종교 축제",
+  ];
+
+  const PlaceList = [
+    "경기도",
+    "서울",
+    "제주도",
+    "충청도",
+    "경상도",
+    "전라도",
+    "강원도",
+  ];
+
+  const MonthList = [
+    "1월",
+    "2월",
+    "3월",
+    "4월",
+    "5월",
+    "6월",
+    "7월",
+    "8월",
+    "9월",
+    "10월",
+    "11월",
+    "12월",
+  ];
+
+  const List2 = [
+    {
+      name: "프로방스 마을 빛 축제",
+      place: "프로방스 마을",
+      date: "2022-12-16~2022-12-17",
+      month: "12월",
+    },
+    {
+      name: "안성 두메 호수 빙어축제",
+      place: "두교리광혜원저수지",
+      date: "2022-12-24~2023-02-05",
+      month: "12월",
+    },
+    {
+      name: "뷰티풀 고양",
+      place: "일산 문화광장",
+      date: "2022-12-02~2022-12-03",
+      month: "12월",
+    },
+    {
+      name: "펫츠런",
+      place: "고양시 일산 문화광장",
+      date: "2022-12-02~2022-12-03",
+      month: "12월",
+    },
+    {
+      name: "퍼스트 가든 빛 축제",
+      place: "파주시 퍼스트가든",
+      date: "2022-12-01~2022-12-03",
+      month: "12월",
+    },
+    {
+      name: "안산 별빛마을",
+      place: "안산 문화광장",
+      date: "2022-12-06~2022-12-09",
+      month: "12월",
+    },
+  ];
+
+  const [festivalKind, setFestival] = useState(festivalList[0]);
+
+  const onChangeValue = useCallback((e: any) => {
+    setFestival(e.target.value);
+  }, []);
+
+  const [festivalKind1, setFestival1] = useState(PlaceList[0]);
+  const onChangeValue1 = useCallback((e: any) => {
+    setFestival1(e.target.value);
+  }, []);
+
+  const [festivalKind2, setFestival2] = useState(MonthList[0]);
+  const onChangeValue2 = useCallback((e: any) => {
+    setFestival2(e.target.value);
+  }, []);
+
   return (
     <>
       <HeaderBar />
@@ -82,42 +172,31 @@ const Search = () => {
             </TopSearchBox> */}
           </TopHeader>
           <MiddleSide>
-            <LeftOpt>
-              <option key="banana" value="banana">
-                축제 카테고리
-              </option>
-              <option key="apple" value="apple">
-                축제 카테고리2
-              </option>
-              <option key="orange" value="orange">
-                축제 카테고리3
-              </option>
+            <LeftOpt onChange={onChangeValue} value={festivalKind}>
+              {festivalList.map((item) => (
+                <option value={item} key={item}>
+                  {item}
+                </option>
+              ))}
             </LeftOpt>
-            <MiddleOpt>
-              <option key="banana" value="banana">
-                지역
-              </option>
-              <option key="apple" value="apple">
-                지역2
-              </option>
-              <option key="orange" value="orange">
-                지역3
-              </option>
+            <MiddleOpt onChange={onChangeValue1} value={festivalKind1}>
+              {PlaceList.map((item) => (
+                <option value={item} key={item}>
+                  {item}
+                </option>
+              ))}
             </MiddleOpt>
-            <RightOpt>
-              <option key="banana" value="banana">
-                월
-              </option>
-              <option key="apple" value="apple">
-                일
-              </option>
-              <option key="orange" value="orange">
-                달
-              </option>
+            <RightOpt onChange={onChangeValue2} value={festivalKind2}>
+              {MonthList.map((item) => (
+                <option value={item} key={item}>
+                  {item}
+                </option>
+              ))}
             </RightOpt>
           </MiddleSide>
           <BottomSide>
             {List &&
+              festivalKind2 != "12월" &&
               [...Array(List?.length)].map((e, ind) => {
                 const MainId = List[ind].festivalId;
                 return (
@@ -126,7 +205,7 @@ const Search = () => {
                     style={{ textDecoration: "none", color: "black" }}
                     key={ind}
                   >
-                    <FestivalList>
+                    <FestivalList ref={ref}>
                       <ListTop>
                         <ListTopTitle>
                           [지역 축제] {List[ind].festivalName}
@@ -146,27 +225,30 @@ const Search = () => {
                         <div>월: {List[ind].startDate.substring(5, 7)}월</div>
                       </ListBottom>
                     </FestivalList>
-                    <div ref={ref} />
                   </Link>
                 );
               })}
-
-            <FestivalList>
-              <ListTop>
-                <ListTopTitle>[지역 축제] 어디 지역 딸기 축제</ListTopTitle>
-                <ListTopGood>
-                  <FontAwesomeIcon icon={faThumbsUp} />
-                  11
-                  <FontAwesomeIcon icon={faPencil} />
-                  11
-                </ListTopGood>
-              </ListTop>
-              <ListBottom>
-                <div>장소</div>
-                <div>일시</div>
-                <div>월</div>
-              </ListBottom>
-            </FestivalList>
+            {List2 &&
+              festivalKind2 == "12월" &&
+              [...Array(List2?.length)].map((e, ind) => {
+                return (
+                  <FestivalList>
+                    <ListTop>
+                      <ListTopTitle>[지역 축제] {List2[ind].name}</ListTopTitle>
+                      <ListTopGood>
+                        <FontAwesomeIcon icon={faThumbsUp} />
+                        0
+                        <FontAwesomeIcon icon={faPencil} />0
+                      </ListTopGood>
+                    </ListTop>
+                    <ListBottom>
+                      <div>장소:{List2[ind].place}</div>
+                      <div>일시:{List2[ind].date}</div>
+                      <div>월: {List2[ind].month}월</div>
+                    </ListBottom>
+                  </FestivalList>
+                );
+              })}
           </BottomSide>
         </SearchMain>
       </Wrapper>

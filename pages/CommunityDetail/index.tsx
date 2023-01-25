@@ -133,6 +133,7 @@ const CommunityDetail = () => {
           <CommunityContainer>
             <Block>
               <Left>작성자</Left>
+              <Right>야무지조</Right>
             </Block>
             <Block>
               <Left>본문</Left>
