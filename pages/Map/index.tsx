@@ -419,7 +419,7 @@ const Map = () => {
       let content = document.createElement("div");
       content.className = "wrap";
       content.style.cssText =
-        "position: absolute;left: 0;bottom: 40px;width: 250px;height: 122px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px";
+        "position: absolute;left: 0;bottom: 40px;width: 250px;height: 300px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px";
 
       let info = document.createElement("div");
       info.className = "info";
@@ -458,8 +458,8 @@ const Map = () => {
       //커스텀오버레이 이미지
       let imgContent = document.createElement("img");
       imgContent.setAttribute("src", data.img);
-      imgContent.setAttribute("width", "120");
-      imgContent.setAttribute("heigth", "120");
+      imgContent.setAttribute("width", "150");
+      imgContent.setAttribute("heigth", "150");
       imgDiv.appendChild(imgContent);
 
       let descContent = document.createElement("div");
@@ -472,7 +472,7 @@ const Map = () => {
       let addressContent = document.createElement("div");
       addressContent.className = "ellipsis";
       addressContent.style.cssText =
-        "overflow: hidden;text-overflow: ellipsis;white-space: nowrap;";
+        "overflow: hidden;text-overflow: ellipsis;white-space: nowrap; margin-bottom: 7px";
       addressContent.appendChild(document.createTextNode(data.addr1));
       descContent.appendChild(addressContent);
 
@@ -480,7 +480,7 @@ const Map = () => {
       let address2Content = document.createElement("div");
       address2Content.className = "jibun ellipsis";
       address2Content.style.cssText =
-        "font-size: 11px;color: #888;margin-top: -2px;";
+        "font-size: 11px;color: #888;margin-top: -2px; margin-bottom: 7px";
       address2Content.appendChild(document.createTextNode(data.detail));
       descContent.appendChild(address2Content);
 
@@ -494,7 +494,7 @@ const Map = () => {
 
       LinkContent.className = "link";
       LinkContent.appendChild(document.createTextNode("홈페이지"));
-      LinkContent.style.cssText = "color: #5085BB;";
+      LinkContent.style.cssText = "color: #5085BB;font-size: 8px";
       LinkDiv.appendChild(LinkContent);
       //마커 위에 커스텀오버레이 콘텐츠 Dom으로 구현 끝
 
@@ -518,7 +518,7 @@ const Map = () => {
     <>
       <HeaderBar />
       <Wrapper>
-        <div id="map" style={{ width: "1600px", height: "1000px" }}></div>
+        <div id="map" style={{ width: "1430px", height: "650px" }} />
       </Wrapper>
     </>
   );

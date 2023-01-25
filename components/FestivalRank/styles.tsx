@@ -32,13 +32,14 @@ export const Rank = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #6a758e;
   padding: 2%;
   width: 100%;
   border-radius: 2rem;
   & img {
     width: 25rem;
-    height: 35rem;
+    height: 33rem;
+    border-radius: 1rem;
+    border: 15px solid #6a758e;
   }
 `;
 export const RankBox = styled.div`
