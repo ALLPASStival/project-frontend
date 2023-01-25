@@ -27,7 +27,13 @@ export const TopRight = styled.button`
 
 export const Rank = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  & img {
+    width: 27rem;
+    height: 40rem;
+  }
 `;
 export const RankBox = styled.div`
   font-size: 3rem;

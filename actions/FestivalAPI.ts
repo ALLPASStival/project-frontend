@@ -4,8 +4,8 @@ import axios from "axios";
 import { FestivalState } from "../reducers/festival";
 
 //개별 축제정보 불러오기
-export const getFestival = createAsyncThunk<FestivalState, any>(
-  "GET_FESTIVAL",
+export const getEachFestival = createAsyncThunk<FestivalState, any>(
+  "GET_EachFestival",
   async (festival: FestivalState) => {
     try {
       const response = await axios.get(
@@ -21,14 +21,13 @@ export const getFestival = createAsyncThunk<FestivalState, any>(
 );
 
 //축제 리스트 조회
-export const getEachFestival = createAsyncThunk<FestivalState, any>(
-  "GET_EachFESTIVAL",
+export const getFestival = createAsyncThunk<FestivalState, any>(
+  "GET_Festival",
   async (festival: FestivalState) => {
     try {
       const response = await axios.get(
         "http://3.36.112.187:8080/api/v1/festivals?page=0 "
       );
-      console.log(response.data);
 
       return response.data;
     } catch (e: any) {
@@ -47,6 +46,22 @@ export const getFestivalReview = createAsyncThunk<FestivalState, any>(
       );
 
       console.log(response.data);
+
+      return response.data;
+    } catch (e: any) {
+      return e.rejectWithValue(e.response.data);
+    }
+  }
+);
+
+//축제 리뷰 랭킹
+export const getFestivalGood = createAsyncThunk<FestivalState, any>(
+  "GET_FestivalGood",
+  async (festival: FestivalState) => {
+    try {
+      const response = await axios.get(
+        "http://3.36.112.187:8080/api/v1/festivals/ranks/likes"
+      );
 
       return response.data;
     } catch (e: any) {

@@ -3,6 +3,7 @@ import { RootState } from "../redux/store";
 import {
   getEachFestival,
   getFestival,
+  getFestivalGood,
   getFestivalReview,
 } from "../actions/FestivalAPI";
 //
@@ -12,6 +13,7 @@ export interface FestivalState {
   content: any;
   eachFestival: any;
   festivalReview: any;
+  festivalGood: any;
 
   error: any;
 }
@@ -22,9 +24,9 @@ const initialState: FestivalState = {
   content: [],
   eachFestival: [],
   festivalReview: [],
+  festivalGood: [],
   error: "",
 };
-
 export const festivalSLice = createSlice({
   name: "festival",
   initialState,
@@ -32,13 +34,16 @@ export const festivalSLice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(getFestival.fulfilled, (state, action) => {
-        state.festival = action.payload?.result.content;
+        state.festival = action.payload?.result?.content;
       })
       .addCase(getEachFestival.fulfilled, (state, action) => {
         state.eachFestival = action.payload?.result.content;
       })
       .addCase(getFestivalReview.fulfilled, (state, action) => {
         state.festivalReview = action.payload?.result.content;
+      })
+      .addCase(getFestivalGood.fulfilled, (state, action) => {
+        state.festivalGood = action.payload?.result.content;
       }),
 });
 

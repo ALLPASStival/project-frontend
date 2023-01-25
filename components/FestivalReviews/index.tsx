@@ -24,8 +24,6 @@ const FestivalReviews = () => {
     (state: RootState) => state.festival.festivalReview
   );
 
-  console.log(FestivalReview[0]?.etc);
-
   return (
     <Wrapper>
       <MiddleBox>Lots of reviews</MiddleBox>
