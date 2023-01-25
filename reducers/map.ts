@@ -1,63 +1,29 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../redux/store";
-import { addUserAsync } from "../actions/UserAPI";
-import axios from "axios";
+import { getMap } from "../actions/Map";
 
-export interface User {
-  isLoggingIn: boolean;
-  data: any;
-  id: string;
-  password: string;
+export interface MapState {
+  result: any;
+  content: any;
+  map: any;
   error: any;
 }
 
-const initialState: User = {
-  isLoggingIn: false,
-  data: [],
-  id: "",
-  password: "",
+const initialState: MapState = {
+  result: {},
+  content: [],
+  map: "",
   error: "",
 };
 
-export const userSlice = createSlice({
-  name: "user",
+export const mapSlice = createSlice({
+  name: "map",
   initialState,
-  reducers: {
-    logOut(state, action) {
-      state.data = null;
-    },
-    setLoginForm(state, action) {
-      state.data = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) =>
-    builder
-      .addCase(addUserAsync.pending, (state, action) => {
-        state.data = null;
-        state.isLoggingIn = true;
-      })
-      .addCase(addUserAsync.fulfilled, (state, action) => {
-        state.data = action.payload;
-        state.isLoggingIn = false;
-      })
-      .addCase(addUserAsync.rejected, (state, action) => {
-        state.error = action.payload;
-      }),
+    builder.addCase(getMap.fulfilled, (state, action) => {
+      state.map = action.payload?.result?.content;
+    }),
 });
 
-// const delay = (time: number, value: object) =>
-//   new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       resolve(value);
-//     }, time);
-//   });
-//
-// export const logIn = createAsyncThunk("user/logIn", async (data, thunkAPI) => {
-//   // throw new Error('비밀번호가 틀렸습니다.');
-//   return await delay(500, {
-//     userId: 1,
-//     nickname: "seongjun",
-//   });
-// });
-
-export default userSlice;
+export default mapSlice;
