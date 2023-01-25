@@ -61,7 +61,7 @@ const Map = () => {
     const mapOption = {
       //지도를 생성할 때 필요한 기본 옵션
       center: new kakao.maps.LatLng(37.31594605446268, 126.83897034588333), //지도의 중심좌표.
-      level: 5, //지도의 레벨(확대, 축소 정도)
+      level: 12, //지도의 레벨(확대, 축소 정도)
     };
 
     const map = new kakao.maps.Map(mapContainer, mapOption); //지도 생성 및 객체 리턴
@@ -510,7 +510,7 @@ const Map = () => {
     }
 
     //중심좌표 재설정
-    let position = new window.kakao.maps.LatLng(37.1493417, 128.2160865);
+    let position = new window.kakao.maps.LatLng(36.3504119, 127.3845475);
     map.setCenter(position);
   }, []);
 
@@ -518,7 +518,7 @@ const Map = () => {
     <>
       <HeaderBar />
       <Wrapper>
-        <div id="map" style={{ width: "1600px", height: "700px" }}></div>
+        <div id="map" style={{ width: "1600px", height: "1000px" }}></div>
       </Wrapper>
     </>
   );
