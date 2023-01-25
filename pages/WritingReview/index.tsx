@@ -26,7 +26,33 @@ const WritingReview = () => {
   const [title, onChangeTitle, setTitle] = useInput("");
   const [writer, onChangeWriter, setwriter] = useInput("");
   const [nickname, setNickname] = useState("");
-  const festivalName = "삼척맹방유채꽃행사";
+
+  const festivalList = [
+    "왕버들기원제",
+    "고싸움놀이축제",
+    "울산고래축제",
+    "굿모닝양림축제",
+    "제4회 블랙뮤직페스티벌",
+    "처용문화제",
+    "영주무섬외나무다리축제",
+    "노대 에코 페스티벌",
+    "제10회 의정부국제가야금축제",
+    "용아생가 어린이축제",
+    "봉산조형페스티벌",
+    "봉산도자기축제",
+    "궁거랑 벚꽃 한마당",
+    "동성로축제",
+    "봉산도예전",
+    "마량포 해넘이.해돋이 축제",
+    "삼척맹방유채꽃행사",
+    "2021청도반시축제",
+  ];
+
+  const [festivalName, setFestival] = useState(festivalList[0]);
+
+  const onChangeFestival = useCallback((e: any) => {
+    setFestival(e.target.value);
+  }, []);
 
   const onSubmitReview = useCallback(
     (e: any) => {
@@ -101,18 +127,25 @@ const WritingReview = () => {
             <Block>
               <Left>축제</Left>
               <Right>
-                <SearchBox style={{ width: "26.7rem", height: "4.8rem" }}>
-                  <FontAwesomeIcon
-                    icon={faSearch}
-                    style={{ fontSize: "2.5rem" }}
-                  />
-                  <input
-                    type="text"
-                    id="search"
-                    name="search"
-                    style={{ width: "16rem", height: "4.5rem" }}
-                  />
-                </SearchBox>
+                {/*<SearchBox style={{ width: "26.7rem", height: "4.8rem" }}>*/}
+                {/*  <FontAwesomeIcon*/}
+                {/*    icon={faSearch}*/}
+                {/*    style={{ fontSize: "2.5rem" }}*/}
+                {/*  />*/}
+                {/*  <input*/}
+                {/*    type="text"*/}
+                {/*    id="search"*/}
+                {/*    name="search"*/}
+                {/*    style={{ width: "16rem", height: "4.5rem" }}*/}
+                {/*  />*/}
+                {/*</SearchBox>*/}
+                <select onChange={onChangeFestival} value={festivalName}>
+                  {festivalList.map((item) => (
+                    <option value={item} key={item}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
               </Right>
             </Block>
             <Block style={{ height: "21.3rem" }}>
