@@ -10,7 +10,8 @@ import { OrgBtn, StyledDiv } from "../../Style/Community";
 
 const GetCommunity = () => {
   const dispatch = useAppDispatch();
-  const free = useSelector((state: RootState) => state.community.content);
+  const free = useSelector((state: RootState) => state.community.free);
+
   useEffect(() => {
     if (free) {
       dispatch(getFree({}))

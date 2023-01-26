@@ -11,7 +11,7 @@ import { OrgBtn, StyledDiv } from "../../Style/Community";
 const GetReview = () => {
   const dispatch = useAppDispatch();
 
-  const review = useSelector((state: RootState) => state.community.content);
+  const review = useSelector((state: RootState) => state.community.review);
   useEffect(() => {
     if (review) {
       dispatch(getReview({}))

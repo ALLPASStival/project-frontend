@@ -16,8 +16,9 @@ import {
 export interface CommunityState {
   result: any;
   content: any;
-  recruit: string;
-  free: string;
+  recruit: any;
+  review: any;
+  free: any;
   good: number;
   call: any;
 
@@ -27,8 +28,9 @@ export interface CommunityState {
 const initialState: CommunityState = {
   result: {},
   content: [],
-  recruit: "",
-  free: "",
+  recruit: [],
+  review: [],
+  free: [],
   good: 0,
   call: "",
   error: "",
@@ -42,15 +44,15 @@ export const CommunityState = createSlice({
     builder
       //리뷰게시판 불러오기
       .addCase(getReview.fulfilled, (state, action) => {
-        state.content = action.payload.result.content;
+        state.review = action.payload.result.content;
       })
       //자유게시판 불러오기
       .addCase(getFree.fulfilled, (state, action) => {
-        state.content = action.payload.result.content;
+        state.free = action.payload.result.content;
       })
       //구인게시판 불러오기
       .addCase(getRecruit.fulfilled, (state, action) => {
-        state.content = action.payload.result.content;
+        state.recruit = action.payload.result.content;
       })
       .addCase(getCallCenter.fulfilled, (state, action) => {
         state.content = action.payload.result.content;

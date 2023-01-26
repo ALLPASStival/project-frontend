@@ -11,7 +11,7 @@ import { OrgBtn, StyledDiv } from "../../Style/Community";
 const GetRecruit = () => {
   const dispatch = useAppDispatch();
 
-  const recruit = useSelector((state: RootState) => state.community.content);
+  const recruit = useSelector((state: RootState) => state.community.recruit);
 
   useEffect(() => {
     if (recruit) {
