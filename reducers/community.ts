@@ -32,7 +32,7 @@ const initialState: CommunityState = {
   review: [],
   free: [],
   good: 0,
-  call: "",
+  call: [],
   error: "",
 };
 
@@ -55,7 +55,7 @@ export const CommunityState = createSlice({
         state.recruit = action.payload.result.content;
       })
       .addCase(getCallCenter.fulfilled, (state, action) => {
-        state.content = action.payload.result.content;
+        state.call = action.payload.result.content;
       })
       .addCase(postFree.fulfilled, (state, action) => {
         state.free = action.payload.free;

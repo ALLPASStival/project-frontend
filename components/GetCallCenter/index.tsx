@@ -21,7 +21,7 @@ const GetCallCenter = () => {
       });
   }, []);
 
-  const call = useSelector((state: RootState) => state.community.content);
+  const call = useSelector((state: RootState) => state.community.call);
 
   return (
     <>
