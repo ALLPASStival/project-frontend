@@ -19,8 +19,8 @@ const Main = () => {
     >
       <HeaderBar />
       <SliderImage />
-      <FestivalRank />
       <FestivalReviews />
+      <FestivalRank />
     </StyledDivColumn>
   );
 };
