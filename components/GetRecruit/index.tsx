@@ -11,18 +11,20 @@ import { OrgBtn, StyledDiv } from "../../Style/Community";
 const GetRecruit = () => {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getRecruit({}))
-      .unwrap()
-      .then((response) => {
-        console.log("### 구인글: ", response);
-      })
-      .catch((error) => {
-        console.log("### error: ", error);
-      });
-  }, []);
-
   const recruit = useSelector((state: RootState) => state.community.content);
+
+  useEffect(() => {
+    if (recruit) {
+      dispatch(getRecruit({}))
+        .unwrap()
+        .then((response) => {
+          console.log("### 구인글: ", response);
+        })
+        .catch((error) => {
+          console.log("### error: ", error);
+        });
+    }
+  }, [dispatch]);
 
   return (
     <>

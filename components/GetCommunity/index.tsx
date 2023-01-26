@@ -10,30 +10,19 @@ import { OrgBtn, StyledDiv } from "../../Style/Community";
 
 const GetCommunity = () => {
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(getFree({}))
-      .unwrap()
-      .then((response) => {
-        console.log("### 자유글: ", response);
-      })
-      .catch((error) => {
-        console.log("### error: ", error);
-      });
-  }, []);
-
-  // useEffect(() => {
-  //   dispatch(getEachFestival({}))
-  //     .unwrap()
-  //     .then((response) => {
-  //       console.log("### response: ", response);
-  //     })
-  //     .catch((error) => {
-  //       console.log("### error: ", error);
-  //     });
-  // }, []);
-
   const free = useSelector((state: RootState) => state.community.content);
+  useEffect(() => {
+    if (free) {
+      dispatch(getFree({}))
+        .unwrap()
+        .then((response) => {
+          console.log("### 자유글: ", response);
+        })
+        .catch((error) => {
+          console.log("### error: ", error);
+        });
+    }
+  }, [dispatch]);
 
   return (
     <>

@@ -11,18 +11,19 @@ import { OrgBtn, StyledDiv } from "../../Style/Community";
 const GetReview = () => {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getReview({}))
-      .unwrap()
-      .then((response) => {
-        console.log("### 후기글: ", response);
-      })
-      .catch((error) => {
-        console.log("### error: ", error);
-      });
-  }, []);
-
   const review = useSelector((state: RootState) => state.community.content);
+  useEffect(() => {
+    if (review) {
+      dispatch(getReview({}))
+        .unwrap()
+        .then((response) => {
+          console.log("### 후기글: ", response);
+        })
+        .catch((error) => {
+          console.log("### error: ", error);
+        });
+    }
+  }, [dispatch]);
 
   return (
     <>
