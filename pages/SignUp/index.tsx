@@ -18,6 +18,7 @@ import { addUserAsync } from "../../actions/UserAPI";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Redirect } from "react-router";
+import { post } from "../../actions/FestivalAPI";
 
 const SingUp = () => {
   const dispatch = useAppDispatch();
@@ -203,14 +204,14 @@ const SingUp = () => {
                 <InputGender
                   type="radio"
                   name="성별"
-                  value="남자"
+                  value="male"
                   onChange={onChangegender}
                 />
                 여자
                 <InputGender
                   type="radio"
                   name="성별"
-                  value="여자"
+                  value="female"
                   onChange={onChangegender}
                 />
               </div>
