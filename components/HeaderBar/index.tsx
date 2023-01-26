@@ -43,7 +43,11 @@ const HeaderBar = () => {
       <MainBar>
         <TopMenu>
           <Link to="main" style={{ textDecoration: "none" }}>
-            <LeftMenu src="slideImage/logo.jpg" alt=""></LeftMenu>
+            <LeftMenu
+              src="slideImage/logo.jpg"
+              alt=""
+              style={{ height: "105%" }}
+            ></LeftMenu>
           </Link>
           <RightMenu>
             <span>

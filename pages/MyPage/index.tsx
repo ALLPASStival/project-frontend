@@ -192,8 +192,12 @@ const Mypage = () => {
       <OneFes>
         <FirstRow>
           <div>
-            <span>{fes.cat}</span>
-            <span>{fes.title}</span>
+            <span style={{ fontSize: "2.5rem" }}>
+              <b>{fes.cat}</b>
+            </span>
+            <span style={{ fontSize: "2.5rem" }}>
+              <b>{fes.title}</b>
+            </span>
           </div>
           <div>
             <FontAwesomeIcon
@@ -259,7 +263,7 @@ const Mypage = () => {
     return (
       <img
         src={r.url}
-        style={{ width: "17.7rem", height: "18.5rem", marginRight: "2%" }}
+        style={{ width: "17.7rem", height: "22rem", marginRight: "2%" }}
       />
     );
   });
@@ -272,14 +276,14 @@ const Mypage = () => {
           height: "100%",
           width: "90%",
           marginTop: 0,
-          paddingTop: "15%",
+          paddingTop: "12%",
           paddingBottom: "10%",
           paddingLeft: "5rem",
           paddingRight: "5rem",
           alignItems: "center",
         }}
       >
-        <StyledDivRow style={{ justifyContent: "space-between" }}>
+        <StyledDivRow style={{ width: "95%", justifyContent: "space-between" }}>
           <StyledDivColumn style={{ alignItems: "center" }}>
             {userInfo.profilePicUrl.length > 5 || previewImg ? (
               <>
@@ -296,7 +300,7 @@ const Mypage = () => {
               </>
             ) : (
               <ProfileBg>
-                <UserIcon icon={faUser} />
+                <UserIcon icon={faUser} style={{ color: "#fe9010" }} />
                 <form>
                   <input
                     type="file"
@@ -312,6 +316,7 @@ const Mypage = () => {
                     style={{
                       fontSize: "2rem",
                       fontWeight: "bold",
+                      color: "#fe9010",
                     }}
                   >
                     프로필 수정
@@ -319,7 +324,7 @@ const Mypage = () => {
                 </form>
               </ProfileBg>
             )}
-            <OrangeBox style={{ width: "39.9rem" }}>
+            <OrangeBox style={{ width: "35rem" }}>
               <OrangeSpan>닉네임</OrangeSpan>
               {isNickname ? (
                 <>
@@ -349,7 +354,7 @@ const Mypage = () => {
                 </>
               )}
             </OrangeBox>
-            <OrangeBox style={{ width: "39.9rem" }}>
+            <OrangeBox style={{ width: "35rem" }}>
               <OrangeSpan>이메일</OrangeSpan>
               {isId ? (
                 <>
@@ -387,7 +392,9 @@ const Mypage = () => {
               justifyContent: "flex-start",
             }}
           >
-            <StyledDivColumn style={{ height: "5.36rem", width: "100%" }}>
+            <StyledDivColumn
+              style={{ paddingTop: "5.5rem", height: "5rem", width: "100%" }}
+            >
               <CatBar>
                 <button
                   onClick={showDipFes}

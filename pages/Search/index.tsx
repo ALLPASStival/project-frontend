@@ -170,7 +170,7 @@ const Search = () => {
         style={{
           height: "100%",
           width: "90%",
-          paddingTop: "15rem",
+          paddingTop: "40rem",
           paddingLeft: "5rem",
           paddingRight: "5rem",
         }}
@@ -265,9 +265,16 @@ const Search = () => {
                     <ListTop>
                       <ListTopTitle>[지역 축제] {List2[ind].name}</ListTopTitle>
                       <ListTopGood>
-                        <FontAwesomeIcon icon={faThumbsUp} />
-                        0
-                        <FontAwesomeIcon icon={faPencil} />0
+                        <FontAwesomeIcon
+                          icon={faThumbsUp}
+                          style={{ marginRight: "0.7rem" }}
+                        />
+                        <span style={{ marginRight: "0.7rem" }}>0</span>
+                        <FontAwesomeIcon
+                          icon={faPencil}
+                          style={{ marginRight: "0.7rem" }}
+                        />
+                        <span style={{ marginRight: "0.7rem" }}>0</span>
                       </ListTopGood>
                     </ListTop>
                     <ListBottom>

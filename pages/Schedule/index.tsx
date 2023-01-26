@@ -162,7 +162,7 @@ const Schedule = () => {
           height: "100%",
           width: "90%",
           marginTop: 0,
-          paddingTop: "13%",
+          paddingTop: "15%",
           paddingBottom: "10%",
           paddingLeft: "7rem",
           alignItems: "center",
