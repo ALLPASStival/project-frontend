@@ -8,6 +8,8 @@ import {
   Right,
   StyledDiv,
   Table,
+  CommentTable,
+  CommentContainer,
 } from "../../Style/Community";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,6 +23,9 @@ import { getEach, postFree, postGood } from "../../actions/Community";
 import {
   BlockInPut,
   CommunityContainer,
+  CommnunityBlock,
+  CommnunityLeft,
+  CommnunityRight,
   Form,
 } from "@pages/WritingCommunity/styles";
 import useInput from "@hooks/useInput";
@@ -94,7 +99,10 @@ const CommunityDetail = () => {
             <Left>제목</Left>
             <Right colSpan={2}>{Each?.result?.title}</Right>
             <Right>
-              <FontAwesomeIcon icon={faThumbsUp} />
+              <FontAwesomeIcon
+                style={{ marginRight: "1.5rem" }}
+                icon={faThumbsUp}
+              />
               {Each?.result?.like}
             </Right>
           </Block>
@@ -112,30 +120,33 @@ const CommunityDetail = () => {
         </Form>
 
         <P>댓글 [{CommentList?.length}]</P>
-        <Table>
+        <CommentContainer>
           {CommentList &&
             [...Array(CommentList?.length)].map((e, ind) => {
               return (
                 <>
-                  <Block>
-                    <Left>작성자</Left>
-                    <Right>{CommentList[ind]?.userName}</Right>
-                  </Block>
-                  <Block>
-                    <Right colSpan={2}>{CommentList[ind]?.comment}</Right>
-                  </Block>
+                  <CommentTable>
+                    <Block>
+                      <Left>작성자</Left>
+                      <Right>{CommentList[ind]?.userName}</Right>
+                    </Block>
+                    <Block>
+                      <Right colSpan={2}>{CommentList[ind]?.comment}</Right>
+                    </Block>
+                  </CommentTable>
                 </>
               );
             })}
-        </Table>
+        </CommentContainer>
+
         <P>댓글 달기</P>
         <Form onSubmit={onSubmitComment}>
           <CommunityContainer>
-            <Block>
-              <Left>작성자</Left>
-              <Right>야무지조</Right>
-            </Block>
-            <Block>
+            <CommnunityBlock>
+              <CommnunityLeft>작성자</CommnunityLeft>
+              <CommnunityRight>야무지조</CommnunityRight>
+            </CommnunityBlock>
+            <Block style={{ height: "10.3rem" }}>
               <Left>본문</Left>
               <BlockInPut
                 type="text"

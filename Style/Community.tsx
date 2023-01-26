@@ -24,31 +24,51 @@ export const Category = styled.span`
   padding-bottom: 3rem;
 `;
 
+export const CommentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+export const CommentTable = styled.table`
+  width: 100%;
+  border-spacing: 3rem;
+  border: 1px gray solid;
+`;
+
 export const Table = styled.table`
   width: 100%;
   font-size: 2.4rem;
 `;
 
-export const Block = styled.tr`
+export const Block = styled.div`
   border-top: 1px solid #807979;
   border-bottom: 1px solid #807979;
+  display: flex;
+  flex-direction: row;
 `;
 
-export const Left = styled.td`
+export const Left = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
   background-color: #d0cfcf;
   width: 17.7rem;
-  text-align: center;
+
   padding: 1rem;
 `;
 export const Right = styled.td`
   padding-left: 3rem;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 60rem;
+  vertical-align: center;
 
   & select {
     width: 20rem;
     height: 3rem;
     font-weight: bold;
+  }
 `;
 
 export const StyledDiv = styled.div`
@@ -60,11 +80,11 @@ export const StyledDiv = styled.div`
 `;
 
 export const OrgBtn = styled.button`
-  font-weight: bold;
   font-size: 2.5rem;
   background-color: #fe9010;
   width: 16.2rem;
   height: 4.8rem;
   border-radius: 3rem;
   border: none;
+  margin-right: 3rem;
 `;

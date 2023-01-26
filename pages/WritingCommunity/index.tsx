@@ -10,7 +10,7 @@ import {
   CommunityContainer,
   Form,
 } from "./styles";
-import { Category } from "../../Style/Community";
+import { Category, Right } from "../../Style/Community";
 import { useAppDispatch } from "../../redux/hooks";
 import useInput from "@hooks/useInput";
 import { postFree } from "../../actions/Community";
@@ -55,14 +55,7 @@ const WritingCommunity = () => {
             </Block>
             <Block>
               <Left>작성자</Left>
-              <BlockInPut
-                type="text"
-                id="id"
-                name="id"
-                value={writer}
-                onChange={onChangeWriter}
-                placeholder="작성자"
-              />
+              <Right>야무지조</Right>
             </Block>
             <Block style={{ height: "21.3rem" }}>
               <Left>본문</Left>

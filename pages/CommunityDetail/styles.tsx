@@ -8,11 +8,11 @@ export const P = styled.p`
 `;
 
 export const GoodOrgBtn = styled.button`
-  font-weight: bold;
   font-size: 2rem;
   background-color: #fe9010;
   width: 16.2rem;
   height: 4.8rem;
   border-radius: 3rem;
   border: none;
+  margin-right: 3rem;
 `;

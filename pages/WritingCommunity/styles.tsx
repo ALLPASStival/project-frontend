@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Form = styled.form``;
-export const CommunityContainer = styled.div`
+export const CommunityContainer = styled.table`
   width: 100%;
   font-size: 2.4rem;
   display: flex;
@@ -13,6 +13,29 @@ export const Block = styled.div`
   border-bottom: 1px solid #807979;
   display: flex;
   flex-direction: row;
+`;
+
+export const CommnunityBlock = styled.tr`
+  border-top: 1px solid #807979;
+  border-bottom: 1px solid #807979;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const CommnunityLeft = styled.th`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  background-color: #d0cfcf;
+  width: 17.7rem;
+
+  padding: 1rem;
+`;
+
+export const CommnunityRight = styled.td`
+  padding-left: 3rem;
+  padding-top: 0.7rem;
 `;
 
 export const Left = styled.div`
@@ -27,7 +50,6 @@ export const Left = styled.div`
 `;
 export const BlockInPut = styled.input`
   padding-left: 3rem;
-  font-weight: bold;
   border: none;
   width: 50.7rem;
   text-align: left;

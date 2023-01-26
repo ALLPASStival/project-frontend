@@ -43,7 +43,7 @@ const HeaderBar = () => {
       <MainBar>
         <TopMenu>
           <Link to="main" style={{ textDecoration: "none" }}>
-            <LeftMenu>ALLPASSTIVAL</LeftMenu>
+            <LeftMenu src="slideImage/logo.jpg" alt=""></LeftMenu>
           </Link>
           <RightMenu>
             <span>
@@ -84,7 +84,7 @@ const HeaderBar = () => {
             </span>
           </RightMenu>
           <Profile>
-            <img src="SlideImage/img1.jpg" alt="프로필 사진" />
+            <img src="SlideImage/img4.jpg" alt="프로필 사진" />
           </Profile>
         </TopMenu>
       </MainBar>

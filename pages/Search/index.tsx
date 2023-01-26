@@ -121,6 +121,30 @@ const Search = () => {
       date: "2022-12-06~2022-12-09",
       month: "12월",
     },
+    {
+      name: "이천 별빛정원 우주",
+      place: "덕평자연 휴게소",
+      date: "2022-12-28~2022-12-30",
+      month: "12월",
+    },
+    {
+      name: "포천 허브랜드 불빛동화축제",
+      place: "포천 허브아일랜드",
+      date: "2022-12-12~2022-12-14",
+      month: "12월",
+    },
+    {
+      name: "파주 송어축제",
+      place: "광탄 레저타운",
+      date: "2022-12-21~2023-02-09",
+      month: "12월",
+    },
+    {
+      name: "양주 눈꽃축제",
+      place: "장흥자연휴양림",
+      date: "2019-12-27~2020-02-09",
+      month: "12월",
+    },
   ];
 
   const [festivalKind, setFestival] = useState(festivalList[0]);

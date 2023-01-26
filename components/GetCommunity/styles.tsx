@@ -9,8 +9,7 @@ export const Th = styled.th`
 
 export const ContentBox = styled.div`
   width: 100%;
-  font-size: 1.7rem;
-  font-weight: bold;
+  font-size: 1.5rem;
 `;
 
 export const EachContent = styled.div`

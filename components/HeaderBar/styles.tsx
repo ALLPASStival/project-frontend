@@ -38,9 +38,9 @@ export const Icon = styled(FontAwesomeIcon)`
   margin-bottom: 0.5rem;
 `;
 
-export const LeftMenu = styled.div`
-  font-size: 4rem;
-  font-weight: bold;
+export const LeftMenu = styled.img`
+  width: 32rem;
+  height: 4.5rem;
   color: #fe9010;
 `;
 
@@ -68,7 +68,7 @@ export const Profile = styled.div`
   }
 `;
 export const SubBar = styled.div`
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 3.5rem;
 
   display: flex;
   justify-content: space-between;

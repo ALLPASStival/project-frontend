@@ -73,8 +73,7 @@ export const OneFes = styled(StyledDivColumn)`
   margin-top: 3.1rem;
 
   & span {
-    font-size: 2.5rem;
-    font-weight: bold;
+    font-size: 2.2rem;
   }
 `;
 
@@ -88,7 +87,6 @@ export const SecondRow = styled(StyledDivRow)`
 
   & span {
     font-size: 2.5rem;
-    font-weight: bold;
     background-color: #fe9010;
     padding: 1.3rem;
     border-radius: 3rem;

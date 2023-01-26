@@ -419,7 +419,7 @@ const Map = () => {
       let content = document.createElement("div");
       content.className = "wrap";
       content.style.cssText =
-        "position: absolute;left: 0;bottom: 40px;width: 250px;height: 300px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px";
+        "position: absolute;left: 0;bottom: 40px;width: 250px;height: 120px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px";
 
       let info = document.createElement("div");
       info.className = "info";
