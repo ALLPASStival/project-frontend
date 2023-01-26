@@ -7,13 +7,12 @@ import {
 } from "../../Style/FlexBox";
 
 export const ProfileBg = styled(StyledDivCenter)`
-  background-color: #d9d9d9;
-  width: 30rem;
-  height: 30rem;
+  width: 27rem;
+  height: 27rem;
   border-radius: 50%;
   flex-direction: column;
   margin-bottom: 2.6rem;
-
+  border: 5px solid #fe9010;
   & span {
     font-size: 2rem;
     font-weight: bold;
@@ -23,8 +22,8 @@ export const ProfileBg = styled(StyledDivCenter)`
 
 export const UserIcon = styled(FontAwesomeIcon)`
   color: black;
-  width: 12rem;
-  height: 15rem;
+  width: 10rem;
+  height: 13rem;
 `;
 
 export const UserSpan = styled.span`
@@ -44,7 +43,7 @@ export const UserInput = styled.input`
 `;
 
 export const OrangeSpan = styled.span`
-  font-size: 2rem;
+  font-size: 1.5rem;
   opacity: 0.5;
 `;
 
@@ -68,9 +67,10 @@ export const CatBar = styled(StyledDivRow)`
 export const OneFes = styled(StyledDivColumn)`
   height: 7.5rem;
   width: 73.4rem;
-  background-color: #d9d9d9;
+  background-color: #e9e9e9;
   padding: 3rem;
   margin-top: 3.1rem;
+  border-radius: 2rem;
 
   & span {
     font-size: 2.2rem;
@@ -86,19 +86,21 @@ export const SecondRow = styled(StyledDivRow)`
   justify-content: space-between;
 
   & span {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     background-color: #fe9010;
-    padding: 1.3rem;
+    padding: 1.2rem;
+    padding-left: 4.5rem;
+    padding-right: 4.5rem;
     border-radius: 3rem;
   }
 `;
 
 export const FesWrapper = styled(StyledDivColumn)`
   width: 137.4rem;
-  height: 36.2rem;
+  height: 33rem;
   background-color: #ffd29c;
   flex-wrap: wrap;
-
+  margin: 0%;
   & span {
     font-size: 2.5rem;
     font-weight: bold;
