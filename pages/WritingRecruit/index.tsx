@@ -86,7 +86,7 @@ const WritingRecruit = () => {
               />
             </Block>
             <Block>
-              <Left>작성자</Left>
+              <Left>야무지조</Left>
               <Right>야무지조</Right>
             </Block>
             <Block>
