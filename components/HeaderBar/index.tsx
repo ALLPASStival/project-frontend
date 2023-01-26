@@ -83,9 +83,7 @@ const HeaderBar = () => {
               </Link>
             </span>
           </RightMenu>
-          <Profile>
-            <img src="SlideImage/img4.jpg" alt="프로필 사진" />
-          </Profile>
+          <Profile></Profile>
         </TopMenu>
       </MainBar>
       <SubBar>
