@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import { FestivalState } from "../reducers/festival";
+import { CommentState } from "../reducers/comment";
 
 //개별 축제정보 불러오기
 export const getEachFestival = createAsyncThunk<FestivalState, any>(
@@ -11,7 +12,6 @@ export const getEachFestival = createAsyncThunk<FestivalState, any>(
       const response = await axios.get(
         "http://3.36.112.187:8080/api/v1/festivals"
       );
-      console.log(response.data);
 
       return response.data;
     } catch (e: any) {
@@ -51,8 +51,6 @@ export const getFestivalReview = createAsyncThunk<FestivalState, any>(
         "http://3.36.112.187:8080/api/v1/festivals/ranks/reviews"
       );
 
-      console.log(response.data);
-
       return response.data;
     } catch (e: any) {
       return e.rejectWithValue(e.response.data);
@@ -60,7 +58,7 @@ export const getFestivalReview = createAsyncThunk<FestivalState, any>(
   }
 );
 
-//축제 리뷰 랭킹
+//축제 좋아요 랭킹
 export const getFestivalGood = createAsyncThunk<FestivalState, any>(
   "GET_FestivalGood",
   async (festival: FestivalState) => {
@@ -68,10 +66,32 @@ export const getFestivalGood = createAsyncThunk<FestivalState, any>(
       const response = await axios.get(
         "http://3.36.112.187:8080/api/v1/festivals/ranks/likes"
       );
-
       return response.data;
     } catch (e: any) {
       return e.rejectWithValue(e.response.data);
+    }
+  }
+);
+
+export const post = createAsyncThunk<FestivalState, any>(
+  "post",
+  async (thunkAPI) => {
+    try {
+      const response = await axios.post(
+        "http://3.36.112.187:8080/api/v1/festivals/6/likes",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+        }
+      );
+      alert("성공.");
+      return response.data;
+    } catch (e: any) {
+      alert("실패.");
+      console.log(e);
+      return thunkAPI.rejectWithValue(e.response.data);
     }
   }
 );
