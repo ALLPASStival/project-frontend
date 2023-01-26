@@ -40,7 +40,7 @@ export const Icon = styled(FontAwesomeIcon)`
 
 export const LeftMenu = styled.img`
   width: 32rem;
-  height: 4.5rem;
+  height: 5rem;
   color: #fe9010;
 `;
 
