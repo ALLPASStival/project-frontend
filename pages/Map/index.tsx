@@ -431,7 +431,7 @@ const Map = () => {
       let contentTitle = document.createElement("div");
       contentTitle.className = "title";
       contentTitle.style.cssText =
-        "padding: 5px 0 0 10px; height: 30px; background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;";
+        "padding: 5px 0 0 10px; height: 30px; background: #eee;border-bottom: 1px solid #ddd;font-size: 20px;font-weight: bold;";
       contentTitle.appendChild(document.createTextNode(data.title));
       info.appendChild(contentTitle);
 
@@ -472,7 +472,7 @@ const Map = () => {
       let addressContent = document.createElement("div");
       addressContent.className = "ellipsis";
       addressContent.style.cssText =
-        "overflow: hidden;text-overflow: ellipsis;white-space: nowrap; margin-bottom: 7px";
+        "overflow: hidden;text-overflow: ellipsis; font-size:15px;white-space: nowrap; margin-bottom: 7px";
       addressContent.appendChild(document.createTextNode(data.addr1));
       descContent.appendChild(addressContent);
 
@@ -480,7 +480,7 @@ const Map = () => {
       let address2Content = document.createElement("div");
       address2Content.className = "jibun ellipsis";
       address2Content.style.cssText =
-        "font-size: 11px;color: #888;margin-top: -2px; margin-bottom: 7px";
+        "font-size: 13px;color: #888;margin-top: -2px; margin-bottom: 7px";
       address2Content.appendChild(document.createTextNode(data.detail));
       descContent.appendChild(address2Content);
 
@@ -494,7 +494,7 @@ const Map = () => {
 
       LinkContent.className = "link";
       LinkContent.appendChild(document.createTextNode("홈페이지"));
-      LinkContent.style.cssText = "color: #5085BB;font-size: 8px";
+      LinkContent.style.cssText = "color: #5085BB;font-size: 12px";
       LinkDiv.appendChild(LinkContent);
       //마커 위에 커스텀오버레이 콘텐츠 Dom으로 구현 끝
 

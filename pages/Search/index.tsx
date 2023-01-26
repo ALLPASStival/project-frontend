@@ -170,7 +170,7 @@ const Search = () => {
         style={{
           height: "100%",
           width: "90%",
-          paddingTop: "40rem",
+          paddingTop: "15rem",
           paddingLeft: "5rem",
           paddingRight: "5rem",
         }}
