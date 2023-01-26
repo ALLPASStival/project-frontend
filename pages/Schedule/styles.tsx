@@ -9,13 +9,13 @@ export const Span = styled.span`
 
 export const Calendar = styled(StyledDivRow)`
   height: 64rem;
-  width: 91.3rem;
+  width: 100rem;
   flex-wrap: wrap;
 `;
 
 export const DateBox = styled(StyledDivColumn)`
   height: 11.9rem;
-  width: 9rem;
+  width: 10rem;
   background-color: ${(props: any) =>
     props.id % 2 == 0 ? "#F5A547" : "#FDC88A"};
   border-radius: 2rem;
@@ -27,11 +27,10 @@ export const DateBox = styled(StyledDivColumn)`
 
 export const DetailInfo = styled(StyledDivColumn)`
   height: 75rem;
-  width: 44.7rem;
+  width: 40rem;
   background-color: #ffdd95;
   border-radius: 2rem;
   padding-top: 5rem;
-  margin-left: 2.4rem;
   align-items: center;
   justify-content: flex-start;
 `;
