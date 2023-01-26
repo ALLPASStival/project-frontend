@@ -61,7 +61,7 @@ const WritingCallCenter = () => {
                 name="id"
                 value={writer}
                 onChange={onChangeWriter}
-                placeholder="작성자"
+                placeholder="야무지조"
               />
             </Block>
             <Block style={{ height: "21.3rem" }}>
