@@ -38,9 +38,9 @@ export const Icon = styled(FontAwesomeIcon)`
   margin-bottom: 0.5rem;
 `;
 
-export const LeftMenu = styled.img`
-  width: 32rem;
-  height: 5rem;
+export const LeftMenu = styled.div`
+  font-size: 4rem;
+  font-weight: bold;
   color: #fe9010;
 `;
 

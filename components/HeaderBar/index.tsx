@@ -43,7 +43,7 @@ const HeaderBar = () => {
       <MainBar>
         <TopMenu>
           <Link to="main" style={{ textDecoration: "none" }}>
-            <LeftMenu src="slideImage/logo.jpg" alt=""></LeftMenu>
+            <LeftMenu>ALLPASSTIVAL</LeftMenu>
           </Link>
           <RightMenu>
             <span>
