@@ -67,10 +67,6 @@ const SingUp = () => {
     [password, setPasswordCheck]
   );
 
-  const headers = {
-    "X-Requested-With": "XMLHttpRequest",
-  };
-
   const onSubmit = useCallback(() => {
     dispatch(addUserAsync({ email, password, nickname, gender, age })).catch(
       (error) => {

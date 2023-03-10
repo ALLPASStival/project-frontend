@@ -143,7 +143,7 @@ const CommunityDetail = () => {
         <Form onSubmit={onSubmitComment}>
           <CommunityContainer>
             <CommnunityBlock>
-              <CommnunityLeft>야무지조</CommnunityLeft>
+              <CommnunityLeft>작성자</CommnunityLeft>
               <CommnunityRight>야무지조</CommnunityRight>
             </CommnunityBlock>
             <Block style={{ height: "10.3rem" }}>
